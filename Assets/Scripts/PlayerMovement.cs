@@ -29,6 +29,7 @@ public class PlayerMovement : MonoBehaviour
         {
             m_Rigid.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
             m_IsJumping = false;
+            m_SaveJump = 0;
         }
 
         Move();
@@ -62,9 +63,8 @@ public class PlayerMovement : MonoBehaviour
     void CheckForJump()
     {
         //if we are in the limit time and we hit the ground we should jump
-        if (m_SaveJump > 0 && !m_IsJumping)
-            if (CheckForGround())
-                m_IsJumping = true;
+        if (m_SaveJump > 0 && CheckForGround())
+            m_IsJumping = true;
 
         m_SaveJump -= Time.deltaTime; //will decrease time for jump input
     }
