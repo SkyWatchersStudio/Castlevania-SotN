@@ -11,7 +11,7 @@ public class PlayerMovement : MonoBehaviour
     float m_HorizontalAxis;
     bool m_IsJump;
 
-    void Start()
+    void Awake()
     {
         m_Rigid = GetComponent<Rigidbody2D>();
     }
@@ -20,13 +20,16 @@ public class PlayerMovement : MonoBehaviour
     {
         if (m_IsJump)
             m_Rigid.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
-
+        Move();
+    }
+    void Move()
+    {
         Vector2 movement = Vector2.right * m_HorizontalAxis * moveForce;
         m_Rigid.AddForce(movement);
     }
-
     void Update()
     {
+        //Inputs:
         m_HorizontalAxis = Input.GetAxis("Horizontal");
         m_IsJump = Input.GetButtonDown("Jump");
     }
