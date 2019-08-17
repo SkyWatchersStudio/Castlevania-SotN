@@ -56,7 +56,7 @@ public class PlayerMovement : MonoBehaviour
             m_SaveJump = saveJumpTime; //determine jump input pressed
 
         //if jump were pressed and we are not currently jumping check if we can jump
-        if (m_SaveJump > 0 && !(m_Rigid.velocity.y > 3))
+        if (m_SaveJump > 0 && m_Rigid.velocity.y < 1)
             if (CheckForGround())
                 m_IsJumping = true;
 
