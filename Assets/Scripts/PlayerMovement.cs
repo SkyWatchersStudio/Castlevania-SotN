@@ -42,11 +42,9 @@ public class PlayerMovement : MonoBehaviour
     {
         Collider2D[] colliders = Physics2D.OverlapCircleAll(groundCheck.position,
                                                   groundCheckRadius);
-        foreach (var col in colliders)
-        {
+        foreach (var col in colliders) //check in the colliders and remove ourselves
             if (col.gameObject != gameObject)
                 return true;
-        }
 
         return false;
     }
@@ -57,7 +55,8 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetButtonDown("Jump"))
             m_SaveJump = saveJumpTime; //determine jump input pressed
 
-        if (m_SaveJump > 0 && !m_IsJumping)
+        //if jump were pressed and we are not currently jumping check if we can jump
+        if (m_SaveJump > 0 && !(m_Rigid.velocity.y > 3))
             if (CheckForGround())
                 m_IsJumping = true;
 
