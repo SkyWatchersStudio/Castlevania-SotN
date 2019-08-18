@@ -952,7 +952,7 @@ MonoBehaviour:
   groundCheck: {fileID: 1088029816}
   groundCheckRadius: 0.15
   saveJumpTime: 0.025
-  maxJumpDuration: 2.04
+  maxJumpDuration: 0.5
 --- !u!1 &426776707
 GameObject:
   m_ObjectHideFlags: 0
