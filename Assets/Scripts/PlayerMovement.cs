@@ -19,7 +19,7 @@ public class PlayerMovement : MonoBehaviour
     Rigidbody2D m_Rigid;
     float m_HorizontalAxis;
     float m_SaveJump, m_JumpTimer;
-    bool m_InterruptJump, m_IsJumping;
+    bool m_InterruptJump, m_IsJumping, m_ShouldJump;
 
     void Awake()
     {
@@ -34,18 +34,19 @@ public class PlayerMovement : MonoBehaviour
     }
     void Jump()
     {
-        if (m_SaveJump > 0)
+        if (m_ShouldJump)
         {
-            if (CheckForGround())
-            {
-                m_Rigid.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
-            }
+            m_Rigid.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+            m_ShouldJump = false;
+            m_IsJumping = true;
         }
 
         if (m_InterruptJump)
         {
+            //set the velocity to zero...
             m_Rigid.AddForce(Vector2.up * -m_Rigid.velocity.y, ForceMode2D.Impulse);
-            m_InterruptJump = false;
+            //we are no longer jumping nor interrupting
+            m_InterruptJump = m_IsJumping = false;
         }
     }
     void Move()
@@ -67,11 +68,25 @@ public class PlayerMovement : MonoBehaviour
     {
         m_HorizontalAxis = Input.GetAxis("Horizontal");
 
-        JumpInteraction(); //get jump input...
+        //get different jump input...
+        DetectJumpInput();
+        //we should jump? or are we no longer jumping?
+        JumpState();
 
         m_SaveJump -= Time.deltaTime; //will decrease time for jump input
     }
-    void JumpInteraction()
+    void JumpState()
+    {
+        bool isGrounded = CheckForGround();
+
+        //if currently jumping check for the ground
+        if (m_IsJumping && isGrounded)
+            m_IsJumping = false;
+
+        else if (m_SaveJump > 0 && !m_IsJumping)
+            m_ShouldJump = isGrounded;
+    }
+    void DetectJumpInput()
     {
         if (Input.GetButtonDown("Jump"))
         {
@@ -79,15 +94,17 @@ public class PlayerMovement : MonoBehaviour
             m_JumpTimer = 0;
         }
 
-        //if (!m_IsJumping)
-        //    return;
+        if (!m_IsJumping)
+            return;
 
-        //if (Input.GetButton("Jump"))
-        //    m_JumpTimer += Time.deltaTime;
-
-        //if (Input.GetButtonUp("Jump") && (m_JumpTimer < maxJumpDuration) && m_IsJumping)
-        //    m_InterruptJump = true;
+        //if player released button break jump state 
+        if (Input.GetButton("Jump"))
+            m_JumpTimer += Time.deltaTime;
+        else if (Input.GetButtonUp("Jump") && (m_JumpTimer < maxJumpDuration))
+            m_InterruptJump = true;
     }
+
+    //Helping develop...
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
