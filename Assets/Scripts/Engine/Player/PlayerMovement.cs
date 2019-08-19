@@ -79,12 +79,11 @@ public class PlayerMovement : MonoBehaviour
     {
         bool isGrounded = CheckForGround();
 
-        //if currently jumping check for the ground
-        if (m_IsJumping && isGrounded)
-            m_IsJumping = false;
-
-        else if (m_SaveJump > 0 && !m_IsJumping)
+        if (!m_IsJumping && m_SaveJump > 0)
             m_ShouldJump = isGrounded;
+        //if currently jumping check for the ground
+        else if (m_IsJumping && isGrounded)
+            m_IsJumping = false;
     }
     void DetectJumpInput()
     {
