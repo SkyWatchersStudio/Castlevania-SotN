@@ -947,12 +947,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 786d34e565f3a7d4dabea78968959a54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveForce: 12
-  jumpForce: 10
+  moveForce: 17
+  jumpForce: 15
   groundCheck: {fileID: 1088029816}
   groundCheckRadius: 0.15
   saveJumpTime: 0.025
-  maxJumpDuration: 0
+  maxJumpDuration: 0.577
 --- !u!1 &426776707
 GameObject:
   m_ObjectHideFlags: 0
