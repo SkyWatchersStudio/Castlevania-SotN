@@ -12,11 +12,13 @@ public class PlayerMovement : MonoBehaviour
     public Transform groundCheck;
     public float groundCheckRadius;
     public float saveJumpTime = .01f;
+    public LayerMask whatisGround;
 
     [Space(10)]
     public float maxJumpDuration;
 
     Rigidbody2D m_Rigid;
+    readonly Collider2D[] m_Colliders = new Collider2D[3];
     float m_HorizontalAxis;
     float m_SaveJump, m_JumpTimer;
     bool m_InterruptJump, m_IsJumping, m_ShouldJump;
@@ -56,13 +58,10 @@ public class PlayerMovement : MonoBehaviour
     }
     bool CheckForGround()
     {
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(groundCheck.position,
-                                                  groundCheckRadius);
-        foreach (var col in colliders) //check in the colliders and remove ourselves
-            if (col.gameObject != gameObject)
-                return true;
+        var colliders = Physics2D.OverlapCircleNonAlloc
+            (groundCheck.position, groundCheckRadius, m_Colliders, whatisGround);
 
-        return false;
+        return colliders > 0;
     }
     void Update()
     {

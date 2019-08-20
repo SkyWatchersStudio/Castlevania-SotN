@@ -874,9 +874,9 @@ GameObject:
   - component: {fileID: 393112714}
   - component: {fileID: 393112713}
   - component: {fileID: 393112716}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -952,6 +952,9 @@ MonoBehaviour:
   groundCheck: {fileID: 1088029816}
   groundCheckRadius: 0.15
   saveJumpTime: 0.025
+  whatisGround:
+    serializedVersion: 2
+    m_Bits: 55
   maxJumpDuration: 0.577
 --- !u!1 &426776707
 GameObject:
@@ -1175,7 +1178,6 @@ GameObject:
   m_Component:
   - component: {fileID: 519420032}
   - component: {fileID: 519420031}
-  - component: {fileID: 519420029}
   - component: {fileID: 519420030}
   m_Layer: 0
   m_Name: Main Camera
@@ -1184,14 +1186,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &519420029
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 519420028}
-  m_Enabled: 1
 --- !u!114 &519420030
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1868,7 +1862,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1088029816}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: GroundCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2883,7 +2877,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1548047366}
   - component: {fileID: 1548047367}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Simple Square
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3598,7 +3592,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1790428686}
   - component: {fileID: 1790428687}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Circle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
