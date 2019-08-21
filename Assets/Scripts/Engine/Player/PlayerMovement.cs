@@ -18,10 +18,11 @@ public class PlayerMovement : MonoBehaviour
     public float maxJumpDuration;
 
     Rigidbody2D m_Rigid;
-    readonly Collider2D[] m_Colliders = new Collider2D[3];
-    float m_HorizontalAxis;
+    readonly Collider2D[] m_Colliders = new Collider2D[1];
+    float m_HorizontalInput;
     float m_SaveJump, m_JumpTimer;
     bool m_InterruptJump, m_IsJumping, m_ShouldJump;
+    float m_GroundAngle;
 
     void Awake()
     {
@@ -53,7 +54,17 @@ public class PlayerMovement : MonoBehaviour
     }
     void Move()
     {
-        Vector2 movement = Vector2.right * m_HorizontalAxis * moveForce;
+        //how much force should applly to the x coordinate
+        var normalForce = Mathf.Abs(m_HorizontalInput * moveForce);
+        var groundAngleRadians = m_GroundAngle * Mathf.Deg2Rad;
+
+        //horizontal vector
+        var horizontalForce = 
+            Mathf.Cos(groundAngleRadians) * normalForce * Mathf.Sign(m_HorizontalInput);
+        //vertical vector
+        var verticalForce = Mathf.Sin(groundAngleRadians) * normalForce;
+
+        Vector2 movement = new Vector2(horizontalForce, verticalForce);
         m_Rigid.AddForce(movement);
     }
     bool CheckForGround()
@@ -65,19 +76,26 @@ public class PlayerMovement : MonoBehaviour
     }
     void Update()
     {
-        m_HorizontalAxis = Input.GetAxis("Horizontal");
+        m_HorizontalInput = Input.GetAxis("Horizontal");
 
         //get different jump input...
         DetectJumpInput();
         //we should jump? or are we no longer jumping?
-        JumpState();
+        GroundStatus();
 
         m_SaveJump -= Time.deltaTime; //will decrease time for jump input
     }
-    void JumpState()
+    void GroundStatus()
     {
         bool isGrounded = CheckForGround();
 
+        //angle for the ground movement
+        if (isGrounded)
+            m_GroundAngle = Vector2.Angle(m_Colliders[0].transform.up, Vector2.up);
+        else
+            m_GroundAngle = 0;
+
+        //we can jump or not
         if (!m_IsJumping && m_SaveJump > 0)
             m_ShouldJump = isGrounded;
         //if currently jumping check for the ground
@@ -107,5 +125,11 @@ public class PlayerMovement : MonoBehaviour
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(groundCheck.position, groundCheckRadius);
+
+        if (UnityEditor.EditorApplication.isPlaying)
+        { //draw what velocity player have
+            Gizmos.color = Color.red;
+            Gizmos.DrawRay(transform.position, m_Rigid.velocity);
+        }
     }
 }
