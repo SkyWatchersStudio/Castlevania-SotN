@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: Simple Square
+  m_Name: Diamond
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: 21300000, guid: 5ab9f11b6b5815c458dfc530d0562959, type: 3}
-  m_Color: {r: 0.31572625, g: 0.37637955, b: 0.4056604, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 05d8067f7aea9214287cbb1f2938ac34, type: 3}
+  m_Color: {r: 0.07075471, g: 1, b: 0.77726936, a: 1}
   m_Transform:
     e00: 1
     e01: 0
