@@ -9,6 +9,8 @@ public class PlayerMotion : MonoBehaviour
     public float jumpForce = 5;
     public float health = 5;
 
+    public Animator animator;
+
     [Space(10)]
     //Check jump variables:
     public Transform groundCheck;
@@ -79,6 +81,8 @@ public class PlayerMotion : MonoBehaviour
     void Update()
     {
         m_HorizontalInput = Input.GetAxis("Horizontal");
+
+        animator.SetFloat("Speed", Mathf.Abs(m_HorizontalInput));
 
         //get different jump input...
         DetectJumpInput();
