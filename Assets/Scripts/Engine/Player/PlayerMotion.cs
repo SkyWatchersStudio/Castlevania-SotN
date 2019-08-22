@@ -95,6 +95,8 @@ public class PlayerMotion : MonoBehaviour
     {
         bool isGrounded = CheckForGround();
 
+        animator.SetBool("Ground", isGrounded);
+
         //angle for the ground movement
         if (isGrounded)
             m_GroundAngle = Vector2.Angle(m_Colliders[0].transform.up, Vector2.up);

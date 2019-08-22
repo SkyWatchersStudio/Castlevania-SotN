@@ -253,7 +253,7 @@ MonoBehaviour:
   health: 5
   animator: {fileID: 5191960926025169343}
   groundCheck: {fileID: 1088029816}
-  groundCheckRadius: 0.21
+  groundCheckRadius: 0.15
   saveJumpTime: 0.025
   whatisGround:
     serializedVersion: 2
