@@ -1924,7 +1924,6 @@ GameObject:
   - component: {fileID: 393112714}
   - component: {fileID: 393112713}
   - component: {fileID: 393112716}
-  - component: {fileID: 393112717}
   m_Layer: 8
   m_Name: player
   m_TagString: Player
@@ -2007,25 +2006,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 55
   maxJumpDuration: 0.577
---- !u!114 &393112717
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 393112712}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 94e4c5efd0347d542be8d8522f6e4ef8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  startTimeBtwAttack: 0
-  attackPos: {fileID: 0}
-  WhatIsEnemies:
-    serializedVersion: 2
-    m_Bits: 0
-  attackRange: 0
-  damage: 0
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
