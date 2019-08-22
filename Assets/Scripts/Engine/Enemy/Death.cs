@@ -33,8 +33,10 @@ public class Death : MonoBehaviour
     {
         //setting up patrol positions
         var middlePoint = patrolRange / 2;
-        m_PatrolTarget[0] = Vector2.right * (transform.position.x - middlePoint);
-        m_PatrolTarget[1] = Vector2.right * (transform.position.x + middlePoint);
+        m_PatrolTarget[0] = new Vector2
+            (transform.position.x - middlePoint, transform.position.y);
+        m_PatrolTarget[1] = new Vector2
+            (transform.position.x + middlePoint, transform.position.y);
     }
 
     private void FixedUpdate()
