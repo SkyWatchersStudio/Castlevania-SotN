@@ -11,4 +11,6 @@ public class Enemy : MonoBehaviour
         {
         }
     }
+    void TakeDamage()
+    { }
 }
