@@ -250,7 +250,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 2
   health: 1
-  collisionForce: 4
+  collisionForce: 20
   detectionPos: {fileID: 173156069758224477}
   detectionRadius: 1
 --- !u!1 &7972507012746150652

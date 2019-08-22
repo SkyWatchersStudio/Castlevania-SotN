@@ -66,7 +66,7 @@ public class Tomato : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             var rigidbody = collision.gameObject.GetComponent<Rigidbody2D>();
-            rigidbody.AddForce(GetDirection() * collisionForce);
+            rigidbody.AddForce(GetDirection() * collisionForce, ForceMode2D.Impulse);
         }
     }
     private void OnDrawGizmosSelected()
