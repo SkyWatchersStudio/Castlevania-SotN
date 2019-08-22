@@ -2019,6 +2019,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94e4c5efd0347d542be8d8522f6e4ef8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startTimeBtwAttack: 0
+  attackPos: {fileID: 0}
+  WhatIsEnemies:
+    serializedVersion: 2
+    m_Bits: 0
+  attackRange: 0
+  damage: 0
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -2146,12 +2153,12 @@ PrefabInstance:
     - target: {fileID: 3627026680062045117, guid: 019e0f5d511fcc444a1d902a9b4a5a26,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 41.117847
+      value: 73.6
       objectReference: {fileID: 0}
     - target: {fileID: 3627026680062045117, guid: 019e0f5d511fcc444a1d902a9b4a5a26,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.03
+      value: 35.6
       objectReference: {fileID: 0}
     - target: {fileID: 3627026680062045117, guid: 019e0f5d511fcc444a1d902a9b4a5a26,
         type: 3}
