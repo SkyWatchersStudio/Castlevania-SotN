@@ -154,7 +154,7 @@ GameObject:
   - component: {fileID: 3549977773851293394}
   m_Layer: 8
   m_Name: 'player '
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -250,7 +250,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveForce: 17
   jumpForce: 15
-  health: 5
   animator: {fileID: 5191960926025169343}
   groundCheck: {fileID: 1088029816}
   groundCheckRadius: 0.15
