@@ -184,7 +184,7 @@ Rigidbody2D:
   m_GravityScale: 1
   m_Material: {fileID: 0}
   m_Interpolate: 2
-  m_SleepingMode: 1
+  m_SleepingMode: 2
   m_CollisionDetection: 0
   m_Constraints: 6
 --- !u!114 &3566022609486965860
@@ -202,4 +202,4 @@ MonoBehaviour:
   moveSpeed: 6
   lookPosition: {fileID: 9080225268102987080}
   lookSize: {x: 14, y: 3.3}
-  patrolRange: 25
+  patrolRange: 17.13

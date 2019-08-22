@@ -2,7 +2,7 @@
 using UnityEngine;
 using System;
 
-public class Death : MonoBehaviour
+public class Death : Enemy
 {
     public float moveSpeed;
 
@@ -31,10 +31,21 @@ public class Death : MonoBehaviour
 
     private void Start()
     {
+        m_PatrolTarget = PatrolPosition();
+    }
+
+    Vector2[] PatrolPosition()
+    {
         //setting up patrol positions
         var middlePoint = patrolRange / 2;
-        m_PatrolTarget[0] = Vector2.right * (transform.position.x - middlePoint);
-        m_PatrolTarget[1] = Vector2.right * (transform.position.x + middlePoint);
+
+        Vector2[] targets = 
+        {
+            new Vector2(transform.position.x - middlePoint, transform.position.y),
+            new Vector2(transform.position.x + middlePoint, transform.position.y)
+        };
+
+        return targets;
     }
 
     private void FixedUpdate()
