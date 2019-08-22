@@ -13,9 +13,8 @@ public class Tomato : MonoBehaviour
     public float detectionRadius;
 
     private Rigidbody2D m_Rigidbody;
-    private bool m_IsPlayerFound = false;
+    private bool m_IsPlayerFound, m_FacingRight = false;
     private Transform m_PlayerTransform;
-    private Vector2 m_Direction;
 
     private void Awake()
     {
@@ -26,8 +25,23 @@ public class Tomato : MonoBehaviour
     {
         if (!m_IsPlayerFound)
             return;
-        var nextMove = (Vector2)transform.position + (m_Direction * moveSpeed * Time.deltaTime);
-        m_Rigidbody.MovePosition(nextMove);
+
+        Vector2 direction = GetDirection();
+        //detect face direction
+        if (direction.x > 0 && !m_FacingRight)
+            Flip();
+        else if (direction.x < 0 && m_FacingRight)
+            Flip();
+
+        var desireMove = Vector2.right * direction * moveSpeed * Time.deltaTime;
+        m_Rigidbody.MovePosition((Vector2)transform.position + desireMove);
+    }
+    void Flip()
+    {
+        m_FacingRight = !m_FacingRight;
+        Vector3 scale = transform.localScale;
+        scale.x *= -1;
+        transform.localScale = scale;
     }
     void DetectPlayer()
     {
@@ -44,7 +58,6 @@ public class Tomato : MonoBehaviour
                 {
                     m_IsPlayerFound = m_Rigidbody.simulated = true;
                     m_PlayerTransform = colliders.transform;
-                    m_Direction = Vector2.right * GetDirection();
                 }
             }
     }
@@ -52,10 +65,10 @@ public class Tomato : MonoBehaviour
     {
         var deltaPosition = m_PlayerTransform.position - transform.position;
         return deltaPosition.normalized;
-    }
+    } //a vector from player to us
     private void Update()
     {
-        if (!m_IsPlayerFound)
+        if (!m_IsPlayerFound) //until player enter check for it
             DetectPlayer();
     }
     private void OnCollisionEnter2D(Collision2D collision)
@@ -69,7 +82,7 @@ public class Tomato : MonoBehaviour
             var rigidbody = collision.gameObject.GetComponent<Rigidbody2D>();
             rigidbody.AddForce(GetDirection() * collisionForce, ForceMode2D.Impulse);
         }
-    }
+    } //if hit player what happens?
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.green;
