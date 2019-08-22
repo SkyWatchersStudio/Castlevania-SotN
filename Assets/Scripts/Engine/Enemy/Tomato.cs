@@ -65,6 +65,9 @@ public class Tomato : MonoBehaviour
         //applly force to the player in opposite direction of player sees enemy
         if (collision.gameObject.CompareTag("Player"))
         {
+            var animator = collision.gameObject.GetComponent<Animator>();
+            animator.SetTrigger("Hit");
+
             var rigidbody = collision.gameObject.GetComponent<Rigidbody2D>();
             rigidbody.AddForce(GetDirection() * collisionForce, ForceMode2D.Impulse);
         }
