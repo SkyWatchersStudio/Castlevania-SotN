@@ -1,15 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
-public class PlayerDamageController : MonoBehaviour
+public class PlayerAttack : MonoBehaviour
 {
     private float timeBtwAttack;
     public float startTimeBtwAttack;
-    [Space(10)]
-    //number of attack need to destroy player
-    public int health;
 
     public Transform attackPos;
     public LayerMask WhatIsEnemies; 
@@ -24,7 +20,7 @@ public class PlayerDamageController : MonoBehaviour
                 Collider2D[] enemiesToDamage = Physics2D.OverlapCircleAll(attackPos.position, attackRange, WhatIsEnemies);
                 for (int i = 0; i < enemiesToDamage.Length; i++)
                 {
-                    //enemiesToDamage[i].GetComponent<Enemy>().TakeDamage(damage);
+                    //enemiesToDamage[i].GetComponent<Enemy>().TakeDamage();
                 }
             }
 
@@ -34,12 +30,6 @@ public class PlayerDamageController : MonoBehaviour
         {
             timeBtwAttack -= Time.deltaTime;
         }
-    }
-    void TakeDamage()
-    {
-        health -= 1;
-        if (health <= 0)
-            SceneManager.LoadScene(0);
     }
     void OnDrawGizmosSelected()
     {
