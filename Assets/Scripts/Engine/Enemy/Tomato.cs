@@ -15,10 +15,12 @@ public class Tomato : MonoBehaviour
     private Rigidbody2D m_Rigidbody;
     private bool m_IsPlayerFound, m_FacingRight = false;
     private Transform m_PlayerTransform;
+    private Animator m_Animator;
 
     private void Awake()
     {
         m_Rigidbody = GetComponent<Rigidbody2D>();
+        m_Animator = GetComponent<Animator>();
     }
 
     private void FixedUpdate()
@@ -78,6 +80,8 @@ public class Tomato : MonoBehaviour
         {
             var animator = collision.gameObject.GetComponent<Animator>();
             animator.SetTrigger("Hit");
+
+            m_Animator.SetTrigger("AttackEnemy");
 
             var rigidbody = collision.gameObject.GetComponent<Rigidbody2D>();
             rigidbody.AddForce(GetDirection() * collisionForce, ForceMode2D.Impulse);
