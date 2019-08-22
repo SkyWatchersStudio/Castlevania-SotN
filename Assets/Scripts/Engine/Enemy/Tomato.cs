@@ -15,13 +15,11 @@ public class Tomato : MonoBehaviour
     private Rigidbody2D m_Rigidbody;
     private bool m_IsPlayerFound = false;
     private Transform m_PlayerTransform;
-    private LayerMask m_LayerMask;
     private Vector2 m_Direction;
 
     private void Awake()
     {
         m_Rigidbody = GetComponent<Rigidbody2D>();
-        m_LayerMask = LayerMask.NameToLayer("NotGround");
     }
 
     private void FixedUpdate()

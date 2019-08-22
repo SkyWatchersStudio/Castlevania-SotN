@@ -26,6 +26,7 @@ public class PlayerMotion : MonoBehaviour
     float m_SaveJump, m_JumpTimer;
     bool m_InterruptJump, m_IsJumping, m_ShouldJump;
     float m_GroundAngle;
+    bool m_FacingRight = true;
 
     void Awake()
     {
@@ -83,6 +84,12 @@ public class PlayerMotion : MonoBehaviour
 
         animator.SetFloat("Speed", Mathf.Abs(m_HorizontalInput));
 
+        //what face should we look at
+        if (m_HorizontalInput > 0 && !m_FacingRight)
+            Flip();
+        else if (m_HorizontalInput < 0 && m_FacingRight)
+            Flip();
+
         //get different jump input...
         DetectJumpInput();
         //we should jump? or are we no longer jumping?
@@ -125,6 +132,13 @@ public class PlayerMotion : MonoBehaviour
             m_JumpTimer += Time.deltaTime;
         else if (Input.GetButtonUp("Jump") && (m_JumpTimer < maxJumpDuration))
             m_InterruptJump = true;
+    }
+    void Flip()
+    {
+        m_FacingRight = !m_FacingRight;
+        Vector3 scale = transform.localScale;
+        scale.x *= -1;
+        transform.localScale = scale;
     }
 
     //Helping develop...
