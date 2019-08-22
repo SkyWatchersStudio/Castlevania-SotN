@@ -199,7 +199,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eceec59066f6d57428bbf75416af0c8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 10
   moveSpeed: 6
   lookPosition: {fileID: 9080225268102987080}
   lookSize: {x: 14, y: 3.3}
-  patrolRange: 17.13
+  patrolRange: 17

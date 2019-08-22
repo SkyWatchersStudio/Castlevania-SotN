@@ -1,11 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerMotion : MonoBehaviour
 {
     public float moveForce = 10;
     public float jumpForce = 5;
+    public float health = 5;
 
     [Space(10)]
     //Check jump variables:
@@ -118,6 +120,14 @@ public class PlayerMotion : MonoBehaviour
             m_JumpTimer += Time.deltaTime;
         else if (Input.GetButtonUp("Jump") && (m_JumpTimer < maxJumpDuration))
             m_InterruptJump = true;
+    }
+    public void TakeDamage()
+    {
+        m_Rigid.AddForce(-m_Rigid.velocity * 2);
+
+        health -= 1;
+        if (health <= 0)
+            SceneManager.LoadScene(0);
     }
 
     //Helping develop...

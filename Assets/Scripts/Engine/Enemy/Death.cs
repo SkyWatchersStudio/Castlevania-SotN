@@ -2,7 +2,7 @@
 using UnityEngine;
 using System;
 
-public class Death : Enemy
+public class Death : MonoBehaviour
 {
     public float moveSpeed;
 
@@ -14,9 +14,8 @@ public class Death : Enemy
     //patrol requirements
     public float patrolRange;
 
-
     private bool m_PlayerFound;
-    private Rigidbody2D m_Rigidbody;
+    Rigidbody2D m_Rigidbody;
     Transform m_PlayerTransform;
     States m_CurrentState = States.Patrol;
     Vector2[] m_PatrolTarget = new Vector2[2];
@@ -24,13 +23,9 @@ public class Death : Enemy
 
     enum States { Patrol, Found, Fight }
 
-    private void Awake()
-    {
-        m_Rigidbody = GetComponent<Rigidbody2D>();
-    }
-
     private void Start()
     {
+        m_Rigidbody = GetComponent<Rigidbody2D>();
         m_PatrolTarget = PatrolPosition();
     }
 
