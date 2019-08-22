@@ -19,17 +19,17 @@ public class Death : MonoBehaviour
     Transform m_PlayerTransform;
     States m_CurrentState = States.Patrol;
     Vector2[] m_PatrolTarget = new Vector2[2];
-    int m_CurrentTarget = 0;
+    int m_CurrentTargetPatrol = 0;
 
     enum States { Patrol, Found, Fight }
 
     private void Start()
     {
         m_Rigidbody = GetComponent<Rigidbody2D>();
-        m_PatrolTarget = PatrolPosition();
+        m_PatrolTarget = GetPatrolPositions();
     }
 
-    Vector2[] PatrolPosition()
+    Vector2[] GetPatrolPositions()
     {
         //setting up patrol positions
         var middlePoint = patrolRange / 2;
@@ -74,12 +74,12 @@ public class Death : MonoBehaviour
     {
         //calculate next position based on patrol range...
         Vector2 nextTarget = Vector2.MoveTowards(transform.position,
-            m_PatrolTarget[m_CurrentTarget],
+            m_PatrolTarget[m_CurrentTargetPatrol],
             moveSpeed * Time.fixedDeltaTime);
 
-        if ((Vector2)transform.position == m_PatrolTarget[m_CurrentTarget])
+        if ((Vector2)transform.position == m_PatrolTarget[m_CurrentTargetPatrol])
         {
-            m_CurrentTarget = (m_CurrentTarget + 1) % 2;
+            m_CurrentTargetPatrol = (m_CurrentTargetPatrol + 1) % 2;
             Rotate();
         }
 

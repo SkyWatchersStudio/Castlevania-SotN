@@ -1726,6 +1726,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Death
       objectReference: {fileID: 0}
+    - target: {fileID: 7780707945761774667, guid: 019e0f5d511fcc444a1d902a9b4a5a26,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3627026680062045117, guid: 019e0f5d511fcc444a1d902a9b4a5a26,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6586,11 +6591,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: 'player '
-      objectReference: {fileID: 0}
-    - target: {fileID: 2940581264361314439, guid: 566019c9cd7fe99448037a396e657a67,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2341238539376258603, guid: 566019c9cd7fe99448037a396e657a67,
         type: 3}
