@@ -1918,7 +1918,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.1
-  far clip plane: 5000
+  far clip plane: 100
   field of view: 40
   orthographic: 1
   orthographic size: 4.5
@@ -6795,7 +6795,7 @@ MonoBehaviour:
     FieldOfView: 40
     OrthographicSize: 4.5
     NearClipPlane: 0.1
-    FarClipPlane: 5000
+    FarClipPlane: 100
     Dutch: 0
     LensShift: {x: 0, y: 0}
   m_Transitions:
@@ -6841,7 +6841,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1572036656
 MonoBehaviour:
   m_ObjectHideFlags: 0
