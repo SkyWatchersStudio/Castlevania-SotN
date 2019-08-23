@@ -158,7 +158,7 @@ GameObject:
   - component: {fileID: 6273488677618483610}
   m_Layer: 0
   m_Name: Tomato
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -207,12 +207,12 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7915721508040905469}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 0
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
+  m_Mass: 3
+  m_LinearDrag: 1
   m_AngularDrag: 0.05
   m_GravityScale: 1
   m_Material: {fileID: 0}
@@ -248,8 +248,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4d1d1955c313ea4ba9c3c804830ce1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 2
-  health: 1
+  moveSpeed: 5
+  health: 2
   collisionForce: 20
   detectionPos: {fileID: 173156069758224477}
   detectionRadius: 1

@@ -35,8 +35,8 @@ public class Tomato : MonoBehaviour
         else if (direction.x < 0 && m_FacingRight)
             Flip();
 
-        var desireMove = Vector2.right * direction * moveSpeed * Time.deltaTime;
-        m_Rigidbody.MovePosition((Vector2)transform.position + desireMove);
+        var desireMove = Vector2.right * direction * moveSpeed;
+        m_Rigidbody.AddForce(desireMove);
     }
     void Flip()
     {
@@ -72,6 +72,12 @@ public class Tomato : MonoBehaviour
     {
         if (!m_IsPlayerFound) //until player enter check for it
             DetectPlayer();
+    }
+    public void TakeDamage()
+    {
+        health -= 1;
+        if (health <= 0)
+            Destroy(this.gameObject);
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {

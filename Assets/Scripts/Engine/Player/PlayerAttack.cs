@@ -7,29 +7,41 @@ public class PlayerAttack : MonoBehaviour
     private float timeBtwAttack;
     public float startTimeBtwAttack;
 
+    public float attackForce = 15;
+
     public Transform attackPos;
-    public LayerMask WhatIsEnemies; 
     public float attackRange;
 
+    private Animator m_Animator;
+
+    private void Start()
+    {
+        m_Animator = GetComponent<Animator>();
+    }
     void Update()
     {
         if(timeBtwAttack <= 0)
         {
             if (Input.GetButtonDown("Fire2"))
             {
-                Collider2D[] enemiesToDamage = Physics2D.OverlapCircleAll(attackPos.position, attackRange);
-                for (int i = 0; i < enemiesToDamage.Length; i++)
-                {
-                    //enemiesToDamage[i].GetComponent<Enemy>().TakeDamage();
-                }
-            }
+                m_Animator.SetTrigger("Attack");
 
-            timeBtwAttack = startTimeBtwAttack;
+                Collider2D[] enemiesToDamage = Physics2D.OverlapCircleAll(attackPos.position, attackRange);
+                foreach (Collider2D enemy in enemiesToDamage)
+                {
+                    if (enemy.tag == "Enemy")
+                    {
+                        var rigidbody = enemy.GetComponent<Rigidbody2D>();
+                        rigidbody.AddForce(Vector2.right * attackForce, ForceMode2D.Impulse);
+
+                        enemy.GetComponent<Tomato>().TakeDamage();
+                    }
+                }
+                timeBtwAttack = startTimeBtwAttack;
+            }
         }
         else
-        {
             timeBtwAttack -= Time.deltaTime;
-        }
     }
     void OnDrawGizmosSelected()
     {

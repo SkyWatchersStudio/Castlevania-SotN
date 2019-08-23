@@ -109,6 +109,36 @@ Transform:
   m_Father: {fileID: 2341238539376258603}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2034623079
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2034623080}
+  m_Layer: 0
+  m_Name: AttackPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2034623080
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2034623079}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 3.52, y: 3.6, z: -18.665962}
+  m_LocalScale: {x: 6.6192946, y: 6.6192946, z: 6.6192946}
+  m_Children: []
+  m_Father: {fileID: 2341238539376258603}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2567097076248915053
 GameObject:
   m_ObjectHideFlags: 0
@@ -152,6 +182,7 @@ GameObject:
   - component: {fileID: 5851666288230200121}
   - component: {fileID: 4838410754184782593}
   - component: {fileID: 3549977773851293394}
+  - component: {fileID: 1377960737}
   m_Layer: 8
   m_Name: 'player '
   m_TagString: Player
@@ -177,6 +208,7 @@ Transform:
   - {fileID: 4658994526271365709}
   - {fileID: 919746045}
   - {fileID: 1088029816}
+  - {fileID: 2034623080}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -258,6 +290,22 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 55
   maxJumpDuration: 0.577
+--- !u!114 &1377960737
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2940581264361314439}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94e4c5efd0347d542be8d8522f6e4ef8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startTimeBtwAttack: 0.8
+  attackForce: 10
+  attackPos: {fileID: 2034623080}
+  attackRange: 0.4
 --- !u!1 &3822516613106815191
 GameObject:
   m_ObjectHideFlags: 0
@@ -537,7 +585,7 @@ Transform:
   m_GameObject: {fileID: 7039844997693663283}
   m_LocalRotation: {x: 0, y: 0, z: 0.7071069, w: 0.7071067}
   m_LocalPosition: {x: -1.5697194, y: 0.12139116, z: 0}
-  m_LocalScale: {x: 1, y: 0.85589063, z: 1}
+  m_LocalScale: {x: 1, y: 1.0399219, z: 1}
   m_Children:
   - {fileID: 305787092587392961}
   - {fileID: 5158232814629347222}
