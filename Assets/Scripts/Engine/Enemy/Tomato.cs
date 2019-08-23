@@ -12,6 +12,11 @@ public class Tomato : MonoBehaviour
     public Transform detectionPos;
     public float detectionRadius;
 
+    [Space(10)]
+    public Transform groundCheck;
+    public float groundCheckRadius;
+    public LayerMask whatIsGround;
+
     private Rigidbody2D m_Rigidbody;
     private bool m_IsPlayerFound, m_FacingRight = false;
     private Transform m_PlayerTransform;
@@ -34,6 +39,9 @@ public class Tomato : MonoBehaviour
             Flip();
         else if (direction.x < 0 && m_FacingRight)
             Flip();
+
+        if (!CheckForGround())
+            return;
 
         var desireMove = Vector2.right * direction * moveSpeed;
         m_Rigidbody.AddForce(desireMove);
@@ -62,6 +70,13 @@ public class Tomato : MonoBehaviour
                     m_PlayerTransform = colliders.transform;
                 }
             }
+    }
+    bool CheckForGround()
+    {
+        Collider2D[] results = new Collider2D[1];
+        var groundCollider = Physics2D.OverlapCircleNonAlloc(groundCheck.position,
+                                                groundCheckRadius, results, whatIsGround);
+        return groundCollider != 0;
     }
     Vector2 GetDirection()
     {
@@ -104,5 +119,7 @@ public class Tomato : MonoBehaviour
     {
         Gizmos.color = Color.green;
         Gizmos.DrawWireSphere(detectionPos.position, detectionRadius);
+        Gizmos.color = Color.cyan;
+        Gizmos.DrawWireSphere(groundCheck.position, groundCheckRadius);
     }
 }
