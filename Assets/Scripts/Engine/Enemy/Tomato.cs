@@ -66,6 +66,13 @@ public class Tomato : MonoBehaviour
     Vector2 GetDirection()
     {
         var deltaPosition = m_PlayerTransform.position - transform.position;
+
+        //turn on and off the enemy
+        if (deltaPosition.x > 15 && m_Rigidbody.simulated)
+            m_Rigidbody.simulated = false;
+        else if (deltaPosition.x < 15 && !m_Rigidbody.simulated)
+            m_Rigidbody.simulated = true;
+
         return deltaPosition.normalized;
     } //a vector from player to us
     private void Update()
