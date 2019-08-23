@@ -141,6 +141,7 @@ public class PlayerMotion : MonoBehaviour
         transform.localScale = scale;
     }
 
+#if UNITY_EDITOR
     //Helping develop...
     private void OnDrawGizmos()
     {
@@ -153,4 +154,5 @@ public class PlayerMotion : MonoBehaviour
             Gizmos.DrawRay(transform.position, m_Rigid.velocity);
         }
     }
+#endif
 }

@@ -103,6 +103,7 @@ public class Death : MonoBehaviour
             m_PlayerTransform = CheckForPlayer();
     }
 
+#if UNITY_EDITOR
     private void OnDrawGizmosSelected()
     {
         //Detecting range...
@@ -115,4 +116,5 @@ public class Death : MonoBehaviour
             Gizmos.DrawWireCube(transform.position, new Vector3(patrolRange, 1));
         }
     }
+#endif
 }
