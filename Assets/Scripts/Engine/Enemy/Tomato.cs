@@ -113,6 +113,9 @@ public class Tomato : MonoBehaviour
 
             var rigidbody = collision.gameObject.GetComponent<Rigidbody2D>();
             rigidbody.AddForce(GetDirection() * collisionForce, ForceMode2D.Impulse);
+
+            //apply damage
+            collision.gameObject.GetComponent<PlayerMotion>().TakeDamage();
         }
     } //if hit player what happens?
     private void OnDrawGizmosSelected()

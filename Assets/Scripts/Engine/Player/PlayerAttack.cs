@@ -26,7 +26,8 @@ public class PlayerAttack : MonoBehaviour
             {
                 m_Animator.SetTrigger("Attack");
 
-                Collider2D[] enemiesToDamage = Physics2D.OverlapCircleAll(attackPos.position, attackRange);
+                Collider2D[] enemiesToDamage = 
+                    Physics2D.OverlapCircleAll(attackPos.position, attackRange);
                 foreach (Collider2D enemy in enemiesToDamage)
                 {
                     if (enemy.tag == "Enemy")
@@ -34,7 +35,8 @@ public class PlayerAttack : MonoBehaviour
                         var rigidbody = enemy.GetComponent<Rigidbody2D>();
                         rigidbody.AddForce(Vector2.right * attackForce, ForceMode2D.Impulse);
 
-                        enemy.GetComponent<Tomato>().TakeDamage();
+                        enemy.SendMessage("TakeDamage");
+                        break;
                     }
                 }
                 timeBtwAttack = startTimeBtwAttack;

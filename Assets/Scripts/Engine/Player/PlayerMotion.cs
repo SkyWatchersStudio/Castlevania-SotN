@@ -7,6 +7,7 @@ public class PlayerMotion : MonoBehaviour
 {
     public float moveForce = 10;
     public float jumpForce = 5;
+    public int health = 10;
 
     public Animator animator;
 
@@ -139,6 +140,13 @@ public class PlayerMotion : MonoBehaviour
         Vector3 scale = transform.localScale;
         scale.x *= -1;
         transform.localScale = scale;
+    }
+
+    public void TakeDamage()
+    {
+        health -= 1;
+        if (health <= 0)
+            SceneManager.LoadScene(0);
     }
 
 #if UNITY_EDITOR

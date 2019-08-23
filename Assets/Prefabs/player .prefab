@@ -282,6 +282,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveForce: 23
   jumpForce: 20
+  health: 10
   animator: {fileID: 5191960926025169343}
   groundCheck: {fileID: 1088029816}
   groundCheckRadius: 0.15

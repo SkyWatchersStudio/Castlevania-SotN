@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9080225268102987080}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: lookPosition
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44,9 +44,9 @@ GameObject:
   - component: {fileID: 6093266269263867871}
   - component: {fileID: 8388343957857692694}
   - component: {fileID: 3566022609486965860}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Death
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -174,7 +174,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7780707945761774667}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -200,6 +200,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 6
-  lookPosition: {fileID: 9080225268102987080}
-  lookSize: {x: 14, y: 3.3}
-  patrolRange: 17
+  timeBtwMove: 3
