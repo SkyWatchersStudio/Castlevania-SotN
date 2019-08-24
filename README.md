@@ -12,4 +12,4 @@ This is a remake of Symphony Of The Night
      3. Go to the folder where project created and replace the files and folders inside of it with the one that you've cloned
      4. Go to editor window again and wait a while until project load completely then you will see all the project
      5. Click File>Build Settings or ***Ctrl+Shift+B*** and from there you can build the project for your target platform
-   - We will place the windows target build inside the project ASAP
+   - The windows build is placed under **Release** folder
