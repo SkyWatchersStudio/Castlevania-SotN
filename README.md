@@ -14,4 +14,4 @@ This is a remake of Symphony Of The Night
      5. Click File>Build Settings or ***Ctrl+Shift+B*** and from there you can build the project for your target platform
 
 ### How to use:
-    - Windows build installer is located in the **Release** tab of the project
+  - Windows build installer is located in the **Release** tab of the project
