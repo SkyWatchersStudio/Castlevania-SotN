@@ -8270,6 +8270,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.x
       value: 0.35
       objectReference: {fileID: 0}
+    - target: {fileID: 2034623080, guid: 566019c9cd7fe99448037a396e657a67, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3549977773851293394, guid: 566019c9cd7fe99448037a396e657a67, type: 3}
     - {fileID: 1377960737, guid: 566019c9cd7fe99448037a396e657a67, type: 3}
@@ -8315,22 +8319,3 @@ MonoBehaviour:
   timeBetweenAttack: 0.4
   attackPosition: {fileID: 5191960925485090433}
   attackRange: 0.4
---- !u!95 &5191960925485090436
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5191960925485090432}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: dd092d8e65e966e4ba1fd194953aa0d2, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0

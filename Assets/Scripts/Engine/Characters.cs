@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody2D), typeof(Animator))]
 public abstract class Characters : MonoBehaviour
 {
     public int health;
@@ -23,9 +22,6 @@ public abstract class Characters : MonoBehaviour
     {
         m_Rigidbody = GetComponent<Rigidbody2D>();
         m_Animator = GetComponent<Animator>();
-
-        if (m_Rigidbody == null || m_Animator == null)
-            Debug.LogError($"{this.gameObject} need animator and rigidbody component");
     }
     public virtual void FixedUpdate()
     {

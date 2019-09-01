@@ -41,14 +41,14 @@ public sealed class Player : Characters
         m_HorizontalInput = Input.GetAxisRaw("Horizontal");
         Flip(m_HorizontalInput);
 
-        m_Animator.SetBool("isGround", m_Grounded);
         m_Animator.SetFloat("Speed", Mathf.Abs(m_HorizontalInput));
-        m_Animator.SetFloat("vSpeed", m_Rigidbody.velocity.y);
     }
     private void JumpStatus()
     {
         if (m_IsJumping && m_Grounded)
             m_IsJumping = false;
+
+        m_Animator.SetFloat("vSpeed", m_Rigidbody.velocity.y);
 
         if (m_JumpSaveTime > 0 && m_Grounded)
         {
@@ -84,9 +84,15 @@ public sealed class Player : Characters
         }
     }
 
+    public override void Start()
+    {
+        base.Start();
+        m_Animator = GetComponentInChildren<Animator>();
+    }
     public override void FixedUpdate()
     {
         m_Grounded = CheckGround(out m_GroundCollider);
+        m_Animator.SetBool("isGround", m_Grounded);
 
         JumpStatus();
         if (m_Attack)
