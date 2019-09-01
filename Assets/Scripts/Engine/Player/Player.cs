@@ -40,6 +40,10 @@ public sealed class Player : Characters
 
         m_HorizontalInput = Input.GetAxisRaw("Horizontal");
         Flip(m_HorizontalInput);
+
+        m_Animator.SetBool("Ground", m_Grounded);
+        m_Animator.SetFloat("Speed", Mathf.Abs(m_HorizontalInput));
+        m_Animator.SetFloat("vSpeed", m_Rigidbody.velocity.y);
     }
     private void JumpStatus()
     {
@@ -59,6 +63,8 @@ public sealed class Player : Characters
     }
     private void Attack()
     {
+        m_Animator.SetTrigger("Attack");
+
         var enemies = Physics2D.OverlapCircleAll(
             attackPosition.position, attackRange, m_NotGroundLayer);
         foreach (Collider2D enemy in enemies)
