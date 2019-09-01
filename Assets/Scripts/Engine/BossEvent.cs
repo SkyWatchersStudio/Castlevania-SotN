@@ -24,7 +24,7 @@ public class BossEvent : MonoBehaviour
             rigidbody.position = targetPosition;
 
             //give a power to the player
-            collision.GetComponent<PlayerAttack>().attackRange = 2;
+            collision.GetComponent<Player>().attackRange = 2;
 
             //feed player to the Death
             m_Death.m_PlayerTransform = collision.transform;

@@ -58,7 +58,7 @@ public class Death : MonoBehaviour
             var playerRigid = m_PlayerTransform.GetComponent<Rigidbody2D>();
             playerRigid.AddForce(m_DeltaPosition.normalized * 20, ForceMode2D.Impulse);
 
-            playerRigid.GetComponent<PlayerMotion>().TakeDamage();
+            playerRigid.GetComponent<Player>().TakeDamage();
         }
     }
     private void Update()
@@ -78,6 +78,6 @@ public class Death : MonoBehaviour
         var rigid = collision.gameObject.GetComponent<Rigidbody2D>();
         rigid.AddForce(m_DeltaPosition.normalized * 20, ForceMode2D.Impulse);
 
-        collision.gameObject.GetComponent<PlayerMotion>().TakeDamage();
+        collision.gameObject.GetComponent<Player>().TakeDamage();
     }
 }
