@@ -10,12 +10,13 @@ public abstract class Characters : MonoBehaviour
     [Space(10)]
     public Transform groundCheck;
     public float groundRadius;
+    [Space(10)]
+    public bool m_FacingRight;
 
     protected Rigidbody2D m_Rigidbody;
     protected Animator m_Animator;
     protected const int m_NotGroundLayer = 1 << 8;
 
-    private bool m_FacingRight;
     private const int m_GroundLayer = ~(1 << 8);
 
     public virtual void Start()
@@ -38,7 +39,8 @@ public abstract class Characters : MonoBehaviour
 
     protected void Flip(float horizontal)
     {
-        if ((horizontal > 0 && m_FacingRight) || (horizontal < 0 && !m_FacingRight))
+        if ((horizontal > 0 && m_FacingRight) || 
+            (horizontal < 0 && !m_FacingRight) || (horizontal == 0))
             return;
 
         m_FacingRight = !m_FacingRight;
