@@ -41,7 +41,7 @@ public sealed class Player : Characters
         m_HorizontalInput = Input.GetAxisRaw("Horizontal");
         Flip(m_HorizontalInput);
 
-        m_Animator.SetBool("Ground", m_Grounded);
+        m_Animator.SetBool("isGround", m_Grounded);
         m_Animator.SetFloat("Speed", Mathf.Abs(m_HorizontalInput));
         m_Animator.SetFloat("vSpeed", m_Rigidbody.velocity.y);
     }
