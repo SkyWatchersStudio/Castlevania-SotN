@@ -8218,10 +8218,75 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3549977773851293394, guid: 566019c9cd7fe99448037a396e657a67,
-        type: 3}
-      propertyPath: animator
-      value: 
-      objectReference: {fileID: 1349572231}
-    m_RemovedComponents: []
+    - target: {fileID: 1088029816, guid: 566019c9cd7fe99448037a396e657a67, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -4.68
+      objectReference: {fileID: 0}
+    - target: {fileID: 1088029816, guid: 566019c9cd7fe99448037a396e657a67, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.35
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 3549977773851293394, guid: 566019c9cd7fe99448037a396e657a67, type: 3}
+    - {fileID: 1377960737, guid: 566019c9cd7fe99448037a396e657a67, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 566019c9cd7fe99448037a396e657a67, type: 3}
+--- !u!1 &5191960925485090432 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2940581264361314439, guid: 566019c9cd7fe99448037a396e657a67,
+    type: 3}
+  m_PrefabInstance: {fileID: 5191960925485090431}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &5191960925485090433 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2034623080, guid: 566019c9cd7fe99448037a396e657a67,
+    type: 3}
+  m_PrefabInstance: {fileID: 5191960925485090431}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &5191960925485090434 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1088029816, guid: 566019c9cd7fe99448037a396e657a67,
+    type: 3}
+  m_PrefabInstance: {fileID: 5191960925485090431}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5191960925485090435
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5191960925485090432}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c309a0eb9faee0d4fac3ba80c8f9a186, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 10
+  moveSpeed: 20
+  groundCheck: {fileID: 5191960925485090434}
+  groundRadius: 0.1
+  m_FacingRight: 1
+  jumpSaveTime: 0.05
+  jumpForce: 20
+  attackForce: 10
+  timeBetweenAttack: 0.4
+  attackPosition: {fileID: 5191960925485090433}
+  attackRange: 0.4
+--- !u!95 &5191960925485090436
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5191960925485090432}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
