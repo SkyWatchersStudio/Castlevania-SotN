@@ -3773,12 +3773,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dbf2383644e959d4c8c565673f985842, type: 3}
---- !u!95 &1349572231 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 1349572231, guid: 566019c9cd7fe99448037a396e657a67,
-    type: 3}
-  m_PrefabInstance: {fileID: 5191960925485090431}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1458915947
 GameObject:
   m_ObjectHideFlags: 0
@@ -7605,8 +7599,58 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 219788838224694455, guid: dbf2383644e959d4c8c565673f985842,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -6.29
+      objectReference: {fileID: 0}
+    - target: {fileID: 219788838224694455, guid: dbf2383644e959d4c8c565673f985842,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.2
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 6273488677618483610, guid: dbf2383644e959d4c8c565673f985842, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: dbf2383644e959d4c8c565673f985842, type: 3}
+--- !u!1 &1721413823 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7915721508040905469, guid: dbf2383644e959d4c8c565673f985842,
+    type: 3}
+  m_PrefabInstance: {fileID: 1721413822}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1721413824 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 173156069758224477, guid: dbf2383644e959d4c8c565673f985842,
+    type: 3}
+  m_PrefabInstance: {fileID: 1721413822}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1721413825 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 219788838224694455, guid: dbf2383644e959d4c8c565673f985842,
+    type: 3}
+  m_PrefabInstance: {fileID: 1721413822}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1721413826
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1721413823}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34054d577c11a6c4e8bef5a1b3ec6910, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 1
+  moveSpeed: 10
+  groundCheck: {fileID: 1721413825}
+  groundRadius: 0.3
+  m_FacingRight: 0
+  collisionForce: 10
+  detectionPosition: {fileID: 1721413824}
+  detectionRange: 3
+  distanceMagnitude: 8
 --- !u!1001 &1772684352
 PrefabInstance:
   m_ObjectHideFlags: 0
