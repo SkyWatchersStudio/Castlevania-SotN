@@ -82,6 +82,8 @@ public sealed class Player : Characters
                     enemyScript.TakeDamage();
             }
         }
+
+        m_Attack = false;
     }
 
     public override void Start()
