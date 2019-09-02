@@ -125,17 +125,17 @@ public sealed class Player : Characters
                 var gravity = Mathf.Abs(
                     m_Rigidbody.mass * Physics2D.gravity.y / Mathf.Sin(alpha));
                 float xMovement, yMovement;
-                var force = moveSpeed;
+                float force;
 
                 if (groundSlope > 90)
                 {
-                    force += -m_HorizontalInput * gravity;
+                    force = moveSpeed + (-m_HorizontalInput * gravity);
                     yMovement = -m_HorizontalInput * force * Mathf.Sin(alpha);
                     xMovement = m_HorizontalInput * force * Mathf.Cos(alpha);
                 }
                 else
                 {
-                    force += (m_HorizontalInput * gravity);
+                    force = moveSpeed + (m_HorizontalInput * gravity);
                     yMovement = m_HorizontalInput * force * Mathf.Sin(alpha);
                     xMovement = m_HorizontalInput * force * Mathf.Cos(alpha);
                 }
@@ -146,7 +146,6 @@ public sealed class Player : Characters
         }
         m_Rigidbody.AddForce(Vector2.right * moveSpeed * m_HorizontalInput);
     }
-
     public override void TakeDamage()
     {
         health -= 1;
