@@ -155,8 +155,8 @@ GameObject:
   - component: {fileID: 1117721520}
   - component: {fileID: 7437343127102910813}
   - component: {fileID: 6901542726189370586}
-  - component: {fileID: 6273488677618483610}
   - component: {fileID: 1430099972}
+  - component: {fileID: 1721413826}
   m_Layer: 8
   m_Name: Tomato
   m_TagString: Enemy
@@ -238,28 +238,6 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 3.8}
   m_Size: {x: 3, y: 4.5}
   m_Direction: 0
---- !u!114 &6273488677618483610
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7915721508040905469}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d4d1d1955c313ea4ba9c3c804830ce1c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpeed: 10
-  health: 2
-  collisionForce: 20
-  detectionPos: {fileID: 173156069758224477}
-  detectionRadius: 4
-  groundCheck: {fileID: 219788838224694455}
-  groundCheckRadius: 0.2
-  whatIsGround:
-    serializedVersion: 2
-    m_Bits: 55
 --- !u!82 &1430099972
 AudioSource:
   m_ObjectHideFlags: 0
@@ -356,6 +334,27 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1721413826
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7915721508040905469}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34054d577c11a6c4e8bef5a1b3ec6910, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 1
+  moveSpeed: 10
+  groundCheck: {fileID: 219788838224694455}
+  groundRadius: 0.3
+  m_FacingRight: 0
+  collisionForce: 10
+  detectionPosition: {fileID: 173156069758224477}
+  detectionRange: 3
+  distanceMagnitude: 8
 --- !u!1 &7972507012746150652
 GameObject:
   m_ObjectHideFlags: 0
@@ -441,7 +440,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8936555982658876006}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -19.5, y: -2.1, z: 0}
+  m_LocalPosition: {x: -6.29, y: 0.2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6620791314287323791}

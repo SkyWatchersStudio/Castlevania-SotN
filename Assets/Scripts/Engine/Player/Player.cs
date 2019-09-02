@@ -20,6 +20,8 @@ public sealed class Player : Characters
     private float m_TimeBtwAttack;
     private bool m_Attack;
 
+    int m_AttackID, m_SpeedID, m_IsGroundID;
+
     private void Update()
     {
         m_JumpSaveTime -= Time.deltaTime;
@@ -41,7 +43,7 @@ public sealed class Player : Characters
         m_HorizontalInput = Input.GetAxisRaw("Horizontal");
         Flip(m_HorizontalInput);
 
-        m_Animator.SetFloat("Speed", Mathf.Abs(m_HorizontalInput));
+        m_Animator.SetFloat(m_SpeedID, Mathf.Abs(m_HorizontalInput));
     }
     private void JumpStatus()
     {
@@ -63,7 +65,8 @@ public sealed class Player : Characters
     }
     private void Attack()
     {
-        m_Animator.SetTrigger("Attack");
+        m_Attack = false;
+        m_Animator.SetTrigger(m_AttackID);
 
         var enemies = Physics2D.OverlapCircleAll(
             attackPosition.position, attackRange, m_NotGroundLayer);
@@ -82,19 +85,24 @@ public sealed class Player : Characters
                     enemyScript.TakeDamage();
             }
         }
-
-        m_Attack = false;
     }
 
     public override void Start()
     {
         base.Start();
+
+        //override this cause animator component is different than base class thought
         m_Animator = GetComponentInChildren<Animator>();
+
+        //Animator parameter Ids
+        m_AttackID = Animator.StringToHash("Attack");
+        m_SpeedID = Animator.StringToHash("Speed");
+        m_IsGroundID = Animator.StringToHash("isGround");
     }
     public override void FixedUpdate()
     {
         m_Grounded = CheckGround(out m_GroundCollider);
-        m_Animator.SetBool("isGround", m_Grounded);
+        m_Animator.SetBool(m_IsGroundID, m_Grounded);
 
         JumpStatus();
         if (m_Attack)

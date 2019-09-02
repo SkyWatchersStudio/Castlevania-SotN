@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1088029815}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.72, y: -0.51, z: -215.044}
+  m_LocalPosition: {x: 0.35, y: -4.68, z: -215.044}
   m_LocalScale: {x: 5.041785, y: 5.2938733, z: 5.041785}
   m_Children: []
   m_Father: {fileID: 2341238539376258603}
@@ -154,7 +154,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2034623079}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 5.48, y: -0.1, z: -18.66596}
+  m_LocalPosition: {x: 5.48, y: -0.1, z: 0}
   m_LocalScale: {x: 6.6192946, y: 6.6192946, z: 6.6192946}
   m_Children: []
   m_Father: {fileID: 2341238539376258603}
@@ -171,8 +171,7 @@ GameObject:
   - component: {fileID: 2341238539376258603}
   - component: {fileID: 5851666288230200121}
   - component: {fileID: 4838410754184782593}
-  - component: {fileID: 3549977773851293394}
-  - component: {fileID: 1377960737}
+  - component: {fileID: 5191960925485090435}
   m_Layer: 8
   m_Name: 'player '
   m_TagString: Player
@@ -234,7 +233,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &3549977773851293394
+--- !u!114 &5191960925485090435
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -243,33 +242,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 2940581264361314439}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 786d34e565f3a7d4dabea78968959a54, type: 3}
+  m_Script: {fileID: 11500000, guid: c309a0eb9faee0d4fac3ba80c8f9a186, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveForce: 23
-  jumpForce: 20
   health: 10
-  animator: {fileID: 0}
+  moveSpeed: 20
   groundCheck: {fileID: 1088029816}
-  groundCheckRadius: 0.15
-  saveJumpTime: 0.025
-  whatisGround:
-    serializedVersion: 2
-    m_Bits: 55
-  maxJumpDuration: 0.577
---- !u!114 &1377960737
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2940581264361314439}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 94e4c5efd0347d542be8d8522f6e4ef8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  startTimeBtwAttack: 0.4
-  attackForce: 20
-  attackPos: {fileID: 2034623080}
+  groundRadius: 0.1
+  m_FacingRight: 1
+  jumpSaveTime: 0.05
+  jumpForce: 20
+  attackForce: 10
+  timeBetweenAttack: 0.4
+  attackPosition: {fileID: 2034623080}
   attackRange: 0.4
