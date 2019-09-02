@@ -22,8 +22,8 @@ public abstract class Enemy : Characters
             m_Animator.SetTrigger("AttackEnemy");
 
             var playerGameObject = collision.gameObject;
-            playerGameObject.GetComponent<Characters>().TakeDamage();
-            playerGameObject.GetComponent<Animator>().SetTrigger("Hit");
+            playerGameObject.GetComponent<Player>().TakeDamage();
+            playerGameObject.GetComponentInChildren<Animator>().SetTrigger("Hit");
 
             collision.rigidbody.AddForce(
                 m_TargetDirection * collisionForce, ForceMode2D.Impulse); //push player back
