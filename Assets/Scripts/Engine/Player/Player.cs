@@ -112,26 +112,30 @@ public sealed class Player : Characters
     }
     public override void Move()
     {
+        //debuger...
+        Debug.DrawRay(transform.position, m_Rigidbody.velocity, Color.cyan);
+
         if (m_Grounded)
         {
             float groundSlope = Vector2.Angle(m_GroundCollider.transform.right, Vector2.up);
             var alpha = 90 - groundSlope;
             if (alpha != 0)
             {
+                alpha = Mathf.Deg2Rad * alpha;
                 var gravity = Mathf.Abs(
                     m_Rigidbody.mass * Physics2D.gravity.y / Mathf.Sin(alpha));
                 float xMovement, yMovement;
-                var force = moveSpeed;
+                float force;
 
                 if (groundSlope > 90)
                 {
-                    force += -m_HorizontalInput * gravity;
+                    force = moveSpeed + (-m_HorizontalInput * gravity);
                     yMovement = -m_HorizontalInput * force * Mathf.Sin(alpha);
                     xMovement = m_HorizontalInput * force * Mathf.Cos(alpha);
                 }
                 else
                 {
-                    force += (m_HorizontalInput * gravity);
+                    force = moveSpeed + (m_HorizontalInput * gravity);
                     yMovement = m_HorizontalInput * force * Mathf.Sin(alpha);
                     xMovement = m_HorizontalInput * force * Mathf.Cos(alpha);
                 }
@@ -142,7 +146,6 @@ public sealed class Player : Characters
         }
         m_Rigidbody.AddForce(Vector2.right * moveSpeed * m_HorizontalInput);
     }
-
     public override void TakeDamage()
     {
         health -= 1;
@@ -154,10 +157,5 @@ public sealed class Player : Characters
         base.OnDrawGizmos();
         Gizmos.color = Color.green;
         Gizmos.DrawWireSphere(attackPosition.position, attackRange);
-
-        if (!UnityEditor.EditorApplication.isPlaying)
-            return;
-        Gizmos.color = Color.cyan;
-        Gizmos.DrawRay(transform.position, m_Rigidbody.velocity);
     }
 }
