@@ -15,8 +15,7 @@ public abstract class Characters : MonoBehaviour
     protected Rigidbody2D m_Rigidbody;
     protected Animator m_Animator;
     protected const int m_NotGroundLayer = 1 << 8;
-
-    private const int m_GroundLayer = ~(1 << 8);
+    protected const int m_GroundLayer = ~m_NotGroundLayer;
 
     public virtual void Start()
     {
@@ -55,8 +54,8 @@ public abstract class Characters : MonoBehaviour
 
         return colliders > 0;
     }
-    protected bool CheckGround(out Collider2D target) =>
-            CheckArea(groundCheck.position, groundRadius, m_GroundLayer, out target);
+    protected bool CheckGround() =>
+            CheckArea(groundCheck.position, groundRadius, m_GroundLayer, out _);
 
     public abstract void Move();
     public abstract void TakeDamage();

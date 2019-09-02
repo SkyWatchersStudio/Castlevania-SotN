@@ -12,11 +12,12 @@ public sealed class Player : Characters
     public float timeBetweenAttack;
     public Transform attackPosition;
     public float attackRange;
+    [Space(10)]
+    public Transform nextFoot;
 
     private float m_HorizontalInput;
     private float m_JumpSaveTime;
     private bool m_Grounded, m_IsJumping, m_InterruptJumping;
-    private Collider2D m_GroundCollider;
     private float m_TimeBtwAttack;
     private bool m_Attack;
 
@@ -86,6 +87,44 @@ public sealed class Player : Characters
             }
         }
     }
+    private Vector2 MoveForceDirection()
+    {
+        var defaultDirection = Vector2.right * m_HorizontalInput * moveSpeed;
+        if (!m_Grounded)
+            return defaultDirection;
+
+        var rayDir = nextFoot.position - transform.position;
+        RaycastHit2D[] hit = new RaycastHit2D[1];
+
+        Physics2D.RaycastNonAlloc(
+            transform.position, rayDir.normalized, hit, rayDir.magnitude, m_GroundLayer);
+
+        var alpha = Vector2.Angle(hit[0].normal, Vector2.up);
+        if (alpha == 0)
+            return defaultDirection;
+
+        //if we reached this point we should calculate these variables(cause we need them!)
+        float groundAngle = Vector2.Angle(hit[0].transform.right, Vector2.up);
+        //slope gravity
+        var gravity = Mathf.Abs(m_Rigidbody.mass * Physics2D.gravity.y / Mathf.Sin(alpha));
+        float xVector, yVector;
+        float forceVector;
+
+        if (groundAngle < 90)
+        {
+            forceVector = moveSpeed + (m_HorizontalInput * gravity);
+            //calculate x, y vectors to reach the desire force in slope
+            xVector = m_HorizontalInput * forceVector * Mathf.Cos(alpha);
+            yVector = m_HorizontalInput * forceVector * Mathf.Sin(alpha);
+        }
+        else
+        {
+            forceVector = moveSpeed + (-m_HorizontalInput * gravity);
+            xVector = m_HorizontalInput * forceVector * Mathf.Cos(alpha);
+            yVector = -m_HorizontalInput * forceVector * Mathf.Sin(alpha);
+        }
+        return new Vector2(xVector, yVector);
+    }
 
     public override void Start()
     {
@@ -101,7 +140,7 @@ public sealed class Player : Characters
     }
     public override void FixedUpdate()
     {
-        m_Grounded = CheckGround(out m_GroundCollider);
+        m_Grounded = CheckGround();
         m_Animator.SetBool(m_IsGroundID, m_Grounded);
 
         JumpStatus();
@@ -115,35 +154,7 @@ public sealed class Player : Characters
         //debuger...
         Debug.DrawRay(transform.position, m_Rigidbody.velocity, Color.cyan);
 
-        if (m_Grounded)
-        {
-            float groundSlope = Vector2.Angle(m_GroundCollider.transform.right, Vector2.up);
-            var alpha = 90 - groundSlope;
-            if (alpha != 0)
-            {
-                var gravity = Mathf.Abs(
-                    m_Rigidbody.mass * Physics2D.gravity.y / Mathf.Sin(alpha));
-                float xMovement, yMovement;
-                float force;
-
-                if (groundSlope > 90)
-                {
-                    force = moveSpeed + (-m_HorizontalInput * gravity);
-                    yMovement = -m_HorizontalInput * force * Mathf.Sin(alpha);
-                    xMovement = m_HorizontalInput * force * Mathf.Cos(alpha);
-                }
-                else
-                {
-                    force = moveSpeed + (m_HorizontalInput * gravity);
-                    yMovement = m_HorizontalInput * force * Mathf.Sin(alpha);
-                    xMovement = m_HorizontalInput * force * Mathf.Cos(alpha);
-                }
-                Vector2 movement = new Vector2(xMovement, yMovement);
-                m_Rigidbody.AddForce(movement);
-                return;
-            }
-        }
-        m_Rigidbody.AddForce(Vector2.right * moveSpeed * m_HorizontalInput);
+        m_Rigidbody.AddForce(MoveForceDirection());
     }
     public override void TakeDamage()
     {
