@@ -121,7 +121,6 @@ public sealed class Player : Characters
             var alpha = 90 - groundSlope;
             if (alpha != 0)
             {
-                alpha = Mathf.Deg2Rad * alpha;
                 var gravity = Mathf.Abs(
                     m_Rigidbody.mass * Physics2D.gravity.y / Mathf.Sin(alpha));
                 float xMovement, yMovement;
