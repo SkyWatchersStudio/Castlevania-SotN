@@ -6,7 +6,7 @@ public sealed class Tomato : Enemy
 {
     public override void Move()
     {
-        bool frontGround = CheckGround();
+        bool frontGround = CheckGround(out _);
         if (!frontGround)
         {
             m_Rigidbody.velocity = Vector2.zero;

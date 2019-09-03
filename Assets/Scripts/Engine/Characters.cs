@@ -44,18 +44,18 @@ public abstract class Characters : MonoBehaviour
         transform.localScale = scale;
     }
     protected bool CheckArea(
-        Vector3 checkPosition, float radius, LayerMask layer, out Collider2D target)
+        Vector3 checkPosition, float radius, LayerMask layer, out Collider2D[] target)
     {
-        Collider2D[] results = new Collider2D[1];
+        Collider2D[] results = new Collider2D[2];
         int colliders = Physics2D.OverlapCircleNonAlloc
                               (checkPosition, radius, results, layer);
 
-        target = results[0];
+        target = results;
 
         return colliders > 0;
     }
-    protected bool CheckGround() =>
-            CheckArea(groundCheck.position, groundRadius, m_GroundLayer, out _);
+    protected bool CheckGround(out Collider2D[] ground) =>
+            CheckArea(groundCheck.position, groundRadius, m_GroundLayer, out ground);
 
     public abstract void Move();
     public abstract void TakeDamage();

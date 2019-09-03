@@ -12,14 +12,14 @@ public sealed class Player : Characters
     public float timeBetweenAttack;
     public Transform attackPosition;
     public float attackRange;
-    [Space(10)]
-    public Transform nextFoot;
 
     private float m_HorizontalInput;
     private float m_JumpSaveTime;
     private bool m_Grounded, m_IsJumping, m_InterruptJumping;
     private float m_TimeBtwAttack;
     private bool m_Attack;
+    private Collider2D[] m_GroundColliders;
+    private float m_GravityScale;
 
     int m_AttackID, m_SpeedID, m_IsGroundID;
 
@@ -69,6 +69,7 @@ public sealed class Player : Characters
         m_Attack = false;
         m_Animator.SetTrigger(m_AttackID);
 
+        //get everything in the attack radius and detect if it is enemy
         var enemies = Physics2D.OverlapCircleAll(
             attackPosition.position, attackRange, m_NotGroundLayer);
         foreach (Collider2D enemy in enemies)
@@ -87,43 +88,25 @@ public sealed class Player : Characters
             }
         }
     }
-    private Vector2 MoveForceDirection()
+    private Vector2 MoveDirection()
     {
-        var defaultDirection = Vector2.right * m_HorizontalInput * moveSpeed;
+        /* we move in the x axis if we are not on the ground
+         * and return 'right' vector of the ground object if
+         * we are on it
+         */
+        var direction = Vector2.right;
         if (!m_Grounded)
-            return defaultDirection;
+            return direction;
 
-        var rayDir = nextFoot.position - transform.position;
-        RaycastHit2D[] hit = new RaycastHit2D[1];
-
-        Physics2D.RaycastNonAlloc(
-            transform.position, rayDir.normalized, hit, rayDir.magnitude, m_GroundLayer);
-
-        var alpha = Vector2.Angle(hit[0].normal, Vector2.up);
-        if (alpha == 0)
-            return defaultDirection;
-
-        //if we reached this point we should calculate these variables(cause we need them!)
-        float groundAngle = Vector2.Angle(hit[0].transform.right, Vector2.up);
-        //slope gravity
-        var gravity = Mathf.Abs(m_Rigidbody.mass * Physics2D.gravity.y / Mathf.Sin(alpha));
-        float xVector, yVector;
-        float forceVector;
-
-        if (groundAngle < 90)
+        foreach (var groundCollider in m_GroundColliders)
         {
-            forceVector = moveSpeed + (m_HorizontalInput * gravity);
-            //calculate x, y vectors to reach the desire force in slope
-            xVector = m_HorizontalInput * forceVector * Mathf.Cos(alpha);
-            yVector = m_HorizontalInput * forceVector * Mathf.Sin(alpha);
+            if (groundCollider == null)
+                continue;
+
+            direction = groundCollider.transform.right;
         }
-        else
-        {
-            forceVector = moveSpeed + (-m_HorizontalInput * gravity);
-            xVector = m_HorizontalInput * forceVector * Mathf.Cos(alpha);
-            yVector = -m_HorizontalInput * forceVector * Mathf.Sin(alpha);
-        }
-        return new Vector2(xVector, yVector);
+
+        return direction;
     }
 
     public override void Start()
@@ -137,13 +120,23 @@ public sealed class Player : Characters
         m_AttackID = Animator.StringToHash("Attack");
         m_SpeedID = Animator.StringToHash("Speed");
         m_IsGroundID = Animator.StringToHash("isGround");
+
+        m_GravityScale = m_Rigidbody.gravityScale;
     }
     public override void FixedUpdate()
     {
-        m_Grounded = CheckGround();
+        m_Grounded = CheckGround(out m_GroundColliders);
+        //disable and enable gravity based on ground position
+        if (m_Grounded)
+            m_Rigidbody.gravityScale = 0;
+        else
+            m_Rigidbody.gravityScale = m_GravityScale;
+
         m_Animator.SetBool(m_IsGroundID, m_Grounded);
 
+        //anything about jumping stuff
         JumpStatus();
+
         if (m_Attack)
             Attack();
 
@@ -154,7 +147,8 @@ public sealed class Player : Characters
         //debuger...
         Debug.DrawRay(transform.position, m_Rigidbody.velocity, Color.cyan);
 
-        m_Rigidbody.AddForce(MoveForceDirection());
+        Vector2 movement = MoveDirection() * m_HorizontalInput * moveSpeed;
+        m_Rigidbody.AddForce(movement);
     }
     public override void TakeDamage()
     {
