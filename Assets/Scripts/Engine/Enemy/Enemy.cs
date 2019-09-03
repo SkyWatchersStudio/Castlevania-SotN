@@ -36,13 +36,19 @@ public abstract class Enemy : Characters
         var someoneInThere = CheckArea(detectionPosition.position,
                                        detectionRange,
                                        m_NotGroundLayer,
-                                       out Collider2D target);
+                                       out Collider2D[] targets);
 
-        if (someoneInThere && target.CompareTag("Player")) //if player found simulate in physics engine
-        {
-            m_Rigidbody.simulated = true;
-            m_PlayerTransform = target.transform;
-        }
+        if (someoneInThere)
+            foreach (var target in targets)
+            {
+                if (target == null)
+                    continue;
+                if (target.CompareTag("Player")) //if player found simulate in physics engine
+                {
+                    m_Rigidbody.simulated = true;
+                    m_PlayerTransform = target.transform;
+                }
+            }
     }
     private Vector2 GetPlayerDirection()
     {
