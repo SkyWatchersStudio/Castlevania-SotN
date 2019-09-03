@@ -154,7 +154,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2034623079}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 5.48, y: -0.1, z: 0}
+  m_LocalPosition: {x: 4.6, y: -0.1, z: 0}
   m_LocalScale: {x: 6.6192946, y: 6.6192946, z: 6.6192946}
   m_Children: []
   m_Father: {fileID: 2341238539376258603}
@@ -188,7 +188,7 @@ Transform:
   m_GameObject: {fileID: 2940581264361314439}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.1510735, y: 0.1510735, z: 0.1510735}
+  m_LocalScale: {x: 0.23356842, y: 0.23356842, z: 0.23356842}
   m_Children:
   - {fileID: 1088029816}
   - {fileID: 2034623080}
@@ -209,8 +209,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.3377156, y: -0.08975328}
-  m_Size: {x: 2.61601, y: 8.718976}
+  m_Offset: {x: 0.33771554, y: -0.39326417}
+  m_Size: {x: 2.6160088, y: 7.9385133}
   m_Direction: 0
 --- !u!50 &4838410754184782593
 Rigidbody2D:
@@ -248,11 +248,11 @@ MonoBehaviour:
   health: 10
   moveSpeed: 20
   groundCheck: {fileID: 1088029816}
-  groundRadius: 0.1
+  groundRadius: 0.24
   m_FacingRight: 1
   jumpSaveTime: 0.05
   jumpForce: 20
   attackForce: 10
   timeBetweenAttack: 0.4
   attackPosition: {fileID: 2034623080}
-  attackRange: 0.4
+  attackRange: 0.45
