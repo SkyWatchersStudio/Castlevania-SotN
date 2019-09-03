@@ -161,7 +161,5 @@ public sealed class Player : Characters
         base.OnDrawGizmos();
         Gizmos.color = Color.green;
         Gizmos.DrawWireSphere(attackPosition.position, attackRange);
-        var rayDir = nextFoot.position - transform.position;
-        Gizmos.DrawRay(transform.position, rayDir);
     }
 }
