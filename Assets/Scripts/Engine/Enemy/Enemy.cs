@@ -10,6 +10,8 @@ public abstract class Enemy : Characters
     public float detectionRange;
     [Space(10)]
     public float distanceMagnitude; //delta distance require to disable enemy
+    [Space(10)]
+    public int experiencePoint = 10;
 
     protected Vector2 m_TargetDirection;
 
@@ -80,7 +82,10 @@ public abstract class Enemy : Characters
     {
         health -= 1;
         if (health <= 0)
+        {
             Destroy(this.gameObject);
+            GameManager.ExperiencePoint = experiencePoint;
+        }
     }
     public override void OnDrawGizmos()
     {

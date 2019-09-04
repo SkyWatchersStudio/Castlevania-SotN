@@ -74,7 +74,9 @@ public sealed class Player : Characters
             attackPosition.position, attackRange, m_NotGroundLayer);
         foreach (Collider2D enemy in enemies)
         {
-            if (enemy.CompareTag("Enemy"))
+            if (enemy.CompareTag("Interact"))
+                enemy.GetComponent<Interactable>().OnInteract();
+            else if (enemy.CompareTag("Enemy"))
             {
                 //add force to the opposite direction of enemy
                 var rigidbody = enemy.GetComponent<Rigidbody2D>();
