@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 510686481}
   - component: {fileID: 510686480}
   - component: {fileID: 510686479}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: light (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -110,7 +110,7 @@ GameObject:
   - component: {fileID: 6917451823577928511}
   - component: {fileID: 6917451823577928508}
   - component: {fileID: 6917451823577928509}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: wall candle flame animation_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -168,7 +168,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -2
   m_Sprite: {fileID: 8231473948303828673, guid: 00c0e4e4bb93f3041916824de28cd81a,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
