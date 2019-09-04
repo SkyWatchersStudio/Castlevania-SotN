@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
 
     private static int m_Experience;
     private static int m_PlayerCurrentLevel;
-    private static int m_LevelReachPoint = 100;
+    private static int m_NextLevelPoint = 100;
     private static int m_Money;
 
     public static int ExperiencePoint
@@ -19,11 +19,11 @@ public class GameManager : MonoBehaviour
         {
             m_Experience += value;
             Debug.Log($"Experience: {m_Experience}");
-            if (m_Experience >= m_LevelReachPoint)
+            if (m_Experience >= m_NextLevelPoint)
             {
-                m_Experience -= m_LevelReachPoint;
+                m_Experience -= m_NextLevelPoint;
                 m_PlayerCurrentLevel++;
-                m_LevelReachPoint *= 2;
+                m_NextLevelPoint *= 2;
             }
         }
     }
@@ -49,6 +49,32 @@ public class GameManager : MonoBehaviour
             else if (!pause.activeSelf)
                 Time.timeScale = 0;
             pause.SetActive(!pause.activeSelf);
+        }
+
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            Transform playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
+            SaveData data = new SaveData(m_Experience, m_PlayerCurrentLevel, m_NextLevelPoint,
+                m_Money, playerTransform.position);
+            SaveSystem.SaveState(data);
+        }
+        else if (Input.GetKeyDown(KeyCode.L))
+        {
+            SaveData data = SaveSystem.LoadState();
+
+            Transform playerTrans = GameObject.FindGameObjectWithTag("Player").transform;
+
+            Vector3 newPos = new Vector3();
+            for (int i = 0; i < 3; i++)
+            {
+                newPos[i] = data.position[i];
+            }
+            playerTrans.position = newPos;
+
+            m_Experience = data.experience;
+            m_Money = data.money;
+            m_PlayerCurrentLevel = data.playerLevel;
+            m_NextLevelPoint = data.nextLevelPoint;
         }
     }
 
