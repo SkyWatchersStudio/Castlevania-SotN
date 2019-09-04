@@ -8,8 +8,9 @@ public class GameManager : MonoBehaviour
     public GameObject pause;
 
     private static int m_Experience;
-    private static int m_PlayerCurrentLevel = 0;
+    private static int m_PlayerCurrentLevel;
     private static int m_LevelReachPoint = 100;
+    private static int m_Money;
 
     public static int ExperiencePoint
     {
@@ -17,12 +18,22 @@ public class GameManager : MonoBehaviour
         set
         {
             m_Experience += value;
+            Debug.Log($"Experience: {m_Experience}");
             if (m_Experience >= m_LevelReachPoint)
             {
                 m_Experience -= m_LevelReachPoint;
                 m_PlayerCurrentLevel++;
                 m_LevelReachPoint *= 2;
             }
+        }
+    }
+    public static int Coin
+    {
+        get => m_Money;
+        set
+        {
+            m_Money += value;
+            Debug.Log($"Coins: {m_Money}");
         }
     }
     void Start()

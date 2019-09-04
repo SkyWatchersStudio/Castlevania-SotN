@@ -8,8 +8,14 @@ public class Interactable : MonoBehaviour
 
     public void OnInteract()
     {
+        //choose a random item to drop...
         var item = Random.Range(0, dropItems.Length);
-        Instantiate(dropItems[item], transform.position, Quaternion.identity);
+
         Destroy(gameObject);
+
+        if (dropItems[item] == null)
+            return;
+
+        Instantiate(dropItems[item], transform.position, Quaternion.identity);
     }
 }
