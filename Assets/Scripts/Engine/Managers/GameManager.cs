@@ -1,16 +1,19 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
     public GameObject pause;
+    public Image experienceImage;
+    public TextMeshProUGUI currentLevel;
+    public TextMeshProUGUI coins;
 
     private static int m_Experience;
     private static int m_PlayerCurrentLevel;
     private static int m_NextLevelPoint = 100;
     private static int m_Money;
+    private static GameManager m_GameManager;
 
     public static int ExperiencePoint
     {
@@ -18,12 +21,16 @@ public class GameManager : MonoBehaviour
         set
         {
             m_Experience += value;
-            Debug.Log($"Experience: {m_Experience}");
+            m_GameManager.experienceImage.fillAmount = 
+                (float)m_Experience / (float)m_NextLevelPoint;
+
             if (m_Experience >= m_NextLevelPoint)
             {
                 m_Experience -= m_NextLevelPoint;
-                m_PlayerCurrentLevel++;
                 m_NextLevelPoint *= 2;
+
+                m_PlayerCurrentLevel++;
+                m_GameManager.currentLevel.text = m_PlayerCurrentLevel.ToString();
             }
         }
     }
@@ -33,12 +40,15 @@ public class GameManager : MonoBehaviour
         set
         {
             m_Money += value;
-            Debug.Log($"Coins: {m_Money}");
+            m_GameManager.coins.text = m_Money.ToString();
         }
     }
     void Start()
     {
         Cursor.visible = false;
+        m_GameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        currentLevel.text = m_PlayerCurrentLevel.ToString();
+        coins.text = m_Money.ToString();
     }
     void Update()
     {

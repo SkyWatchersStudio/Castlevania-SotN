@@ -26,6 +26,7 @@ public sealed class Player : Characters
     private bool m_Attack, m_Dash, m_DashLock;
     private Collider2D[] m_GroundColliders;
     private float m_GravityScale;
+    private float m_MaxHealth;
 
     int m_AttackID, m_SpeedID, m_IsGroundID;
 
@@ -135,6 +136,8 @@ public sealed class Player : Characters
         m_IsGroundID = Animator.StringToHash("isGround");
 
         m_GravityScale = m_Rigidbody.gravityScale;
+
+        m_MaxHealth = health;
     }
     public override void FixedUpdate()
     {
@@ -192,10 +195,11 @@ public sealed class Player : Characters
     public override void TakeDamage()
     {
         health -= 1;
+        var currentHp = (float)health / m_MaxHealth;
+        healthImage.fillAmount = currentHp;
+
         if (health <= 0)
             SceneManager.LoadScene(0);
-
-        healthImage.fillAmount -= .1f;
     }
     public override void OnDrawGizmos()
     {

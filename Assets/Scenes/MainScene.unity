@@ -2841,6 +2841,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pause: {fileID: 1572036655}
+  experienceImage: {fileID: 706322325}
+  currentLevel: {fileID: 789188333}
+  coins: {fileID: 2002309612}
 --- !u!4 &939536979
 Transform:
   m_ObjectHideFlags: 0
@@ -3622,7 +3625,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []

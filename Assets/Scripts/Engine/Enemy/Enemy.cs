@@ -25,11 +25,10 @@ public abstract class Enemy : Characters
 
             var playerGameObject = collision.gameObject;
             playerGameObject.GetComponentInChildren<Animator>().SetTrigger("Hit");
+            playerGameObject.GetComponent<Player>().TakeDamage();
 
             collision.rigidbody.AddForce(
                 m_TargetDirection * collisionForce, ForceMode2D.Impulse); //push player back
-
-            playerGameObject.GetComponent<Player>().TakeDamage();
         }
     }
 
@@ -66,13 +65,8 @@ public abstract class Enemy : Characters
         return deltaPosition.normalized;
     }
 
-    public override void Start()
-    {
-        base.Start();
-    }
     public override void FixedUpdate()
     {
-        print("FixedUpdate enemy");
         if (!m_PlayerTransform)
         {
             CheckPlayer();
