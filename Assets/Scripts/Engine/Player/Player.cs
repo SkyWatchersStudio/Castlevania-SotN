@@ -12,12 +12,15 @@ public sealed class Player : Characters
     public float timeBetweenAttack;
     public Transform attackPosition;
     public float attackRange;
+    [Space(10)]
+    public float dashForce;
+    public float timeBetweenDash;
 
     private float m_HorizontalInput;
     private float m_JumpSaveTime;
     private bool m_Grounded, m_IsJumping, m_InterruptJumping;
-    private float m_TimeBtwAttack;
-    private bool m_Attack;
+    private float m_TimeBtwAttack, m_TimeBtwDash;
+    private bool m_Attack, m_Dash, m_DashLock;
     private Collider2D[] m_GroundColliders;
     private float m_GravityScale;
 
@@ -27,24 +30,35 @@ public sealed class Player : Characters
     {
         m_JumpSaveTime -= Time.deltaTime;
         m_TimeBtwAttack -= Time.deltaTime;
+        m_TimeBtwDash -= Time.deltaTime;
 
+        m_HorizontalInput = Input.GetAxisRaw("Horizontal");
+        Flip(m_HorizontalInput);
+
+        InputDetection();
+
+        m_Animator.SetFloat(m_SpeedID, Mathf.Abs(m_HorizontalInput));
+    }
+    private void InputDetection()
+    {
         //jump input determiner
         if (Input.GetButtonDown("Jump"))
             m_JumpSaveTime = jumpSaveTime;
         //we don't want to apply force when we are falling or we are not jumping ofcourse!
-        else if (Input.GetButtonUp("Jump") && m_Rigidbody.velocity.y > 0 && m_IsJumping)
-            m_InterruptJumping = true;
+        else if (Input.GetButtonUp("Jump"))
+            if (m_Rigidbody.velocity.y > 0 && m_IsJumping)
+                m_InterruptJumping = true;
 
         if (Input.GetButtonDown("Fire2") && m_TimeBtwAttack < 0)
         {
             m_TimeBtwAttack = timeBetweenAttack;
             m_Attack = true;
         }
-
-        m_HorizontalInput = Input.GetAxisRaw("Horizontal");
-        Flip(m_HorizontalInput);
-
-        m_Animator.SetFloat(m_SpeedID, Mathf.Abs(m_HorizontalInput));
+        else if (Input.GetButtonDown("Fire1") && m_TimeBtwDash < 0)
+        {
+            m_Dash = true;
+            m_TimeBtwDash = timeBetweenDash;
+        }
     }
     private void JumpStatus()
     {
@@ -90,6 +104,20 @@ public sealed class Player : Characters
             }
         }
     }
+    private void Dash()
+    {
+        m_Dash = false;
+
+        m_Rigidbody.velocity = Vector2.zero;
+        m_Rigidbody.gravityScale = 0;
+        m_DashLock = true;
+
+        var forceDir = Vector2.right * dashForce;
+        if (!m_FacingRight)
+            forceDir = -forceDir;
+
+        m_Rigidbody.AddForce(forceDir, ForceMode2D.Impulse);
+    }
     private Vector2 MoveDirection()
     {
         /* we move in the x axis if we are not on the ground
@@ -128,19 +156,34 @@ public sealed class Player : Characters
     public override void FixedUpdate()
     {
         m_Grounded = CheckGround(out m_GroundColliders);
-        //disable and enable gravity based on ground position
-        if (m_Grounded)
+
+        if (m_Grounded && m_Rigidbody.gravityScale != 0)
             m_Rigidbody.gravityScale = 0;
-        else
+        else if (!m_Grounded && !m_DashLock)
             m_Rigidbody.gravityScale = m_GravityScale;
 
         m_Animator.SetBool(m_IsGroundID, m_Grounded);
 
-        //anything about jumping stuff
-        JumpStatus();
-
         if (m_Attack)
             Attack();
+        else if (m_Dash)
+        {
+            Dash();
+            return;
+        }
+
+        if (m_DashLock)
+        {
+            if (Mathf.Abs(m_Rigidbody.velocity.x) <= 6)
+            {
+                m_DashLock = false;
+                m_Rigidbody.AddForce(Vector2.right * -m_Rigidbody.velocity.x);
+            }
+            return;
+        }
+
+        //anything about jumping stuff
+        JumpStatus();
 
         base.FixedUpdate();
     }

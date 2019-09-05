@@ -356,3 +356,5 @@ MonoBehaviour:
   timeBetweenAttack: 0.4
   attackPosition: {fileID: 2034623080}
   attackRange: 0.45
+  dashForce: 20
+  timeBetweenDash: 0.7
