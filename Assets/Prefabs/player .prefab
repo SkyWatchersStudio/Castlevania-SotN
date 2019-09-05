@@ -358,4 +358,5 @@ MonoBehaviour:
   attackRange: 0.6
   dashForce: 20
   timeBetweenDash: 3
+  dodgeForce: 10
   healthImage: {fileID: 0}

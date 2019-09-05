@@ -17,18 +17,23 @@ public sealed class Player : Characters
     public float dashForce;
     public float timeBetweenDash;
     [Space(10)]
+    public float dodgeForce;
+    [Space(10)]
     public Image healthImage;
 
     private float m_HorizontalInput;
     private float m_JumpSaveTime;
     private bool m_Grounded, m_IsJumping, m_InterruptJumping;
     private float m_TimeBtwAttack, m_TimeBtwDash;
-    private bool m_Attack, m_Dash, m_DashLock;
+    private bool m_Attack, m_Dash, m_Dodge, m_Lock;
     private Collider2D[] m_GroundColliders;
     private float m_GravityScale;
     private float m_MaxHealth;
+    private whichAnimation m_AnimDD; //for tracking dodge anim or dash anim is playing
 
     int m_AttackID, m_SpeedID, m_IsGroundID;
+
+    enum whichAnimation { dodge, dash };
 
     private void Update()
     {
@@ -63,6 +68,8 @@ public sealed class Player : Characters
             m_Dash = true;
             m_TimeBtwDash = timeBetweenDash;
         }
+        else if (Input.GetButtonDown("Dodge") && !m_Lock)
+            m_Dodge = true;
     }
     private void JumpStatus()
     {
@@ -108,16 +115,16 @@ public sealed class Player : Characters
             }
         }
     }
-    private void Dash()
+    private void Dash(ref bool job, float force, bool forward)
     {
-        m_Dash = false;
+        job = false;
 
         m_Rigidbody.velocity = Vector2.zero;
         m_Rigidbody.gravityScale = 0;
-        m_DashLock = true;
+        m_Lock = true;
 
-        var forceDir = Vector2.right * dashForce;
-        if (!m_FacingRight)
+        var forceDir = Vector2.right * force;
+        if ((forward && !m_FacingRight) || (!forward && m_FacingRight))
             forceDir = -forceDir;
 
         m_Rigidbody.AddForce(forceDir, ForceMode2D.Impulse);
@@ -145,29 +152,44 @@ public sealed class Player : Characters
         Debug.DrawRay(transform.position, m_Rigidbody.velocity, Color.cyan);
 
         m_Grounded = CheckGround(out m_GroundColliders);
+        m_Animator.SetBool(m_IsGroundID, m_Grounded);
 
         if (m_Grounded && m_Rigidbody.gravityScale != 0)
             m_Rigidbody.gravityScale = 0;
-        else if (!m_Grounded && !m_DashLock)
+        else if (!m_Grounded && !m_Lock)
             m_Rigidbody.gravityScale = m_GravityScale;
-
-        m_Animator.SetBool(m_IsGroundID, m_Grounded);
-        m_Animator.SetBool("Dash", m_DashLock);
 
         if (m_Attack)
             Attack();
         else if (m_Dash)
         {
-            Dash();
-            return;
+            Dash(ref m_Dash, dashForce, true);
+
+            m_Animator.SetBool("Dash", true);
+            m_AnimDD = whichAnimation.dash;
+        }
+        else if (m_Dodge && m_Grounded)
+        {
+            Dash(ref m_Dodge, dodgeForce, false);
+
+            m_Animator.SetBool("Doudge", true);
+            m_AnimDD = whichAnimation.dodge;
         }
 
-        if (m_DashLock)
+        if (m_Lock)
         {
             if (Mathf.Abs(m_Rigidbody.velocity.x) <= 6)
             {
-                m_DashLock = false;
-                m_Rigidbody.AddForce(Vector2.right * -m_Rigidbody.velocity.x);
+                m_Lock = false;
+                switch (m_AnimDD)
+                {
+                    case whichAnimation.dash:
+                        m_Animator.SetBool("Dash", false);
+                        break;
+                    case whichAnimation.dodge:
+                        m_Animator.SetBool("Doudge", false);
+                        break;
+                }
             }
             return;
         }
