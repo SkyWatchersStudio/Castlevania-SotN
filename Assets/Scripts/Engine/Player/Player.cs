@@ -115,6 +115,8 @@ public sealed class Player : Characters
         m_Rigidbody.gravityScale = 0;
         m_DashLock = true;
 
+        m_Animator.SetTrigger("Dash");
+
         var forceDir = Vector2.right * dashForce;
         if (!m_FacingRight)
             forceDir = -forceDir;
