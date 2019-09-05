@@ -11,6 +11,8 @@ public abstract class Characters : MonoBehaviour
     public float groundRadius;
     [Space(10)]
     public bool m_FacingRight;
+    [Space(10)]
+    public byte damage;
 
     protected Rigidbody2D m_Rigidbody;
     protected Animator m_Animator;
@@ -58,5 +60,5 @@ public abstract class Characters : MonoBehaviour
             CheckArea(groundCheck.position, groundRadius, m_GroundLayer, out ground);
 
     public abstract void Move();
-    public abstract void TakeDamage();
+    public abstract void TakeDamage(byte damage);
 }
