@@ -103,7 +103,7 @@ public sealed class Player : Characters
                 //apply damage to enemy
                 var enemyScript = enemy.GetComponent<Enemy>();
                 if (enemyScript != null)
-                    enemyScript.TakeDamage(damage);
+                    enemyScript.TakeDamage();
             }
         }
     }
@@ -149,6 +149,7 @@ public sealed class Player : Characters
             m_Rigidbody.gravityScale = m_GravityScale;
 
         m_Animator.SetBool(m_IsGroundID, m_Grounded);
+        m_Animator.SetBool("Dash", m_DashLock);
 
         if (m_Attack)
             Attack();
@@ -157,8 +158,6 @@ public sealed class Player : Characters
             Dash();
             return;
         }
-
-        m_Animator.SetBool("Dash", m_DashLock);
 
         if (m_DashLock)
         {
@@ -190,13 +189,13 @@ public sealed class Player : Characters
         Vector2 movement = direction * m_HorizontalInput * moveSpeed;
         m_Rigidbody.AddForce(movement);
     }
-    public override void TakeDamage(byte damage)
+    public override void TakeDamage()
     {
-        health -= damage;
+        health -= 1;
         if (health <= 0)
             SceneManager.LoadScene(0);
 
-        healthImage.fillAmount -= damage / 10;
+        healthImage.fillAmount -= .1f;
     }
     public override void OnDrawGizmos()
     {
