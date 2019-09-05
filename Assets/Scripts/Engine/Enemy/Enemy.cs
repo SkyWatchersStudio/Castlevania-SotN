@@ -69,10 +69,10 @@ public abstract class Enemy : Characters
     public override void Start()
     {
         base.Start();
-        m_Rigidbody.simulated = false;
     }
     public override void FixedUpdate()
     {
+        print("FixedUpdate enemy");
         if (!m_PlayerTransform)
         {
             CheckPlayer();
