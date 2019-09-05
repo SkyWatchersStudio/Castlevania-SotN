@@ -103,7 +103,7 @@ public sealed class Player : Characters
                 //apply damage to enemy
                 var enemyScript = enemy.GetComponent<Enemy>();
                 if (enemyScript != null)
-                    enemyScript.TakeDamage();
+                    enemyScript.TakeDamage(damage);
             }
         }
     }
@@ -120,26 +120,6 @@ public sealed class Player : Characters
             forceDir = -forceDir;
 
         m_Rigidbody.AddForce(forceDir, ForceMode2D.Impulse);
-    }
-    private Vector2 MoveDirection()
-    {
-        /* we move in the x axis if we are not on the ground
-         * and return 'right' vector of the ground object if
-         * we are on it
-         */
-        var direction = Vector2.right;
-        if (!m_Grounded)
-            return direction;
-
-        foreach (var groundCollider in m_GroundColliders)
-        {
-            if (groundCollider == null)
-                continue;
-
-            direction = groundCollider.transform.right;
-        }
-
-        return direction;
     }
 
     public override void Start()
@@ -158,6 +138,9 @@ public sealed class Player : Characters
     }
     public override void FixedUpdate()
     {
+        //debuger...
+        Debug.DrawRay(transform.position, m_Rigidbody.velocity, Color.cyan);
+
         m_Grounded = CheckGround(out m_GroundColliders);
 
         if (m_Grounded && m_Rigidbody.gravityScale != 0)
@@ -192,18 +175,26 @@ public sealed class Player : Characters
     }
     public override void Move()
     {
-        //debuger...
-        Debug.DrawRay(transform.position, m_Rigidbody.velocity, Color.cyan);
+        var direction = Vector2.right;
+        if (m_Grounded)
+            foreach (var groundCollider in m_GroundColliders)
+            {
+                if (groundCollider == null)
+                    continue;
 
-        Vector2 movement = MoveDirection() * m_HorizontalInput * moveSpeed;
+                direction = groundCollider.transform.right;
+            }
+
+        Vector2 movement = direction * m_HorizontalInput * moveSpeed;
         m_Rigidbody.AddForce(movement);
     }
-    public override void TakeDamage()
+    public override void TakeDamage(byte damage)
     {
-        health -= 1;
+        health -= damage;
         if (health <= 0)
             SceneManager.LoadScene(0);
-        healthImage.fillAmount = health / 10;
+
+        healthImage.fillAmount -= damage / 10;
     }
     public override void OnDrawGizmos()
     {

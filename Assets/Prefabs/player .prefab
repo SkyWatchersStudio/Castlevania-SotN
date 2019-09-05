@@ -350,6 +350,7 @@ MonoBehaviour:
   groundCheck: {fileID: 1088029816}
   groundRadius: 0.24
   m_FacingRight: 1
+  damage: 1
   jumpSaveTime: 0.05
   jumpForce: 20
   attackForce: 10
@@ -358,3 +359,4 @@ MonoBehaviour:
   attackRange: 0.6
   dashForce: 20
   timeBetweenDash: 0.7
+  healthImage: {fileID: 0}

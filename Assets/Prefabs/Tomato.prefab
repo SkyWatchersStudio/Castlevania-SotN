@@ -254,6 +254,7 @@ MonoBehaviour:
   groundCheck: {fileID: 219788838224694455}
   groundRadius: 0.4
   m_FacingRight: 0
+  damage: 1
   collisionForce: 10
   detectionPosition: {fileID: 173156069758224477}
   detectionRange: 4.5

@@ -29,7 +29,7 @@ public abstract class Enemy : Characters
             collision.rigidbody.AddForce(
                 m_TargetDirection * collisionForce, ForceMode2D.Impulse); //push player back
 
-            playerGameObject.GetComponent<Player>().TakeDamage();
+            playerGameObject.GetComponent<Player>().TakeDamage(damage);
         }
     }
 
@@ -84,9 +84,9 @@ public abstract class Enemy : Characters
 
         base.FixedUpdate();
     }
-    public override void TakeDamage()
+    public override void TakeDamage(byte damage)
     {
-        health -= 1;
+        health -= damage;
         if (health <= 0)
         {
             Destroy(this.gameObject);
