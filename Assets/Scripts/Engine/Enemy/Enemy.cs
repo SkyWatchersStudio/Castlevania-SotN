@@ -29,7 +29,7 @@ public abstract class Enemy : Characters
             collision.rigidbody.AddForce(
                 m_TargetDirection * collisionForce, ForceMode2D.Impulse); //push player back
 
-            playerGameObject.GetComponent<Player>().TakeDamage(damage);
+            playerGameObject.GetComponent<Player>().TakeDamage();
         }
     }
 
@@ -69,10 +69,10 @@ public abstract class Enemy : Characters
     public override void Start()
     {
         base.Start();
-        m_Rigidbody.simulated = false;
     }
     public override void FixedUpdate()
     {
+        print("FixedUpdate enemy");
         if (!m_PlayerTransform)
         {
             CheckPlayer();
@@ -84,9 +84,9 @@ public abstract class Enemy : Characters
 
         base.FixedUpdate();
     }
-    public override void TakeDamage(byte damage)
+    public override void TakeDamage()
     {
-        health -= damage;
+        health -= 1;
         if (health <= 0)
         {
             Destroy(this.gameObject);
