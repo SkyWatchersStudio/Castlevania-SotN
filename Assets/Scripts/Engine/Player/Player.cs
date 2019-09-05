@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public sealed class Player : Characters
 {
@@ -15,6 +16,8 @@ public sealed class Player : Characters
     [Space(10)]
     public float dashForce;
     public float timeBetweenDash;
+    [Space(10)]
+    public Image healthImage;
 
     private float m_HorizontalInput;
     private float m_JumpSaveTime;
@@ -200,6 +203,7 @@ public sealed class Player : Characters
         health -= 1;
         if (health <= 0)
             SceneManager.LoadScene(0);
+        healthImage.fillAmount = health / 10;
     }
     public override void OnDrawGizmos()
     {
