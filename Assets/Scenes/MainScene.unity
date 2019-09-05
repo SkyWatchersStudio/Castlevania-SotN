@@ -1068,7 +1068,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &398560322
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2840,7 +2840,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2370a3dba3b0b62459f990a68de8c5b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pause: {fileID: 398560321}
+  pause: {fileID: 1572036655}
 --- !u!4 &939536979
 Transform:
   m_ObjectHideFlags: 0
@@ -4883,12 +4883,12 @@ GameObject:
   - component: {fileID: 1572036657}
   - component: {fileID: 1572036656}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: MenuCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1572036656
 MonoBehaviour:
   m_ObjectHideFlags: 0
