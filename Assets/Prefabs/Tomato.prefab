@@ -209,7 +209,7 @@ Rigidbody2D:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7915721508040905469}
   m_BodyType: 0
-  m_Simulated: 0
+  m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 3
@@ -258,6 +258,7 @@ MonoBehaviour:
   detectionPosition: {fileID: 173156069758224477}
   detectionRange: 4.5
   distanceMagnitude: 12
+  experiencePoint: 10
 --- !u!1 &7972507012746150652
 GameObject:
   m_ObjectHideFlags: 0

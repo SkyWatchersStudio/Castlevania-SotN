@@ -24,11 +24,12 @@ public abstract class Enemy : Characters
             m_Animator.SetTrigger("AttackEnemy");
 
             var playerGameObject = collision.gameObject;
-            playerGameObject.GetComponent<Player>().TakeDamage();
             playerGameObject.GetComponentInChildren<Animator>().SetTrigger("Hit");
 
             collision.rigidbody.AddForce(
                 m_TargetDirection * collisionForce, ForceMode2D.Impulse); //push player back
+
+            playerGameObject.GetComponent<Player>().TakeDamage();
         }
     }
 
@@ -65,6 +66,11 @@ public abstract class Enemy : Characters
         return deltaPosition.normalized;
     }
 
+    public override void Start()
+    {
+        base.Start();
+        m_Rigidbody.simulated = false;
+    }
     public override void FixedUpdate()
     {
         if (!m_PlayerTransform)
