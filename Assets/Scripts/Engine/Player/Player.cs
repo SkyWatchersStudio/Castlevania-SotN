@@ -80,7 +80,7 @@ public sealed class Player : Characters
 
         if (m_JumpSaveTime > 0 && m_Grounded)
         {
-            m_Rigidbody.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+            m_Rigidbody.AddForce(Vector2.up * jumpForce);
             m_IsJumping = true;
         }
         else if (m_InterruptJumping)

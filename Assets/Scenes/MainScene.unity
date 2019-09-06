@@ -4117,11 +4117,6 @@ PrefabInstance:
       propertyPath: healthImage
       value: 
       objectReference: {fileID: 1112440446}
-    - target: {fileID: 5191960925485090435, guid: 566019c9cd7fe99448037a396e657a67,
-        type: 3}
-      propertyPath: timeBetweenDash
-      value: 2
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 566019c9cd7fe99448037a396e657a67, type: 3}
 --- !u!1001 &6519682002016845287
