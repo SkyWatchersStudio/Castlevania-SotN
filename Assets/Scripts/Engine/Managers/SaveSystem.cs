@@ -4,7 +4,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 
 public static class SaveSystem
 {
-    private static string m_Path = Application.persistentDataPath + "/save.bin";
+    private static readonly string m_Path = Application.persistentDataPath + "/save.bin";
 
     public static void SaveState(SaveData data)
     {

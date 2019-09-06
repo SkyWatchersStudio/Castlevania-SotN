@@ -198,7 +198,15 @@ public sealed class Player : Characters
         healthImage.fillAmount = currentHp;
 
         if (health <= 0)
-            SceneManager.LoadScene(0);
+        {
+            foreach (var ground in m_GroundColliders)
+            {
+                if (ground == null)
+                    continue;
+                ground.transform.root.gameObject.SetActive(false);
+            }
+            GameManager.Loading();
+        }
     }
 #if UNITY_EDITOR
     public override void OnDrawGizmos()
