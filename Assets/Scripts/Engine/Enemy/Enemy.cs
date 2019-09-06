@@ -87,6 +87,7 @@ public abstract class Enemy : Characters
             GameManager.ExperiencePoint = experiencePoint;
         }
     }
+#if UNITY_EDITOR
     public override void OnDrawGizmos()
     {
         base.OnDrawGizmos();
@@ -98,4 +99,5 @@ public abstract class Enemy : Characters
 
         Gizmos.DrawRay(transform.position, m_TargetDirection * distanceMagnitude);
     }
+#endif
 }

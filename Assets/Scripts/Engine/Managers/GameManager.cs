@@ -49,15 +49,14 @@ public class GameManager : MonoBehaviour
         m_GameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         currentLevel.text = m_PlayerCurrentLevel.ToString();
         coins.text = m_Money.ToString();
+
+        Debug.Log(Application.persistentDataPath);
     }
     void Update()
     {
         if (Input.GetButtonDown("Cancel"))
         {
-            if (pause.activeSelf)
-                Time.timeScale = 1;
-            else if (!pause.activeSelf)
-                Time.timeScale = 0;
+            Time.timeScale = (Time.timeScale + 1) % 2;
             pause.SetActive(!pause.activeSelf);
         }
 

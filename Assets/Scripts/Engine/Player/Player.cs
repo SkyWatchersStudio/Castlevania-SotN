@@ -200,10 +200,12 @@ public sealed class Player : Characters
         if (health <= 0)
             SceneManager.LoadScene(0);
     }
+#if UNITY_EDITOR
     public override void OnDrawGizmos()
     {
         base.OnDrawGizmos();
         Gizmos.color = Color.green;
         Gizmos.DrawWireSphere(attackPosition.position, attackRange);
     }
+#endif
 }
