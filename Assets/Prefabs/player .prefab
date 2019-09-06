@@ -337,8 +337,8 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 6
+  m_Mass: 2
+  m_LinearDrag: 4
   m_AngularDrag: 0
   m_GravityScale: 1
   m_Material: {fileID: 0}
@@ -359,17 +359,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 10
-  moveSpeed: 38
+  moveSpeed: 55
   groundCheck: {fileID: 1088029816}
   groundRadius: 0.15
   m_FacingRight: 1
   jumpSaveTime: 0.05
-  jumpForce: 40
+  jumpForce: 3700
   attackForce: 10
   timeBetweenAttack: 0.4
   attackPosition: {fileID: 2034623080}
   attackRange: 0.6
-  dashForce: 33
-  timeBetweenDash: 3
-  dodgeForce: 16
+  dashForce: 45
+  timeBetweenDash: 2
+  dodgeForce: 25
   healthImage: {fileID: 0}
