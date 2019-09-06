@@ -25,6 +25,8 @@ public class Door : MonoBehaviour
 
                     if (frames[i].CompareTag("Respawn"))
                         GameManager.saveRoom = frames[i].gameObject;
+                    else if (frames[i].CompareTag("Finish"))
+                        GameManager.frame2 = frames[i].gameObject;
 
                     frames[i].SetActive(false);
                     continue;

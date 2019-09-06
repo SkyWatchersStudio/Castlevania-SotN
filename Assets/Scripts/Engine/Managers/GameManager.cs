@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI coins;
 
     public static GameObject saveRoom;
+    public static GameObject frame2;
 
     private static int m_Experience;
     private static int m_PlayerCurrentLevel;

@@ -203,12 +203,7 @@ public sealed class Player : Characters
         {
             GameManager.Loading();
 
-            foreach (var ground in m_GroundColliders)
-            {
-                if (ground == null)
-                    continue;
-                ground.transform.root.gameObject.SetActive(false);
-            }
+            GameManager.frame2.SetActive(false);
         }
     }
 #if UNITY_EDITOR
