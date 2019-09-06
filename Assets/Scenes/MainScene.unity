@@ -1916,8 +1916,7 @@ PrefabInstance:
         type: 3}
       propertyPath: framesPrefab.Array.data[1]
       value: 
-      objectReference: {fileID: 2270532529486496017, guid: ea3812b1620edff478f4050f720dda07,
-        type: 3}
+      objectReference: {fileID: 1745055450}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9d8037e4da2ab2948a2d40803548ea53, type: 3}
 --- !u!1 &2002309610
@@ -2084,16 +2083,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 6548715178479432009, guid: e967070c595b23d40a0321522da8327f,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -3.43
-      objectReference: {fileID: 0}
-    - target: {fileID: 147681546442463089, guid: e967070c595b23d40a0321522da8327f,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 69.96
-      objectReference: {fileID: 0}
     - target: {fileID: 1254276362486562374, guid: e967070c595b23d40a0321522da8327f,
         type: 3}
       propertyPath: m_Name
@@ -2103,6 +2092,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6548715178479432009, guid: e967070c595b23d40a0321522da8327f,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -3.43
+      objectReference: {fileID: 0}
+    - target: {fileID: 147681546442463089, guid: e967070c595b23d40a0321522da8327f,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 69.96
       objectReference: {fileID: 0}
     - target: {fileID: 1254276362486562373, guid: e967070c595b23d40a0321522da8327f,
         type: 3}
@@ -2196,7 +2195,7 @@ PrefabInstance:
     - target: {fileID: 2270532529486496016, guid: ea3812b1620edff478f4050f720dda07,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1007.4844
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2270532529486496016, guid: ea3812b1620edff478f4050f720dda07,
         type: 3}
@@ -2252,11 +2251,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 5270500795969857806, guid: 179529e3796259144b051205946d541e,
-        type: 3}
-      propertyPath: m_Name
-      value: Enemy
-      objectReference: {fileID: 0}
     - target: {fileID: 2416032200291565476, guid: 179529e3796259144b051205946d541e,
         type: 3}
       propertyPath: m_Name
@@ -2266,6 +2260,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5270500795969857806, guid: 179529e3796259144b051205946d541e,
+        type: 3}
+      propertyPath: m_Name
+      value: Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 2416032200291565477, guid: 179529e3796259144b051205946d541e,
         type: 3}
