@@ -3949,6 +3949,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2416032200497844774, guid: 179529e3796259144b051205946d541e,
+        type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: eeb93ae910469a84ca4ae357ed594743, type: 2}
     - target: {fileID: 2416032199892736544, guid: 179529e3796259144b051205946d541e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4117,6 +4122,31 @@ PrefabInstance:
       propertyPath: healthImage
       value: 
       objectReference: {fileID: 1112440446}
+    - target: {fileID: 5191960925485090435, guid: 566019c9cd7fe99448037a396e657a67,
+        type: 3}
+      propertyPath: jumpForce
+      value: 4320
+      objectReference: {fileID: 0}
+    - target: {fileID: 5191960925485090435, guid: 566019c9cd7fe99448037a396e657a67,
+        type: 3}
+      propertyPath: moveSpeed
+      value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 5191960925485090435, guid: 566019c9cd7fe99448037a396e657a67,
+        type: 3}
+      propertyPath: timeBetweenDash
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4838410754184782593, guid: 566019c9cd7fe99448037a396e657a67,
+        type: 3}
+      propertyPath: m_LinearDrag
+      value: 3.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4838410754184782593, guid: 566019c9cd7fe99448037a396e657a67,
+        type: 3}
+      propertyPath: m_Mass
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 566019c9cd7fe99448037a396e657a67, type: 3}
 --- !u!1001 &6519682002016845287
