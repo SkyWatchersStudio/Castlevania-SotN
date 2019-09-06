@@ -68,7 +68,7 @@ public sealed class Player : Characters
             m_Dash = true;
             m_TimeBtwDash = timeBetweenDash;
         }
-        else if (Input.GetButtonDown("Dodge") && !m_Lock)
+        else if (Input.GetButtonDown("Dodge") && !m_Lock && m_Grounded)
             m_Dodge = true;
     }
     private void JumpStatus()
@@ -87,32 +87,6 @@ public sealed class Player : Characters
         {
             m_Rigidbody.AddForce(Vector2.up * -m_Rigidbody.velocity.y, ForceMode2D.Impulse);
             m_InterruptJumping = m_IsJumping = false;
-        }
-    }
-    private void Attack()
-    {
-        m_Attack = false;
-        m_Animator.SetTrigger(m_AttackID);
-
-        //get everything in the attack radius and detect if it is enemy
-        var enemies = Physics2D.OverlapCircleAll(
-            attackPosition.position, attackRange, m_NotGroundLayer);
-        foreach (Collider2D enemy in enemies)
-        {
-            if (enemy.CompareTag("Interact"))
-                enemy.GetComponent<Interactable>().OnInteract();
-            else if (enemy.CompareTag("Enemy"))
-            {
-                //add force to the opposite direction of enemy
-                var rigidbody = enemy.GetComponent<Rigidbody2D>();
-                Vector2 direction = (enemy.transform.position - transform.position).normalized;
-                rigidbody.AddForce(direction * attackForce, ForceMode2D.Impulse);
-
-                //apply damage to enemy
-                var enemyScript = enemy.GetComponent<Enemy>();
-                if (enemyScript != null)
-                    enemyScript.TakeDamage();
-            }
         }
     }
     private void Dash(ref bool job, float force, bool forward)
@@ -160,7 +134,10 @@ public sealed class Player : Characters
             m_Rigidbody.gravityScale = m_GravityScale;
 
         if (m_Attack)
-            Attack();
+        {
+            m_Attack = false;
+            m_Animator.SetTrigger(m_AttackID);
+        }
         else if (m_Dash)
         {
             Dash(ref m_Dash, dashForce, true);
@@ -168,7 +145,7 @@ public sealed class Player : Characters
             m_Animator.SetBool("Dash", true);
             m_AnimDD = whichAnimation.dash;
         }
-        else if (m_Dodge && m_Grounded)
+        else if (m_Dodge)
         {
             Dash(ref m_Dodge, dodgeForce, false);
 

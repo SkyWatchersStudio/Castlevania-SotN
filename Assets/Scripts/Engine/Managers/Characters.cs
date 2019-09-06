@@ -22,10 +22,7 @@ public abstract class Characters : MonoBehaviour
         m_Rigidbody = GetComponent<Rigidbody2D>();
         m_Animator = GetComponent<Animator>();
     }
-    public virtual void FixedUpdate()
-    {
-        Move();
-    }
+    public virtual void FixedUpdate() => Move();
     public virtual void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
