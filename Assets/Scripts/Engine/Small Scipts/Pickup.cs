@@ -14,7 +14,7 @@ public class Pickup : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             Destroy(gameObject);
-            GameManager.Coin = this.coin;
+            GameManager.Coin += this.coin;
         }
     }
 

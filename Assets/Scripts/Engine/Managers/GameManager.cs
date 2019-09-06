@@ -22,7 +22,7 @@ public class GameManager : MonoBehaviour
         get => m_Experience;
         set
         {
-            m_Experience += value;
+            m_Experience = value;
 
             if (m_Experience >= m_NextLevelPoint)
             {
@@ -42,7 +42,7 @@ public class GameManager : MonoBehaviour
         get => m_Money;
         set
         {
-            m_Money += value;
+            m_Money = value;
             m_Instance.coins.text = m_Money.ToString();
         }
     }
@@ -82,7 +82,8 @@ public class GameManager : MonoBehaviour
         Transform playerTrans = GameObject.FindGameObjectWithTag("Player").transform;
         var playerScript = playerTrans.GetComponent<Player>();
         playerScript.health = data.health;
-        playerScript.healthImage.fillAmount = (float)data.health / 10;
+        playerScript.healthImage.fillAmount = 
+            (float)playerScript.health / playerScript.m_MaxHealth;
 
         Vector3 newPos = new Vector3();
         for (int i = 0; i < 3; i++)

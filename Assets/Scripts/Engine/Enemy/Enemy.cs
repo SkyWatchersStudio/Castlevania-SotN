@@ -89,7 +89,7 @@ public abstract class Enemy : Characters
         if (health <= 0)
         {
             Destroy(this.gameObject);
-            GameManager.ExperiencePoint = experiencePoint;
+            GameManager.ExperiencePoint += experiencePoint;
         }
     }
 #if UNITY_EDITOR

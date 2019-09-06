@@ -28,7 +28,9 @@ public sealed class Player : Characters
     private bool m_Attack, m_Dash, m_Dodge, m_Lock;
     private Collider2D[] m_GroundColliders;
     private float m_GravityScale;
-    private float m_MaxHealth;
+
+    public float m_MaxHealth;
+
     private WhichAnimation m_AnimDD; //for tracking dodge anim or dash anim is playing
 
     int m_AttackID, m_SpeedID, m_IsGroundID;
@@ -199,13 +201,15 @@ public sealed class Player : Characters
 
         if (health <= 0)
         {
+            GameManager.Loading();
+
             foreach (var ground in m_GroundColliders)
             {
                 if (ground == null)
                     continue;
                 ground.transform.root.gameObject.SetActive(false);
             }
-            GameManager.Loading();
+            m_Rigidbody.velocity = Vector2.zero;
         }
     }
 #if UNITY_EDITOR
