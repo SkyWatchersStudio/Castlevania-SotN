@@ -28,10 +28,10 @@ public class GameManager : MonoBehaviour
             {
                 m_Experience -= m_NextLevelPoint;
                 m_NextLevelPoint *= 2;
-
                 m_PlayerCurrentLevel++;
-                m_GameManager.currentLevel.text = m_PlayerCurrentLevel.ToString();
             }
+
+            m_GameManager.currentLevel.text = m_PlayerCurrentLevel.ToString();
         }
     }
     public static int Coin
@@ -72,7 +72,6 @@ public class GameManager : MonoBehaviour
             SaveData data = SaveSystem.LoadState();
 
             Transform playerTrans = GameObject.FindGameObjectWithTag("Player").transform;
-
             Vector3 newPos = new Vector3();
             for (int i = 0; i < 3; i++)
             {
@@ -80,10 +79,11 @@ public class GameManager : MonoBehaviour
             }
             playerTrans.position = newPos;
 
-            m_Experience = data.experience;
-            m_Money = data.money;
-            m_PlayerCurrentLevel = data.playerLevel;
             m_NextLevelPoint = data.nextLevelPoint;
+            m_PlayerCurrentLevel = data.playerLevel;
+            ExperiencePoint = data.experience;
+
+            Coin = data.money;
         }
     }
 

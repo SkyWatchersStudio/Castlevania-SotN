@@ -29,11 +29,11 @@ public sealed class Player : Characters
     private Collider2D[] m_GroundColliders;
     private float m_GravityScale;
     private float m_MaxHealth;
-    private whichAnimation m_AnimDD; //for tracking dodge anim or dash anim is playing
+    private WhichAnimation m_AnimDD; //for tracking dodge anim or dash anim is playing
 
     int m_AttackID, m_SpeedID, m_IsGroundID;
 
-    enum whichAnimation { dodge, dash };
+    enum WhichAnimation { dodge, dash };
 
     private void Update()
     {
@@ -143,14 +143,14 @@ public sealed class Player : Characters
             Dash(ref m_Dash, dashForce, true);
 
             m_Animator.SetBool("Dash", true);
-            m_AnimDD = whichAnimation.dash;
+            m_AnimDD = WhichAnimation.dash;
         }
         else if (m_Dodge)
         {
             Dash(ref m_Dodge, dodgeForce, false);
 
             m_Animator.SetBool("Doudge", true);
-            m_AnimDD = whichAnimation.dodge;
+            m_AnimDD = WhichAnimation.dodge;
         }
 
         if (m_Lock)
@@ -160,10 +160,10 @@ public sealed class Player : Characters
                 m_Lock = false;
                 switch (m_AnimDD)
                 {
-                    case whichAnimation.dash:
+                    case WhichAnimation.dash:
                         m_Animator.SetBool("Dash", false);
                         break;
-                    case whichAnimation.dodge:
+                    case WhichAnimation.dodge:
                         m_Animator.SetBool("Doudge", false);
                         break;
                 }
