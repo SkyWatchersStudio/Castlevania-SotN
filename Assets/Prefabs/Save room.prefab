@@ -1680,6 +1680,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: coffin
       objectReference: {fileID: 0}
+    - target: {fileID: 3088213426155765419, guid: b676a3ba4814e804ebb1675004ef5e19,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 3088213426155765413, guid: b676a3ba4814e804ebb1675004ef5e19,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1759,6 +1764,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: trail
+      objectReference: {fileID: 0}
+    - target: {fileID: 5257590183946033830, guid: 260eb397726c8ff44b7e8cce95f1a653,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5257590183946033831, guid: 260eb397726c8ff44b7e8cce95f1a653,
         type: 3}
