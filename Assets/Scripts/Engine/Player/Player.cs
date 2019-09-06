@@ -209,7 +209,6 @@ public sealed class Player : Characters
                     continue;
                 ground.transform.root.gameObject.SetActive(false);
             }
-            m_Rigidbody.velocity = Vector2.zero;
         }
     }
 #if UNITY_EDITOR

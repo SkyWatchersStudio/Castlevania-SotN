@@ -75,6 +75,9 @@ public class GameManager : MonoBehaviour
     }
     public static void Loading()
     {
+        if (saveRoom == null)
+            UnityEngine.SceneManagement.SceneManager.LoadScene(0);
+
         SaveData data = SaveSystem.LoadState();
 
         saveRoom.SetActive(true);
