@@ -73,3 +73,6 @@ MonoBehaviour:
   frames:
   - {fileID: 0}
   - {fileID: 0}
+  framesPrefab:
+  - {fileID: 2416032200291565476, guid: 179529e3796259144b051205946d541e, type: 3}
+  - {fileID: 1254276362486562374, guid: e967070c595b23d40a0321522da8327f, type: 3}

@@ -49,8 +49,6 @@ public class GameManager : MonoBehaviour
         m_GameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         currentLevel.text = m_PlayerCurrentLevel.ToString();
         coins.text = m_Money.ToString();
-
-        Debug.Log(Application.persistentDataPath);
     }
     void Update()
     {
@@ -59,32 +57,35 @@ public class GameManager : MonoBehaviour
             Time.timeScale = (Time.timeScale + 1) % 2;
             pause.SetActive(!pause.activeSelf);
         }
+    }
+    private void OnEnable() => Coffin.PlayerSaveEvent += SavingData;
+    private void OnDisable() => Coffin.PlayerSaveEvent -= SavingData;
 
-        if (Input.GetKeyDown(KeyCode.S))
+    private void SavingData()
+    {
+        var playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
+        SaveData data = new SaveData(m_Experience, m_PlayerCurrentLevel, m_NextLevelPoint,
+                                    m_Money, playerTransform.position);
+
+        SaveSystem.SaveState(data);
+    }
+    private void Loading()
+    {
+        SaveData data = SaveSystem.LoadState();
+
+        Transform playerTrans = GameObject.FindGameObjectWithTag("Player").transform;
+        Vector3 newPos = new Vector3();
+        for (int i = 0; i < 3; i++)
         {
-            Transform playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
-            SaveData data = new SaveData(m_Experience, m_PlayerCurrentLevel, m_NextLevelPoint,
-                m_Money, playerTransform.position);
-            SaveSystem.SaveState(data);
+            newPos[i] = data.position[i];
         }
-        else if (Input.GetKeyDown(KeyCode.L))
-        {
-            SaveData data = SaveSystem.LoadState();
+        playerTrans.position = newPos;
 
-            Transform playerTrans = GameObject.FindGameObjectWithTag("Player").transform;
-            Vector3 newPos = new Vector3();
-            for (int i = 0; i < 3; i++)
-            {
-                newPos[i] = data.position[i];
-            }
-            playerTrans.position = newPos;
+        m_NextLevelPoint = data.nextLevelPoint;
+        m_PlayerCurrentLevel = data.playerLevel;
+        ExperiencePoint = data.experience;
 
-            m_NextLevelPoint = data.nextLevelPoint;
-            m_PlayerCurrentLevel = data.playerLevel;
-            ExperiencePoint = data.experience;
-
-            Coin = data.money;
-        }
+        Coin = data.money;
     }
 
     public void OnExit() => Application.Quit();

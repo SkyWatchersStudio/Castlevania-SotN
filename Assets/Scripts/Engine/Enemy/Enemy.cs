@@ -75,6 +75,9 @@ public abstract class Enemy : Characters
 
     public override void FixedUpdate()
     {
+        if (!m_PlayerTransform)
+            return;
+
         m_TargetDirection = GetPlayerDirection(); //Get direction toward the player
         Flip(m_TargetDirection.x); //Flip Enemy if needed
 
