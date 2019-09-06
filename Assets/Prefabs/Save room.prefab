@@ -1023,7 +1023,7 @@ GameObject:
   - component: {fileID: 2270532529486496016}
   m_Layer: 0
   m_Name: Save room
-  m_TagString: Untagged
+  m_TagString: Respawn
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

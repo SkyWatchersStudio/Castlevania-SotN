@@ -23,6 +23,9 @@ public class Door : MonoBehaviour
                     var vCam = frames[i].GetComponentInChildren<CinemachineVirtualCamera>();
                     vCam.Follow = collision.transform;
 
+                    if (frames[i].CompareTag("Respawn"))
+                        GameManager.saveRoom = frames[i].gameObject;
+
                     frames[i].SetActive(false);
                     continue;
                 }
