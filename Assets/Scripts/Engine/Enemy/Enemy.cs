@@ -32,6 +32,14 @@ public abstract class Enemy : Characters
         }
     }
 
+    private void Update()
+    {
+        if (!m_PlayerTransform)
+        {
+            CheckPlayer();
+            return;
+        }
+    }
     private void CheckPlayer()
     {
         //check the specified area, this time if player was init get its transform
@@ -67,12 +75,6 @@ public abstract class Enemy : Characters
 
     public override void FixedUpdate()
     {
-        if (!m_PlayerTransform)
-        {
-            CheckPlayer();
-            return;
-        }
-
         m_TargetDirection = GetPlayerDirection(); //Get direction toward the player
         Flip(m_TargetDirection.x); //Flip Enemy if needed
 
