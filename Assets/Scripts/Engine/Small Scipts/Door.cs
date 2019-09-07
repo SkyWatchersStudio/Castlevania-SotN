@@ -3,35 +3,39 @@ using Cinemachine;
 
 public class Door : MonoBehaviour
 {
-    public GameObject[] frames = new GameObject[2];
-    [Space(10)]
-    public GameObject[] framesPrefab = new GameObject[2];
+    public int[] frameNumbers = new int[2];
+    private static FramesList m_List;
+
+    private void Awake()
+    {
+        if (m_List == null)
+            m_List = GetComponentInParent<FramesList>();
+    }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
-            for (int i = 0; i < frames.Length; i++)
+            for (int i = 0; i < 2; i++)
             {
-                var isActive = frames[i].activeSelf;
+                var frame = m_List.frames[frameNumbers[i]];
+                bool isActive = frame.activeSelf;
 
                 if (isActive)
                 {
-                    var framePosition = frames[i].transform.position;
-                    Destroy(frames[i]);
+                    var framePosition = frame.transform.position;
+                    Destroy(frame);
 
-                    frames[i] = Instantiate(
-                        framesPrefab[i], framePosition, Quaternion.identity) as GameObject;
-                    var vCam = frames[i].GetComponentInChildren<CinemachineVirtualCamera>();
+                    m_List.frames[frameNumbers[i]] = Instantiate(
+                        m_List.framePrefabs[frameNumbers[i]],
+                        framePosition, Quaternion.identity) as GameObject;
+                    frame = m_List.frames[frameNumbers[i]];
+
+                    var vCam = frame.GetComponentInChildren<CinemachineVirtualCamera>();
                     vCam.Follow = collision.transform;
-
-                    if (frames[i].CompareTag("Respawn"))
-                        GameManager.saveRoom = frames[i].gameObject;
-                    else if (frames[i].CompareTag("Finish"))
-                        GameManager.frame2 = frames[i].gameObject;
                 }
 
-                frames[i].SetActive(!isActive);
+                frame.SetActive(!isActive);
             }
         }
     }

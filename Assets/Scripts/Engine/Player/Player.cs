@@ -204,7 +204,12 @@ public sealed class Player : Characters
         if (health <= 0)
         {
             GameManager.Loading();
-            GameManager.frame2.SetActive(false);
+            foreach (var ground in m_GroundColliders)
+            {
+                if (ground == null)
+                    continue;
+                ground.transform.root.gameObject.SetActive(false);
+            }
         }
     }
 
