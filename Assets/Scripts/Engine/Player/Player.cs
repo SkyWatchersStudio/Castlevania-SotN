@@ -37,6 +37,7 @@ public sealed class Player : Characters
 
     enum WhichAnimation { dodge, dash };
 
+    #region FrameUpdate
     private void Update()
     {
         m_JumpSaveTime -= Time.deltaTime;
@@ -73,6 +74,7 @@ public sealed class Player : Characters
         else if (Input.GetButtonDown("Dodge") && !m_Lock && m_Grounded)
             m_Dodge = true;
     }
+    #endregion
     private void JumpStatus()
     {
         if (m_IsJumping && m_Grounded)
@@ -202,10 +204,11 @@ public sealed class Player : Characters
         if (health <= 0)
         {
             GameManager.Loading();
-
             GameManager.frame2.SetActive(false);
         }
     }
+
+    #region tools
 #if UNITY_EDITOR
     public override void OnDrawGizmos()
     {
@@ -214,4 +217,5 @@ public sealed class Player : Characters
         Gizmos.DrawWireSphere(attackPosition.position, attackRange);
     }
 #endif
+    #endregion
 }

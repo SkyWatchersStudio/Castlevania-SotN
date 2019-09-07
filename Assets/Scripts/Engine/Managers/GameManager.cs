@@ -77,7 +77,10 @@ public class GameManager : MonoBehaviour
     public static void Loading()
     {
         if (saveRoom == null)
+        {
             UnityEngine.SceneManagement.SceneManager.LoadScene(0);
+            return;
+        }
 
         SaveData data = SaveSystem.LoadState();
 
