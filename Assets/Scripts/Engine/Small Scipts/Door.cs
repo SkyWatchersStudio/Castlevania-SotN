@@ -13,7 +13,9 @@ public class Door : MonoBehaviour
         {
             for (int i = 0; i < frames.Length; i++)
             {
-                if (frames[i].activeSelf)
+                var isActive = frames[i].activeSelf;
+
+                if (isActive)
                 {
                     var framePosition = frames[i].transform.position;
                     Destroy(frames[i]);
@@ -27,11 +29,9 @@ public class Door : MonoBehaviour
                         GameManager.saveRoom = frames[i].gameObject;
                     else if (frames[i].CompareTag("Finish"))
                         GameManager.frame2 = frames[i].gameObject;
-
-                    frames[i].SetActive(false);
-                    continue;
                 }
-                frames[i].SetActive(true);
+
+                frames[i].SetActive(!isActive);
             }
         }
     }
