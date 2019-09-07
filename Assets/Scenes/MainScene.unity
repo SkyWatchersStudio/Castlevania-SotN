@@ -1103,7 +1103,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36724c5142706384f94d579701185716, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  frameNumbers: 0000000001000000
+  frameNumbers: 0100000002000000
 --- !u!1 &939536977
 GameObject:
   m_ObjectHideFlags: 0
@@ -1509,7 +1509,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36724c5142706384f94d579701185716, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  frameNumbers: 0100000002000000
+  frameNumbers: 0200000003000000
 --- !u!61 &1351545101
 BoxCollider2D:
   m_ObjectHideFlags: 0
