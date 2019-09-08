@@ -9,7 +9,6 @@ public static class SaveSystem
     public static void SaveState(SaveData data)
     {
         BinaryFormatter formatter = new BinaryFormatter();
-
         FileStream stream = new FileStream(m_Path, FileMode.Create);
 
         formatter.Serialize(stream, data);
