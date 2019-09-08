@@ -9,9 +9,6 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI currentLevel;
     public TextMeshProUGUI coins;
 
-    public static GameObject saveRoom;
-    public static GameObject frame2;
-
     private static int m_Experience;
     private static int m_PlayerCurrentLevel;
     private static int m_NextLevelPoint = 100;
@@ -51,7 +48,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         Cursor.visible = false;
-        m_Instance = GameObject.Find("GameManager").GetComponent<GameManager>();
+        m_Instance = this;
         currentLevel.text = m_PlayerCurrentLevel.ToString();
         coins.text = m_Money.ToString();
     }
@@ -64,46 +61,64 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public static void SavingData()
+    public static void SavingData(Transform playerTransform)
     {
-        var playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
-        var playerHP = playerTransform.GetComponent<Player>().health;
+        //assign player Hp to its maximum health
+        IncreasePlayerHP(playerTransform);
+        var frameIndex = CurrentFrame();
 
         SaveData data = new SaveData(m_Experience, m_PlayerCurrentLevel, m_NextLevelPoint,
-                                     m_Money, playerTransform.position, playerHP);
-
+                                     m_Money, playerTransform.position, frameIndex);
         SaveSystem.SaveState(data);
     }
-    public static void Loading()
+    private static void IncreasePlayerHP(Transform player)
     {
-        if (saveRoom == null)
+        var playerScript = player.GetComponent<Player>();
+        playerScript.CurrentHealth = playerScript.health;
+    }
+    public static void Loading(Transform playerTransform)
+    {
+        SaveData data = SaveSystem.LoadState();
+        if (data == null)
         {
             UnityEngine.SceneManagement.SceneManager.LoadScene(0);
             return;
         }
 
-        SaveData data = SaveSystem.LoadState();
+        //assign player health to its maximum...
+        IncreasePlayerHP(playerTransform);
 
-        saveRoom.SetActive(true);
+        int[] frames = { CurrentFrame(), data.saveRoomIndex };
+        //Destory the current frame and active the index given
+        FramesList.SwitchFrames(frames, playerTransform);
 
-        Transform playerTrans = GameObject.FindGameObjectWithTag("Player").transform;
-        var playerScript = playerTrans.GetComponent<Player>();
-        playerScript.health = data.health;
-        playerScript.healthImage.fillAmount = 
-            (float)playerScript.health / playerScript.m_MaxHealth;
-
+        //Assign player position
         Vector3 newPos = new Vector3();
         for (int i = 0; i < 3; i++)
         {
             newPos[i] = data.position[i];
         }
-        playerTrans.position = newPos;
+        playerTransform.position = newPos;
 
+        //reassigning player stats
         m_NextLevelPoint = data.nextLevelPoint;
         m_PlayerCurrentLevel = data.playerLevel;
         ExperiencePoint = data.experience;
-
         Coin = data.money;
+    }
+    private static int CurrentFrame()
+    {
+        var frames = FramesList.m_Instance.frames;
+        int currentFrame = 0;
+
+        for (int i = 0; i < frames.Length; i++)
+            if (frames[i].activeSelf)
+            {
+                currentFrame = i;
+                break;
+            }
+
+        return currentFrame + 1; //frame switcher will reduce the number by 1
     }
 
     public void OnExit() => Application.Quit();

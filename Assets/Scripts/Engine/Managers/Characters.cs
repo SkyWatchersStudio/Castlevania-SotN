@@ -4,7 +4,7 @@ using UnityEngine;
 
 public abstract class Characters : MonoBehaviour
 {
-    public int health;
+    public float health;
     public float moveSpeed;
     [Space(10)]
     public Transform groundCheck;

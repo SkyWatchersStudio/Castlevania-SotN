@@ -17,10 +17,10 @@ public static class SaveSystem
     }
     public static SaveData LoadState()
     {
-        BinaryFormatter formatter = new BinaryFormatter();
         if (!File.Exists(m_Path))
-            throw new FileLoadException("Load file wasn't exist in the " + m_Path);
+            return null;
 
+        BinaryFormatter formatter = new BinaryFormatter();
         FileStream stream = new FileStream(m_Path, FileMode.Open);
 
         SaveData data = formatter.Deserialize(stream) as SaveData;

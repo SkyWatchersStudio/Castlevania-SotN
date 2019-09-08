@@ -29,12 +29,20 @@ public sealed class Player : Characters
     private Collider2D[] m_GroundColliders;
     private float m_GravityScale;
 
-    public float m_MaxHealth;
-
-    private WhichAnimation m_AnimDD; //for tracking dodge anim or dash anim is playing
+    private float m_Health;
+    public float CurrentHealth
+    {
+        get => m_Health;
+        set
+        {
+            m_Health = value;
+            healthImage.fillAmount = m_Health / health;
+        }
+    }
 
     int m_AttackID, m_SpeedID, m_IsGroundID;
 
+    private WhichAnimation m_AnimDD; //for tracking dodge anim or dash anim is playing
     enum WhichAnimation { dodge, dash };
 
     #region FrameUpdate
@@ -122,7 +130,7 @@ public sealed class Player : Characters
 
         m_GravityScale = m_Rigidbody.gravityScale;
 
-        m_MaxHealth = health;
+        m_Health = health;
     }
     public override void FixedUpdate()
     {
@@ -197,20 +205,10 @@ public sealed class Player : Characters
     }
     public override void TakeDamage()
     {
-        health -= 1;
-        var currentHp = (float)health / m_MaxHealth;
-        healthImage.fillAmount = currentHp;
+        CurrentHealth -= 1;
 
-        if (health <= 0)
-        {
-            GameManager.Loading();
-            foreach (var ground in m_GroundColliders)
-            {
-                if (ground == null)
-                    continue;
-                ground.transform.root.gameObject.SetActive(false);
-            }
-        }
+        if (CurrentHealth <= 0)
+            GameManager.Loading(this.transform);
     }
 
     #region tools

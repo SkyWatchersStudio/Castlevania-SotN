@@ -8,6 +8,6 @@ public class Coffin : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
             if (Input.GetKeyDown(KeyCode.UpArrow))
-                GameManager.SavingData();
+                GameManager.SavingData(collision.transform);
     }
 }
