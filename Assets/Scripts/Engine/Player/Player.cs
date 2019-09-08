@@ -79,7 +79,7 @@ public sealed class Player : Characters
             m_Dash = true;
             m_TimeBtwDash = timeBetweenDash;
         }
-        else if (Input.GetButtonDown("Dodge") && !m_Lock && m_Grounded)
+        else if (Input.GetButtonDown("Dodge") && m_Grounded)
             m_Dodge = true;
     }
     #endregion
@@ -150,19 +150,22 @@ public sealed class Player : Characters
             m_Attack = false;
             m_Animator.SetTrigger(m_AttackID);
         }
-        else if (m_Dash)
+        if (!m_Lock)
         {
-            Dash(ref m_Dash, dashForce, true);
+            if (m_Dash)
+            {
+                Dash(ref m_Dash, dashForce, true);
 
-            m_Animator.SetBool("Dash", true);
-            m_AnimDD = WhichAnimation.dash;
-        }
-        else if (m_Dodge)
-        {
-            Dash(ref m_Dodge, dodgeForce, false);
+                m_Animator.SetBool("Dash", true);
+                m_AnimDD = WhichAnimation.dash;
+            }
+            else if (m_Dodge)
+            {
+                Dash(ref m_Dodge, dodgeForce, false);
 
-            m_Animator.SetBool("Doudge", true);
-            m_AnimDD = WhichAnimation.dodge;
+                m_Animator.SetBool("Doudge", true);
+                m_AnimDD = WhichAnimation.dodge;
+            }
         }
 
         if (m_Lock)
