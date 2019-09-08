@@ -16,6 +16,7 @@ public abstract class Enemy : Characters
     protected Vector2 m_TargetDirection;
 
     private Transform m_PlayerTransform;
+    private bool m_IsPlayerFound;
 
     public virtual void OnCollisionEnter2D(Collision2D collision)
     {
@@ -32,14 +33,6 @@ public abstract class Enemy : Characters
         }
     }
 
-    private void Update()
-    {
-        if (!m_PlayerTransform)
-        {
-            CheckPlayer();
-            return;
-        }
-    }
     private void CheckPlayer()
     {
         //check the specified area, this time if player was init get its transform
@@ -53,9 +46,10 @@ public abstract class Enemy : Characters
             {
                 if (target == null)
                     continue;
-                if (target.CompareTag("Player")) //if player found simulate in physics engine
+
+                else if (target.CompareTag("Player")) //if player found simulate in physics engine
                 {
-                    m_Rigidbody.simulated = true;
+                    m_IsPlayerFound = true;
                     m_PlayerTransform = target.transform;
                 }
             }
@@ -66,7 +60,7 @@ public abstract class Enemy : Characters
 
         if (deltaPosition.magnitude > distanceMagnitude)
         {
-            m_Rigidbody.simulated = false;
+            m_IsPlayerFound = false;
             m_PlayerTransform = null;
         }
 
@@ -75,8 +69,11 @@ public abstract class Enemy : Characters
 
     public override void FixedUpdate()
     {
-        if (!m_PlayerTransform)
+        if (!m_IsPlayerFound)
+        {
+            CheckPlayer();
             return;
+        }
 
         m_TargetDirection = GetPlayerDirection(); //Get direction toward the player
         Flip(m_TargetDirection.x); //Flip Enemy if needed
@@ -99,9 +96,8 @@ public abstract class Enemy : Characters
         Gizmos.color = Color.green;
         Gizmos.DrawWireSphere(detectionPosition.position, detectionRange);
 
-        if (!UnityEditor.EditorApplication.isPlaying && !m_PlayerTransform)
+        if (!m_IsPlayerFound)
             return;
-
         Gizmos.DrawRay(transform.position, m_TargetDirection * distanceMagnitude);
     }
 #endif

@@ -45,10 +45,9 @@ public abstract class Characters : MonoBehaviour
     {
         Collider2D[] results = new Collider2D[2];
         int colliders = Physics2D.OverlapCircleNonAlloc
-                              (checkPosition, radius, results, layer);
+            (checkPosition, radius, results, layer);
 
         target = results;
-
         return colliders > 0;
     }
     protected bool CheckGround(out Collider2D[] ground) =>
