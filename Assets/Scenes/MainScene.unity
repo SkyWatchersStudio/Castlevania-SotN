@@ -621,7 +621,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.00007534027, y: 2.370287, z: -10}
+  m_LocalPosition: {x: -0.00007343292, y: 2.3702877, z: -10}
   m_LocalScale: {x: 0.61784476, y: 1.073258, z: 0.61784476}
   m_Children: []
   m_Father: {fileID: 0}
@@ -2187,11 +2187,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: frame 2
       objectReference: {fileID: 0}
-    - target: {fileID: 1254276362486562374, guid: e967070c595b23d40a0321522da8327f,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1254276362486562373, guid: e967070c595b23d40a0321522da8327f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2252,8 +2247,7 @@ PrefabInstance:
       propertyPath: m_Follow
       value: 
       objectReference: {fileID: 575811154}
-    m_RemovedComponents:
-    - {fileID: 2240566718484984072, guid: e967070c595b23d40a0321522da8327f, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e967070c595b23d40a0321522da8327f, type: 3}
 --- !u!1001 &2270532529083674571
 PrefabInstance:
@@ -2266,11 +2260,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Save room
-      objectReference: {fileID: 0}
-    - target: {fileID: 2270532529486496017, guid: ea3812b1620edff478f4050f720dda07,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2270532529486496016, guid: ea3812b1620edff478f4050f720dda07,
         type: 3}
@@ -2332,13 +2321,7 @@ PrefabInstance:
       propertyPath: m_Follow
       value: 
       objectReference: {fileID: 575811154}
-    - target: {fileID: 399352111476761077, guid: ea3812b1620edff478f4050f720dda07,
-        type: 3}
-      propertyPath: m_Lens.OrthographicSize
-      value: 5.3
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 1887740836096468122, guid: ea3812b1620edff478f4050f720dda07, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ea3812b1620edff478f4050f720dda07, type: 3}
 --- !u!1 &2270532529083674572 stripped
 GameObject:
