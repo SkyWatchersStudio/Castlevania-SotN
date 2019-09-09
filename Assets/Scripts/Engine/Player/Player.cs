@@ -85,10 +85,10 @@ public sealed class Player : Characters
     #endregion
     private void JumpStatus()
     {
+        m_Animator.SetFloat("vSpeed", m_Rigidbody.velocity.y);
+
         if (m_IsJumping && m_Grounded)
             m_IsJumping = false;
-
-        m_Animator.SetFloat("vSpeed", m_Rigidbody.velocity.y);
 
         if (m_JumpSaveTime > 0 && m_Grounded)
         {
@@ -101,7 +101,7 @@ public sealed class Player : Characters
             m_InterruptJumping = m_IsJumping = false;
         }
     }
-    private void Dash(ref bool job, float force, bool forward)
+    private void Dash(ref bool job, float force, bool isForwardDir)
     {
         job = false;
 
@@ -110,8 +110,8 @@ public sealed class Player : Characters
         m_Lock = true;
 
         var forceDir = Vector2.right * force;
-        if ((forward && !m_FacingRight) || (!forward && m_FacingRight))
-            forceDir = -forceDir;
+        if ((isForwardDir && !m_FacingRight) || (!isForwardDir && m_FacingRight))
+            forceDir = -forceDir; //whether we should be forced forward or not
 
         m_Rigidbody.AddForce(forceDir, ForceMode2D.Impulse);
     }
@@ -167,8 +167,7 @@ public sealed class Player : Characters
                 m_AnimDD = WhichAnimation.dodge;
             }
         }
-
-        if (m_Lock)
+        else if (m_Lock)
         {
             if (Mathf.Abs(m_Rigidbody.velocity.x) <= 6)
             {

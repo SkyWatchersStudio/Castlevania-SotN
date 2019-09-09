@@ -6,9 +6,6 @@ public abstract class Enemy : Characters
 {
     public float collisionForce;
     [Space(10)]
-    public Transform detectionPosition; //range that require to detect enemy
-    public float detectionRange;
-    [Space(10)]
     public float distanceMagnitude; //delta distance require to disable enemy
     [Space(10)]
     public int experiencePoint = 10;
@@ -17,6 +14,7 @@ public abstract class Enemy : Characters
 
     private Transform m_PlayerTransform;
     private bool m_IsPlayerFound;
+    private CapsuleCollider2D m_TriggerCollider;
 
     public virtual void OnCollisionEnter2D(Collision2D collision)
     {
@@ -33,26 +31,14 @@ public abstract class Enemy : Characters
         }
     }
 
-    private void CheckPlayer()
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        //check the specified area, this time if player was init get its transform
-        var someoneInThere = CheckArea(detectionPosition.position,
-                                       detectionRange,
-                                       m_NotGroundLayer,
-                                       out Collider2D[] targets);
-
-        if (someoneInThere)
-            foreach (var target in targets)
-            {
-                if (target == null)
-                    continue;
-
-                else if (target.CompareTag("Player")) //if player found simulate in physics engine
-                {
-                    m_IsPlayerFound = true;
-                    m_PlayerTransform = target.transform;
-                }
-            }
+        if (collision.CompareTag("Player"))
+        {
+            m_IsPlayerFound = true;
+            m_TriggerCollider.enabled = false;
+            m_PlayerTransform = collision.transform;
+        }
     }
     private Vector2 GetPlayerDirection()
     {
@@ -62,18 +48,27 @@ public abstract class Enemy : Characters
         {
             m_IsPlayerFound = false;
             m_PlayerTransform = null;
+            m_TriggerCollider.enabled = true;
         }
 
         return deltaPosition.normalized;
     }
 
+    public override void Start()
+    {
+        base.Start();
+
+        var colliders = GetComponents<CapsuleCollider2D>();
+        foreach (var collider in colliders)
+        {
+            if (collider.isTrigger)
+                m_TriggerCollider = collider;
+        }
+    }
     public override void FixedUpdate()
     {
         if (!m_IsPlayerFound)
-        {
-            CheckPlayer();
             return;
-        }
 
         m_TargetDirection = GetPlayerDirection(); //Get direction toward the player
         Flip(m_TargetDirection.x); //Flip Enemy if needed
@@ -89,12 +84,11 @@ public abstract class Enemy : Characters
             GameManager.ExperiencePoint += experiencePoint;
         }
     }
+
 #if UNITY_EDITOR
     public override void OnDrawGizmos()
     {
         base.OnDrawGizmos();
-        Gizmos.color = Color.green;
-        Gizmos.DrawWireSphere(detectionPosition.position, detectionRange);
 
         if (!m_IsPlayerFound)
             return;

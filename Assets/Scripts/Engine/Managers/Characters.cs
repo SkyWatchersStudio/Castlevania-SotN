@@ -14,8 +14,7 @@ public abstract class Characters : MonoBehaviour
 
     protected Rigidbody2D m_Rigidbody;
     protected Animator m_Animator;
-    protected const int m_NotGroundLayer = 1 << 8;
-    protected const int m_GroundLayer = ~m_NotGroundLayer;
+    protected const int m_GroundLayer = ~(1 << 8);
 
     public virtual void Start()
     {
@@ -40,7 +39,7 @@ public abstract class Characters : MonoBehaviour
         scale.x *= -1;
         transform.localScale = scale;
     }
-    protected bool CheckArea(
+    private bool CheckArea(
         Vector3 checkPosition, float radius, LayerMask layer, out Collider2D[] target)
     {
         Collider2D[] results = new Collider2D[2];

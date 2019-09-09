@@ -155,6 +155,7 @@ GameObject:
   - component: {fileID: 1117721520}
   - component: {fileID: 7437343127102910813}
   - component: {fileID: 6901542726189370586}
+  - component: {fileID: 5468464541574067212}
   - component: {fileID: 1721413826}
   m_Layer: 8
   m_Name: Tomato
@@ -237,6 +238,22 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 3.8}
   m_Size: {x: 3, y: 4.5}
   m_Direction: 0
+--- !u!70 &5468464541574067212
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7915721508040905469}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 9}
+  m_Size: {x: 29, y: 14.5}
+  m_Direction: 1
 --- !u!114 &1721413826
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -255,8 +272,6 @@ MonoBehaviour:
   groundRadius: 0.4
   m_FacingRight: 0
   collisionForce: 40
-  detectionPosition: {fileID: 173156069758224477}
-  detectionRange: 4.5
   distanceMagnitude: 12
   experiencePoint: 10
 --- !u!1 &7972507012746150652
