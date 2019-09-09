@@ -120,6 +120,13 @@ public class GameManager : MonoBehaviour
 
         return currentFrame + 1; //frame switcher will reduce the number by 1
     }
+    private void OnApplicationQuit()
+    {
+        SaveSystem.DeleteSave();
+    }
 
-    public void OnExit() => Application.Quit();
+    public void OnExit()
+    {
+        Application.Quit();
+    }
 }
