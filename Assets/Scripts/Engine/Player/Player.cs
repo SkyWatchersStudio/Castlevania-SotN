@@ -69,12 +69,12 @@ public sealed class Player : Characters
             if (m_Rigidbody.velocity.y > 0 && m_IsJumping)
                 m_InterruptJumping = true;
 
-        if (Input.GetButtonDown("Fire2") && m_TimeBtwAttack < 0)
+        if (Input.GetButtonDown("Attack") && m_TimeBtwAttack < 0)
         {
             m_TimeBtwAttack = timeBetweenAttack;
             m_Attack = true;
         }
-        else if (Input.GetButtonDown("Fire1") && m_TimeBtwDash < 0)
+        else if (Input.GetButtonDown("Dash") && m_TimeBtwDash < 0)
         {
             m_Dash = true;
             m_TimeBtwDash = timeBetweenDash;
