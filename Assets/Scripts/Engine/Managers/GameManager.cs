@@ -25,14 +25,24 @@ public class GameManager : MonoBehaviour
             if (m_Experience >= m_NextLevelPoint)
             {
                 m_Experience -= m_NextLevelPoint;
-                m_PlayerCurrentLevel++;
+                PlayerCurrentLevel++;
                 m_NextLevelPoint *= 2;
             }
 
             m_Instance.experienceImage.fillAmount =
                 (float)m_Experience / (float)m_NextLevelPoint;
 
+        }
+    }
+    public static int PlayerCurrentLevel
+    {
+        get => m_PlayerCurrentLevel;
+        set
+        {
+            m_PlayerCurrentLevel = value;
             m_Instance.currentLevel.text = m_PlayerCurrentLevel.ToString();
+
+            //upgrade player stats here.
         }
     }
     public static int Coin

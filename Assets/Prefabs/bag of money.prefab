@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 302677184656588855}
   - component: {fileID: 2651570267442411127}
   - component: {fileID: 9057938771323017712}
-  - component: {fileID: 6770985905101541433}
   m_Layer: 0
   m_Name: bag of money
   m_TagString: Untagged
@@ -93,7 +92,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -123,6 +122,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   coin: 50
   lifeTime: 3
+  distanceUnder: 0.7
 --- !u!50 &9057938771323017712
 Rigidbody2D:
   serializedVersion: 4
@@ -144,19 +144,3 @@ Rigidbody2D:
   m_SleepingMode: 2
   m_CollisionDetection: 0
   m_Constraints: 5
---- !u!58 &6770985905101541433
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3565092891919126322}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 1.5
