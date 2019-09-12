@@ -748,7 +748,7 @@ Camera:
   far clip plane: 5000
   field of view: 40
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 3.8
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -772,7 +772,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 40.412525, y: -8.170935, z: -10}
+  m_LocalPosition: {x: 24.385437, y: -6.722209, z: -10}
   m_LocalScale: {x: 0.61784476, y: 1.073258, z: 0.61784476}
   m_Children: []
   m_Father: {fileID: 0}
@@ -955,7 +955,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &692920785
 Transform:
   m_ObjectHideFlags: 0
@@ -3181,11 +3181,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Save room2
       objectReference: {fileID: 0}
-    - target: {fileID: 4429798560238627853, guid: d54d06f40153a634e866b225a81a9e6f,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4429798560238627852, guid: d54d06f40153a634e866b225a81a9e6f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3341,11 +3336,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Save room
       objectReference: {fileID: 0}
-    - target: {fileID: 2270532529486496017, guid: ea3812b1620edff478f4050f720dda07,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2270532529486496016, guid: ea3812b1620edff478f4050f720dda07,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3421,11 +3411,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: frame 1
       objectReference: {fileID: 0}
-    - target: {fileID: 2416032200291565476, guid: 179529e3796259144b051205946d541e,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2416032200291565477, guid: 179529e3796259144b051205946d541e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3486,21 +3471,6 @@ PrefabInstance:
       propertyPath: m_Follow
       value: 
       objectReference: {fileID: 575811154}
-    - target: {fileID: 2416032199892736544, guid: 179529e3796259144b051205946d541e,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2416032199892736544, guid: 179529e3796259144b051205946d541e,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 9024902548873739781, guid: 179529e3796259144b051205946d541e,
-        type: 3}
-      propertyPath: dropItems.Array.size
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 179529e3796259144b051205946d541e, type: 3}
 --- !u!1 &2416032200850081395 stripped
