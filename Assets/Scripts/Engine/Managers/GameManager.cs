@@ -5,6 +5,9 @@ using TMPro;
 public class GameManager : MonoBehaviour
 {
     public GameObject pause;
+    public GameObject map;
+
+    [Space(10)]
     public Image experienceImage;
     public TextMeshProUGUI currentLevel;
     public TextMeshProUGUI coins;
@@ -69,6 +72,8 @@ public class GameManager : MonoBehaviour
             Time.timeScale = (Time.timeScale + 1) % 2;
             pause.SetActive(!pause.activeSelf);
         }
+        else if (Input.GetButtonDown("Map"))
+            map.SetActive(!map.activeSelf);
     }
 
     public static void SavingData(Transform playerTransform)
