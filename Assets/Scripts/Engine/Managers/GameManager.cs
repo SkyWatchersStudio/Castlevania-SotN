@@ -68,12 +68,14 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         if (Input.GetButtonDown("Cancel"))
-        {
-            Time.timeScale = (Time.timeScale + 1) % 2;
-            pause.SetActive(!pause.activeSelf);
-        }
+            MenuActivator(pause);
         else if (Input.GetButtonDown("Map"))
-            map.SetActive(!map.activeSelf);
+            MenuActivator(map);
+    }
+    private void MenuActivator(GameObject obj)
+    {
+        obj.SetActive(!obj.activeSelf);
+        Time.timeScale = (Time.timeScale + 1) % 2;
     }
 
     public static void SavingData(Transform playerTransform)
