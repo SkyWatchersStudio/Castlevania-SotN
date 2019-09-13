@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Enemy
   - Interact
+  - mapElements
   layers:
   - Default
   - TransparentFX
