@@ -59,25 +59,30 @@ public sealed class Player : Characters
 
         m_Animator.SetFloat(m_SpeedID, Mathf.Abs(m_HorizontalInput));
     }
+
+    public static bool m_DashAbility;
+
     private void InputDetection()
     {
         //jump input determiner
         if (Input.GetButtonDown("Jump"))
             m_JumpSaveTime = jumpSaveTime;
         //we don't want to apply force when we are falling or we are not jumping ofcourse!
-        else if (Input.GetButtonUp("Jump"))
-            if (m_Rigidbody.velocity.y > 0 && m_IsJumping)
-                m_InterruptJumping = true;
+        else if (Input.GetButtonUp("Jump") && m_IsJumping)
+            m_InterruptJumping = true;
 
         if (Input.GetButtonDown("Attack") && m_TimeBtwAttack < 0)
         {
             m_TimeBtwAttack = timeBetweenAttack;
             m_Attack = true;
         }
-        else if (Input.GetButtonDown("Dash") && m_TimeBtwDash < 0)
+        else if (m_DashAbility)
         {
-            m_Dash = true;
-            m_TimeBtwDash = timeBetweenDash;
+            if (Input.GetButtonDown("Dash") && m_TimeBtwDash < 0)
+            {
+                m_Dash = true;
+                m_TimeBtwDash = timeBetweenDash;
+            }
         }
         else if (Input.GetButtonDown("Dodge") && m_Grounded)
             m_Dodge = true;
@@ -95,7 +100,7 @@ public sealed class Player : Characters
             m_Rigidbody.AddForce(Vector2.up * jumpForce);
             m_IsJumping = true;
         }
-        else if (m_InterruptJumping)
+        else if (m_InterruptJumping && m_Rigidbody.velocity.y > 0)
         {
             m_Rigidbody.AddForce(Vector2.up * -m_Rigidbody.velocity.y, ForceMode2D.Impulse);
             m_InterruptJumping = m_IsJumping = false;
