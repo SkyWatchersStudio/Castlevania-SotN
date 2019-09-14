@@ -130,7 +130,6 @@ public sealed class Player : Characters
     }
 
     private bool m_IsMist;
-    private Collider2D m_PlCollider;
 
     private void MistShifting()
     {
@@ -162,7 +161,6 @@ public sealed class Player : Characters
 
         //override this cause animator component is different than base class thought
         m_Animator = GetComponentInChildren<Animator>();
-        m_PlCollider = GetComponent<Collider2D>();
 
         //Animator parameter Ids
         m_AttackID = Animator.StringToHash("Attack");
