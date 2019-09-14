@@ -12,6 +12,7 @@ public class FramesList : MonoBehaviour
     {
         if (m_Instance == null)
             m_Instance = this;
+        //disable all the frames except first one
         for (int i = 1; i < frames.Length; i++)
             frames[i].SetActive(false);
     }
@@ -21,9 +22,8 @@ public class FramesList : MonoBehaviour
     {
         for (int i = 0; i < 2; i++)
         {
-            //as we work with natuaral numbers in the inspecter we calculate the number
-            //we want to work with arrays
-            int listIndex = fNum[i] - 1;
+            //index of the desire frame
+            int listIndex = fNum[i];
             var currentFrame = m_Instance.frames[listIndex];
             bool isActive = currentFrame.activeSelf;
 

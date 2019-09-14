@@ -584,7 +584,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36724c5142706384f94d579701185716, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  frameNumbers: 0200000003000000
+  frameNumbers: 0100000002000000
 --- !u!1 &398560321
 GameObject:
   m_ObjectHideFlags: 0
@@ -730,7 +730,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36724c5142706384f94d579701185716, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  frameNumbers: 0400000006000000
+  frameNumbers: 0300000005000000
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -824,7 +824,7 @@ Camera:
   far clip plane: 100
   field of view: 40
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 3.8
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -848,7 +848,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 75.2539, y: -18.360525, z: -10}
+  m_LocalPosition: {x: 114.23348, y: 5.198971, z: -10}
   m_LocalScale: {x: 0.61784476, y: 1.073258, z: 0.61784476}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1820,7 +1820,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36724c5142706384f94d579701185716, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  frameNumbers: 0200000004000000
+  frameNumbers: 0100000003000000
 --- !u!1 &1473738534
 GameObject:
   m_ObjectHideFlags: 0
@@ -1863,7 +1863,7 @@ MonoBehaviour:
   - {fileID: 2270532529486496017, guid: ea3812b1620edff478f4050f720dda07, type: 3}
   - {fileID: 4301594944382530371, guid: e9015dc1233783e43936705858c14ba2, type: 3}
   - {fileID: 4429798560238627853, guid: d54d06f40153a634e866b225a81a9e6f, type: 3}
-  - {fileID: 242981779}
+  - {fileID: 8928110872578160895, guid: ab1493f8e98e0284a9245f4b702b4966, type: 3}
 --- !u!4 &1473738536
 Transform:
   m_ObjectHideFlags: 0
@@ -2054,7 +2054,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36724c5142706384f94d579701185716, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  frameNumbers: 0100000002000000
+  frameNumbers: 0000000001000000
 --- !u!1 &1572036655
 GameObject:
   m_ObjectHideFlags: 0
@@ -2297,7 +2297,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36724c5142706384f94d579701185716, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  frameNumbers: 0400000005000000
+  frameNumbers: 0300000004000000
 --- !u!1 &1665272776
 GameObject:
   m_ObjectHideFlags: 0

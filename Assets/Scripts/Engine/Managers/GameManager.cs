@@ -135,7 +135,7 @@ public class GameManager : MonoBehaviour
                 break;
             }
 
-        return currentFrame + 1; //frame switcher will reduce the number by 1
+        return currentFrame; //frame switcher will reduce the number by 1
     }
     private void OnApplicationQuit()
     {
