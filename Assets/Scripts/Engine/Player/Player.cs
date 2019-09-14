@@ -75,7 +75,7 @@ public sealed class Player : Characters
         if (Input.GetButtonDown("Jump"))
             m_JumpSaveTime = jumpSaveTime;
         //we don't want to apply force when we are falling or we are not jumping ofcourse!
-        else if (Input.GetButtonUp("Jump") && m_IsJumping)
+        else if (Input.GetButtonUp("Jump") && m_Rigidbody.velocity.y > 0 && m_IsJumping)
             m_InterruptJumping = true;
 
         if (Input.GetButtonDown("Attack") && m_TimeBtwAttack < 0)
@@ -108,7 +108,7 @@ public sealed class Player : Characters
             m_Rigidbody.AddForce(Vector2.up * jumpForce);
             m_IsJumping = true;
         }
-        else if (m_InterruptJumping && m_Rigidbody.velocity.y > 0)
+        else if (m_InterruptJumping)
         {
             m_Rigidbody.AddForce(Vector2.up * -m_Rigidbody.velocity.y, ForceMode2D.Impulse);
             m_InterruptJumping = m_IsJumping = false;
@@ -130,7 +130,6 @@ public sealed class Player : Characters
     }
 
     private bool m_IsMist;
-    private Collider2D m_PlCollider;
 
     private void MistShifting()
     {
@@ -162,7 +161,6 @@ public sealed class Player : Characters
 
         //override this cause animator component is different than base class thought
         m_Animator = GetComponentInChildren<Animator>();
-        m_PlCollider = GetComponent<Collider2D>();
 
         //Animator parameter Ids
         m_AttackID = Animator.StringToHash("Attack");

@@ -5,7 +5,7 @@ using UnityEngine;
 public class Attack : MonoBehaviour
 {
     private Player m_PlayerScript;
-    private const int m_NotGroundLayer = 1 << 8;
+    private const int m_AttackLayer = 1 << 11 | 1 << 8;
 
     private void Start() => m_PlayerScript = GetComponentInParent<Player>();
 
@@ -15,7 +15,7 @@ public class Attack : MonoBehaviour
         var enemies = Physics2D.OverlapCircleAll(
             m_PlayerScript.attackPosition.position,
             m_PlayerScript.attackRange,
-            m_NotGroundLayer);
+            m_AttackLayer);
 
         foreach (Collider2D enemy in enemies)
         {
