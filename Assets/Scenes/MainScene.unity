@@ -1391,6 +1391,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2370a3dba3b0b62459f990a68de8c5b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  debug: 1
   pause: {fileID: 398560321}
   map: {fileID: 1574148815}
   experienceImage: {fileID: 706322325}

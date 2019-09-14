@@ -4,6 +4,8 @@ using TMPro;
 
 public class GameManager : MonoBehaviour
 {
+    public bool debug;
+    [Space(10)]
     public GameObject pause;
     public GameObject map;
 
@@ -16,7 +18,8 @@ public class GameManager : MonoBehaviour
     private static int m_PlayerCurrentLevel;
     private static int m_NextLevelPoint = 100;
     private static int m_Money;
-    private static GameManager m_Instance;
+
+    public static GameManager m_Instance;
 
     public static int ExperiencePoint
     {
@@ -58,7 +61,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    void Start()
+    void Awake()
     {
         Cursor.visible = false;
         m_Instance = this;

@@ -8,13 +8,16 @@ public class FramesList : MonoBehaviour
 
     public static FramesList m_Instance;
 
-    private void Awake()
+    private void Start()
     {
         if (m_Instance == null)
             m_Instance = this;
-        //disable all the frames except first one
-        for (int i = 1; i < frames.Length; i++)
-            frames[i].SetActive(false);
+        if (!GameManager.m_Instance.debug)
+        {
+            //disable all the frames except first one
+            for (int i = 1; i < frames.Length; i++)
+                frames[i].SetActive(false);
+        }
     }
 
     // with two integer given find the active one and do the job and enable the diactive one
