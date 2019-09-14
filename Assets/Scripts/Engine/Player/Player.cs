@@ -128,13 +128,18 @@ public sealed class Player : Characters
 
         m_Rigidbody.AddForce(forceDir, ForceMode2D.Impulse);
     }
+
     private bool m_IsMist;
     private Collider2D m_PlCollider;
+
     private void MistShifting()
     {
         m_MistTransform = false;
         m_Rigidbody.velocity = Vector2.zero;
 
+        // cause mist to not interact with enemies
+        gameObject.layer = gameObject.layer == 8 ? 12 : 8;
+        
         if (m_IsMist || !m_Grounded)
             m_Rigidbody.gravityScale = (m_Rigidbody.gravityScale + 1) % 2;
 

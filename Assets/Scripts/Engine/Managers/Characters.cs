@@ -14,7 +14,7 @@ public abstract class Characters : MonoBehaviour
 
     protected Rigidbody2D m_Rigidbody;
     protected Animator m_Animator;
-    protected const int m_GroundLayer = ~(1 << 8 | 1 << 10);
+    protected const int m_GroundLayer = ~(1 << 8 | 1 << 10 | 1 << 11);
 
     public virtual void Start()
     {
