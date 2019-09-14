@@ -275,6 +275,12 @@ Transform:
   m_Father: {fileID: 692920785}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &242981779 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8928110872578160895, guid: ab1493f8e98e0284a9245f4b702b4966,
+    type: 3}
+  m_PrefabInstance: {fileID: 8928110872743207788}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &349004654
 GameObject:
   m_ObjectHideFlags: 0
@@ -654,6 +660,77 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 398560321}
   m_CullTransparentMesh: 0
+--- !u!1 &506585675
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 506585676}
+  - component: {fileID: 506585678}
+  - component: {fileID: 506585677}
+  m_Layer: 0
+  m_Name: Door (4)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &506585676
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 506585675}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 66.06, y: -19.3, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1473738536}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &506585677
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 506585675}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0.0000009536743}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.04, y: 3.2914562}
+  m_EdgeRadius: 0
+--- !u!114 &506585678
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 506585675}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36724c5142706384f94d579701185716, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  frameNumbers: 0500000006000000
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -747,7 +824,7 @@ Camera:
   far clip plane: 100
   field of view: 40
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 3.8
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -771,7 +848,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 75.257286, y: -18.360525, z: -10}
+  m_LocalPosition: {x: 24.385437, y: -6.722209, z: -10}
   m_LocalScale: {x: 0.61784476, y: 1.073258, z: 0.61784476}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1779,12 +1856,16 @@ MonoBehaviour:
   - {fileID: 2270532529083674572}
   - {fileID: 4301594945786248946}
   - {fileID: 969399983822381131}
+  - {fileID: 4301594945786248946}
+  - {fileID: 242981779}
   framePrefabs:
   - {fileID: 2416032200291565476, guid: 179529e3796259144b051205946d541e, type: 3}
   - {fileID: 1254276362486562374, guid: e967070c595b23d40a0321522da8327f, type: 3}
   - {fileID: 2270532529486496017, guid: ea3812b1620edff478f4050f720dda07, type: 3}
   - {fileID: 4301594944382530371, guid: e9015dc1233783e43936705858c14ba2, type: 3}
   - {fileID: 4429798560238627853, guid: d54d06f40153a634e866b225a81a9e6f, type: 3}
+  - {fileID: 4301594945786248946}
+  - {fileID: 242981779}
 --- !u!4 &1473738536
 Transform:
   m_ObjectHideFlags: 0
@@ -1800,6 +1881,7 @@ Transform:
   - {fileID: 371767556}
   - {fileID: 1376805719}
   - {fileID: 1650790841}
+  - {fileID: 506585676}
   m_Father: {fileID: 0}
   m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
