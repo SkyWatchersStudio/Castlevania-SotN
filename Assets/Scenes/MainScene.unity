@@ -2086,7 +2086,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2370a3dba3b0b62459f990a68de8c5b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  debug: 1
+  debug: 0
   pause: {fileID: 398560321}
   map: {fileID: 1574148815}
   experienceImage: {fileID: 706322325}
@@ -3420,7 +3420,7 @@ Transform:
   m_Children:
   - {fileID: 1759733805}
   m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1553012029
 GameObject:
@@ -5218,6 +5218,11 @@ PrefabInstance:
       propertyPath: healthImage
       value: 
       objectReference: {fileID: 1112440446}
+    - target: {fileID: 5191960925485090435, guid: 566019c9cd7fe99448037a396e657a67,
+        type: 3}
+      propertyPath: mistForce
+      value: 25
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 566019c9cd7fe99448037a396e657a67, type: 3}
 --- !u!1001 &8928110872743207788

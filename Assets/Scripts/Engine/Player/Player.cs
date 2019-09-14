@@ -18,6 +18,7 @@ public sealed class Player : Characters
     public float timeBetweenDash;
     [Space(10)]
     public float dodgeForce;
+    public float mistForce;
     [Space(10)]
     public Image healthImage;
 
@@ -27,7 +28,7 @@ public sealed class Player : Characters
     private float m_TimeBtwAttack, m_TimeBtwDash;
     private bool m_Attack, m_Dash, m_Dodge, m_Lock;
     private Collider2D[] m_GroundColliders;
-    private float m_GravityScale;
+    private bool m_MistTransform;
 
     private float m_Health;
     public float CurrentHealth
@@ -52,15 +53,21 @@ public sealed class Player : Characters
         m_TimeBtwAttack -= Time.deltaTime;
         m_TimeBtwDash -= Time.deltaTime;
 
+        //if (m_MistAbility)
+        if (Input.GetButtonDown("Mist"))
+            m_MistTransform = true;
+
         m_HorizontalInput = Input.GetAxisRaw("Horizontal");
         Flip(m_HorizontalInput);
 
-        InputDetection();
+        if (m_IsMist)
+            return;
 
+        InputDetection();
         m_Animator.SetFloat(m_SpeedID, Mathf.Abs(m_HorizontalInput));
     }
 
-    public static bool m_DashAbility;
+    public static bool m_DashAbility, m_MistAbility;
 
     private void InputDetection()
     {
@@ -76,7 +83,10 @@ public sealed class Player : Characters
             m_TimeBtwAttack = timeBetweenAttack;
             m_Attack = true;
         }
-        else if (m_DashAbility)
+        else if (Input.GetButtonDown("Dodge") && m_Grounded)
+            m_Dodge = true;
+
+        if (m_DashAbility)
         {
             if (Input.GetButtonDown("Dash") && m_TimeBtwDash < 0)
             {
@@ -84,8 +94,6 @@ public sealed class Player : Characters
                 m_TimeBtwDash = timeBetweenDash;
             }
         }
-        else if (Input.GetButtonDown("Dodge") && m_Grounded)
-            m_Dodge = true;
     }
     #endregion
     private void JumpStatus()
@@ -120,6 +128,28 @@ public sealed class Player : Characters
 
         m_Rigidbody.AddForce(forceDir, ForceMode2D.Impulse);
     }
+    private bool m_IsMist;
+    private Collider2D m_PlCollider;
+    private void MistShifting()
+    {
+        m_MistTransform = false;
+        m_Rigidbody.velocity = Vector2.zero;
+
+        if (m_IsMist || !m_Grounded)
+            m_Rigidbody.gravityScale = (m_Rigidbody.gravityScale + 1) % 2;
+
+        m_IsMist = !m_IsMist;
+    }
+    private void MistMove()
+    {
+        float horizontal = Input.GetAxis("Horizontal");
+        float vertical = Input.GetAxis("Vertical");
+
+        Vector2 vector = new Vector2(horizontal, vertical);
+        vector.Normalize();
+
+        m_Rigidbody.AddForce(vector * mistForce);
+    }
 
     public override void Start()
     {
@@ -127,13 +157,12 @@ public sealed class Player : Characters
 
         //override this cause animator component is different than base class thought
         m_Animator = GetComponentInChildren<Animator>();
+        m_PlCollider = GetComponent<Collider2D>();
 
         //Animator parameter Ids
         m_AttackID = Animator.StringToHash("Attack");
         m_SpeedID = Animator.StringToHash("Speed");
         m_IsGroundID = Animator.StringToHash("isGround");
-
-        m_GravityScale = m_Rigidbody.gravityScale;
 
         m_Health = health;
     }
@@ -142,13 +171,21 @@ public sealed class Player : Characters
         //debuger...
         Debug.DrawRay(transform.position, m_Rigidbody.velocity, Color.cyan);
 
+        if (m_IsMist)
+        {
+            if (m_MistTransform) // transform back to normal
+                MistShifting();
+            MistMove();
+            return;
+        }
+
         m_Grounded = CheckGround(out m_GroundColliders);
         m_Animator.SetBool(m_IsGroundID, m_Grounded);
 
         if (m_Grounded && m_Rigidbody.gravityScale != 0)
             m_Rigidbody.gravityScale = 0;
         else if (!m_Grounded && !m_Lock)
-            m_Rigidbody.gravityScale = m_GravityScale;
+            m_Rigidbody.gravityScale = 1;
 
         if (m_Attack)
         {
@@ -171,6 +208,8 @@ public sealed class Player : Characters
                 m_Animator.SetBool("Doudge", true);
                 m_AnimDD = WhichAnimation.dodge;
             }
+            else if (m_MistTransform)
+                MistShifting(); // transform to mist
         }
         else if (m_Lock)
         {
