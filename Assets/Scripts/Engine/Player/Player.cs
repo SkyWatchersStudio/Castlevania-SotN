@@ -75,12 +75,8 @@ public sealed class Player : Characters
         if (Input.GetButtonDown("Jump"))
             m_JumpSaveTime = jumpSaveTime;
         //we don't want to apply force when we are falling or we are not jumping ofcourse!
-        else if (Input.GetButtonUp("Jump") && m_Rigidbody.velocity.y > 0 && m_IsJumping)
-        {
-            Vector2 vel = m_Rigidbody.velocity;
-            vel.y = 0;
-            m_Rigidbody.velocity = vel;
-        }
+        else if (Input.GetButtonUp("Jump") && m_Rigidbody.velocity.y > 0)
+            m_InterruptJumping = true;
 
         if (Input.GetButtonDown("Attack") && m_TimeBtwAttack < 0)
         {
@@ -105,18 +101,18 @@ public sealed class Player : Characters
         if (m_IsJumping)
         {
             if (m_Grounded)
-            {
                 m_IsJumping = false;
-                m_Rigidbody.gravityScale = 0;
-                return;
+            else if (m_InterruptJumping)
+            {
+                m_InterruptJumping = false;
+                Vector2 vel = m_Rigidbody.velocity;
+                vel.y = 0;
+                m_Rigidbody.velocity = vel;
             }
-
-            m_Animator.SetFloat("vSpeed", m_Rigidbody.velocity.y);
         }
 
         if (m_JumpSaveTime > 0 && m_Grounded)
         {
-            m_Rigidbody.gravityScale = 1;
             m_Rigidbody.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
             m_IsJumping = true;
         }
@@ -190,7 +186,14 @@ public sealed class Player : Characters
         }
 
         m_Grounded = CheckGround(out m_GroundColliders);
+
+        if (m_Grounded)
+            m_Rigidbody.gravityScale = 0;
+        else
+            m_Rigidbody.gravityScale = 1;
+
         m_Animator.SetBool(m_IsGroundID, m_Grounded);
+        m_Animator.SetFloat("vSpeed", m_Rigidbody.velocity.y);
 
         if (m_Attack)
         {
