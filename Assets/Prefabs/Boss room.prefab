@@ -1068,7 +1068,7 @@ MonoBehaviour:
   m_Follow: {fileID: 0}
   m_Lens:
     FieldOfView: 40
-    OrthographicSize: 5
+    OrthographicSize: 8
     NearClipPlane: 0.1
     FarClipPlane: 100
     Dutch: 0
@@ -3205,7 +3205,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.00012588501, y: -0.23550892}
+  m_Offset: {x: 1.4170532, y: -0.23550892}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -3216,7 +3216,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 57.512154, y: 1.2703266}
+  m_Size: {x: 60.34651, y: 1.2703266}
   m_EdgeRadius: 0
 --- !u!1 &8928110874186727547
 GameObject:

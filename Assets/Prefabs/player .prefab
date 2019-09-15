@@ -444,7 +444,7 @@ MonoBehaviour:
   groundRadius: 0.15
   m_FacingRight: 1
   jumpSaveTime: 0.05
-  jumpForce: 4340
+  jumpForce: 90
   attackForce: 15
   timeBetweenAttack: 0.4
   attackPosition: {fileID: 2034623080}
