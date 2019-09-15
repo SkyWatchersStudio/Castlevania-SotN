@@ -182,11 +182,6 @@ public sealed class Player : Characters
 
         m_Grounded = CheckGround(out m_GroundColliders);
 
-        if (m_Grounded)
-            m_Rigidbody.gravityScale = 0;
-        else
-            m_Rigidbody.gravityScale = 1;
-
         m_Animator.SetBool(m_IsGroundID, m_Grounded);
         m_Animator.SetFloat("vSpeed", m_Rigidbody.velocity.y);
 
@@ -197,6 +192,11 @@ public sealed class Player : Characters
         }
         if (!m_Lock)
         {
+            if (m_Grounded)
+                m_Rigidbody.gravityScale = 0;
+            else
+                m_Rigidbody.gravityScale = 1;
+
             if (m_Dash)
             {
                 Dash(ref m_Dash, dashForce, true);
