@@ -685,7 +685,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &217466950
 Transform:
   m_ObjectHideFlags: 0
@@ -14785,12 +14785,8 @@ PrefabInstance:
       objectReference: {fileID: 1112440446}
     - target: {fileID: 5191960925485090435, guid: 566019c9cd7fe99448037a396e657a67,
         type: 3}
-      propertyPath: mistForce
-      value: 25
-      objectReference: {fileID: 0}
-    - target: {fileID: 1349572232, guid: 566019c9cd7fe99448037a396e657a67, type: 3}
-      propertyPath: m_Enabled
-      value: 1
+      propertyPath: jumpForce
+      value: 90
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 566019c9cd7fe99448037a396e657a67, type: 3}

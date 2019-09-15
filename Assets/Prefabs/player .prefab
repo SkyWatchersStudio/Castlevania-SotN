@@ -154,7 +154,7 @@ GameObject:
   - component: {fileID: 1487790010}
   - component: {fileID: 1487790011}
   m_Layer: 10
-  m_Name: New Sprite
+  m_Name: PlayerAnchor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -452,4 +452,5 @@ MonoBehaviour:
   dashForce: 45
   timeBetweenDash: 0.6
   dodgeForce: 38
+  mistForce: 25
   healthImage: {fileID: 0}
