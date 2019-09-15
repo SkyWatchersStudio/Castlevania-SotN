@@ -76,7 +76,11 @@ public sealed class Player : Characters
             m_JumpSaveTime = jumpSaveTime;
         //we don't want to apply force when we are falling or we are not jumping ofcourse!
         else if (Input.GetButtonUp("Jump") && m_Rigidbody.velocity.y > 0 && m_IsJumping)
-            m_InterruptJumping = true;
+        {
+            Vector2 vel = m_Rigidbody.velocity;
+            vel.y = 0;
+            m_Rigidbody.velocity = vel;
+        }
 
         if (Input.GetButtonDown("Attack") && m_TimeBtwAttack < 0)
         {
@@ -98,20 +102,23 @@ public sealed class Player : Characters
     #endregion
     private void JumpStatus()
     {
-        m_Animator.SetFloat("vSpeed", m_Rigidbody.velocity.y);
+        if (m_IsJumping)
+        {
+            if (m_Grounded)
+            {
+                m_IsJumping = false;
+                m_Rigidbody.gravityScale = 0;
+                return;
+            }
 
-        if (m_IsJumping && m_Grounded)
-            m_IsJumping = false;
+            m_Animator.SetFloat("vSpeed", m_Rigidbody.velocity.y);
+        }
 
         if (m_JumpSaveTime > 0 && m_Grounded)
         {
-            m_Rigidbody.AddForce(Vector2.up * jumpForce);
+            m_Rigidbody.gravityScale = 1;
+            m_Rigidbody.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
             m_IsJumping = true;
-        }
-        else if (m_InterruptJumping)
-        {
-            m_Rigidbody.AddForce(Vector2.up * -m_Rigidbody.velocity.y, ForceMode2D.Impulse);
-            m_InterruptJumping = m_IsJumping = false;
         }
     }
     private void Dash(ref bool job, float force, bool isForwardDir)
@@ -185,11 +192,6 @@ public sealed class Player : Characters
         m_Grounded = CheckGround(out m_GroundColliders);
         m_Animator.SetBool(m_IsGroundID, m_Grounded);
 
-        if (m_Grounded && m_Rigidbody.gravityScale != 0)
-            m_Rigidbody.gravityScale = 0;
-        else if (!m_Grounded && !m_Lock)
-            m_Rigidbody.gravityScale = 1;
-
         if (m_Attack)
         {
             m_Attack = false;
@@ -232,9 +234,7 @@ public sealed class Player : Characters
             return;
         }
 
-        //anything about jumping stuff
         JumpStatus();
-
         base.FixedUpdate();
     }
     public override void Move()

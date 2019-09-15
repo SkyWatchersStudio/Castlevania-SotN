@@ -510,7 +510,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &217466950
 Transform:
   m_ObjectHideFlags: 0
@@ -2284,7 +2284,7 @@ Camera:
   far clip plane: 100
   field of view: 40
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 3.8
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -2308,7 +2308,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 40.412525, y: -8.170935, z: -10}
+  m_LocalPosition: {x: 24.384926, y: -6.722204, z: -10}
   m_LocalScale: {x: 0.61784476, y: 1.073258, z: 0.61784476}
   m_Children: []
   m_Father: {fileID: 0}
@@ -10520,12 +10520,8 @@ PrefabInstance:
       objectReference: {fileID: 1112440446}
     - target: {fileID: 5191960925485090435, guid: 566019c9cd7fe99448037a396e657a67,
         type: 3}
-      propertyPath: mistForce
-      value: 25
-      objectReference: {fileID: 0}
-    - target: {fileID: 1349572232, guid: 566019c9cd7fe99448037a396e657a67, type: 3}
-      propertyPath: m_Enabled
-      value: 1
+      propertyPath: jumpForce
+      value: 90
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 566019c9cd7fe99448037a396e657a67, type: 3}
