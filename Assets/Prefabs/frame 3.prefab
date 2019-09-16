@@ -239,8 +239,8 @@ PolygonCollider2D:
     - - {x: -1.2528687, y: -13.460285}
       - {x: -1.2099228, y: -18.960865}
       - {x: -33.567337, y: -18.939081}
-      - {x: -33.492382, y: -9.753134}
-      - {x: -34.821793, y: -9.750093}
+      - {x: -33.61209, y: -0.2092228}
+      - {x: -34.747883, y: -0.1853838}
       - {x: -34.817715, y: -9.994648}
       - {x: -34.813805, y: -10.517515}
       - {x: -34.817867, y: -10.810692}
@@ -1801,7 +1801,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4301594944252782193}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -31.59, y: -11.59, z: 0}
+  m_LocalPosition: {x: -31.59, y: -13.21, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4301594943864118413}
@@ -2063,7 +2063,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4301594944378095323}
   - component: {fileID: 4301594944378095322}
-  - component: {fileID: 1645967299278578599}
   m_Layer: 8
   m_Name: stone platform copy 5 (10)
   m_TagString: Untagged
@@ -2133,32 +2132,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &1645967299278578599
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4301594944378095320}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 15.299999, y: 2.5699217}
-    newSize: {x: 15.3, y: 2.56}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 15.299999, y: 2.5699217}
-  m_EdgeRadius: 0
 --- !u!1 &4301594944382530371
 GameObject:
   m_ObjectHideFlags: 0
