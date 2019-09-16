@@ -4,6 +4,11 @@ using UnityEngine;
 
 public sealed class Tomato : Enemy
 {
+    public override void OnCollisionEnter2D(Collision2D collision)
+    {
+        base.OnCollisionEnter2D(collision);
+        m_Animator.SetTrigger("AttackEnemy");
+    }
     public override void Move()
     {
         bool frontGround = CheckGround(out _);

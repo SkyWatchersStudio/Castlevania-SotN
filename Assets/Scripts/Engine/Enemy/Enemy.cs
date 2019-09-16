@@ -20,14 +20,16 @@ public abstract class Enemy : Characters
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            m_Animator.SetTrigger("AttackEnemy");
-
             var playerGameObject = collision.gameObject;
             playerGameObject.GetComponentInChildren<Animator>().SetTrigger("Hit");
             playerGameObject.GetComponent<Player>().TakeDamage();
 
+            var attackDirection = m_TargetDirection.normalized;
+            attackDirection.y *= collisionForce * .75f;
+            attackDirection.x *= collisionForce *  .25f;
+
             collision.rigidbody.AddForce(
-                m_TargetDirection * collisionForce, ForceMode2D.Impulse); //push player back
+                attackDirection, ForceMode2D.Impulse); //push player back
         }
     }
 
