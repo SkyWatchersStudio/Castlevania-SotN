@@ -11,10 +11,8 @@ public abstract class Enemy : Characters
     public int experiencePoint = 10;
 
     protected Vector2 m_TargetDirection;
-
-    private Transform m_PlayerTransform;
-    private bool m_IsPlayerFound;
-    private CapsuleCollider2D m_TriggerCollider;
+    protected Transform m_PlayerTransform;
+    protected bool m_IsPlayerFound;
 
     public virtual void OnCollisionEnter2D(Collision2D collision)
     {
@@ -33,16 +31,7 @@ public abstract class Enemy : Characters
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.CompareTag("Player"))
-        {
-            m_IsPlayerFound = true;
-            m_TriggerCollider.enabled = false;
-            m_PlayerTransform = collision.transform;
-        }
-    }
-    private Vector2 GetPlayerDirection()
+    public virtual Vector2 GetPlayerDirection()
     {
         var deltaPosition = m_PlayerTransform.position - transform.position;
 
@@ -50,29 +39,17 @@ public abstract class Enemy : Characters
         {
             m_IsPlayerFound = false;
             m_PlayerTransform = null;
-            m_TriggerCollider.enabled = true;
         }
 
         return deltaPosition.normalized;
     }
 
-    public override void Start()
-    {
-        base.Start();
-
-        var colliders = GetComponents<CapsuleCollider2D>();
-        foreach (var collider in colliders)
-        {
-            if (collider.isTrigger)
-                m_TriggerCollider = collider;
-        }
-    }
     public override void FixedUpdate()
     {
         if (!m_IsPlayerFound)
             return;
 
-        m_TargetDirection = GetPlayerDirection(); //Get direction toward the player
+        m_TargetDirection = GetPlayerDirection();
         Flip(m_TargetDirection.x); //Flip Enemy if needed
 
         base.FixedUpdate();
