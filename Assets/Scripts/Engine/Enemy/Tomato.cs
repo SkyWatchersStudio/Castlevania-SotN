@@ -15,4 +15,9 @@ public sealed class Tomato : Enemy
         Vector2 movement = Vector2.right * m_TargetDirection * moveSpeed;
         m_Rigidbody.AddForce(movement);
     }
+    public override void TakeDamage()
+    {
+        base.TakeDamage();
+        m_Animator.SetTrigger("HitEnemy");
+    }
 }

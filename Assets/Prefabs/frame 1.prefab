@@ -4406,6 +4406,16 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.29911
       objectReference: {fileID: 0}
+    - target: {fileID: 2849393132174132615, guid: dbf2383644e959d4c8c565673f985842,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2849393132174132615, guid: dbf2383644e959d4c8c565673f985842,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dbf2383644e959d4c8c565673f985842, type: 3}
 --- !u!4 &6974614985020110655 stripped
