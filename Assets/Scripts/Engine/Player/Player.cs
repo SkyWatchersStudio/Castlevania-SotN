@@ -52,7 +52,10 @@ public sealed class Player : Characters
     {
         //jump input determiner
         if (Input.GetButtonDown("Jump"))
+        {
             m_JumpSaveTime = jumpSaveTime;
+            m_Abilities.m_ShouldJump = true;
+        }
         //we don't want to apply force when we are falling or we are not jumping ofcourse!
         else if (Input.GetButtonUp("Jump"))
             m_Abilities.m_InterruptJump = true;
@@ -114,8 +117,13 @@ public sealed class Player : Characters
             return;
         }
 
-        if (m_MistTransform && !m_Abilities.IsLock)
-            MistShifting(); // transform to mist
+        if (!m_Abilities.IsLock)
+        {
+            if (m_MistTransform)
+                MistShifting(); // transform to mist
+
+            base.FixedUpdate();
+        }
     }
     public override void Move() => m_Abilities.Move(m_HorizontalInput);
     public override void TakeDamage()

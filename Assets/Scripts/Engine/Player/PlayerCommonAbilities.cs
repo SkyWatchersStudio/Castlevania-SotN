@@ -57,7 +57,7 @@ public class PlayerCommonAbilities : MonoBehaviour
         m_TimeBtwDash -= Time.deltaTime;
     }
 
-    public static bool m_DashAbility;
+    public static bool m_DashAbility = true;
 
     private void FixedUpdate()
     {
@@ -65,7 +65,6 @@ public class PlayerCommonAbilities : MonoBehaviour
 
         m_Animator.SetBool(m_IsGroundID, m_Grounded);
         m_Animator.SetFloat("vSpeed", m_Rigidbody.velocity.y);
-        m_Animator.SetFloat(m_SpeedID, Mathf.Abs(m_Rigidbody.velocity.x));
 
         if (m_Attack && m_TimeBtwAttack < 0)
         {
@@ -73,6 +72,7 @@ public class PlayerCommonAbilities : MonoBehaviour
             m_Animator.SetTrigger(m_AttackID);
             m_TimeBtwAttack = timeBetweenAttack;
         }
+
         if (!m_Lock)
         {
             if (m_Grounded)
@@ -134,6 +134,8 @@ public class PlayerCommonAbilities : MonoBehaviour
             }
 
         Vector2 movement = slope * direction * m_Base.moveSpeed;
+        m_Animator.SetFloat(m_SpeedID, Mathf.Abs(movement.x));
+
         m_Rigidbody.AddForce(movement);
     }
 
@@ -142,6 +144,7 @@ public class PlayerCommonAbilities : MonoBehaviour
         if (m_IsJumping && m_Grounded)
             m_IsJumping = false;
 
+        Debug.Log($"Interrupt: {m_InterruptJump}, isJumping: {m_IsJumping}");
         if (m_ShouldJump && m_Grounded)
         {
             m_Rigidbody.velocity = new Vector2(m_Rigidbody.velocity.x, 0);
@@ -149,6 +152,8 @@ public class PlayerCommonAbilities : MonoBehaviour
 
             m_IsJumping = true;
             m_ShouldJump = false;
+
+            Debug.Log("Jumping");
         }
         else if (m_InterruptJump && m_Rigidbody.velocity.y > 0 && m_IsJumping)
         {
@@ -156,6 +161,8 @@ public class PlayerCommonAbilities : MonoBehaviour
             vel.y = 0;
             m_Rigidbody.velocity = vel;
             m_InterruptJump = false;
+
+            Debug.Log("Interrupting");
         }
     }
     private void Dash(ref bool job, float force, bool isForwardDir)

@@ -439,14 +439,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e726639b48ce61e4dbbc7bc231082cea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpForce: 0
-  attackForce: 0
-  timeBetweenAttack: 0
+  jumpForce: 90
+  attackForce: 25
+  timeBetweenAttack: 0.4
   attackPosition: {fileID: 2034623080}
-  attackRange: 0
-  dashForce: 0
-  timeBetweenDash: 0
-  dodgeForce: 0
+  attackRange: 0.8
+  dashForce: 45
+  timeBetweenDash: 0.6
+  dodgeForce: 38
 --- !u!114 &5191960925485090435
 MonoBehaviour:
   m_ObjectHideFlags: 0
