@@ -2447,10 +2447,10 @@ PolygonCollider2D:
       - {x: -55.52592, y: -3.8774896}
       - {x: -55.553677, y: -2.2401628}
       - {x: -57.289814, y: -2.2277186}
-      - {x: -57.269497, y: 0.5310633}
-      - {x: -57.59386, y: 0.51842713}
-      - {x: -57.633396, y: -2.2289011}
-      - {x: -57.653027, y: -5.3940973}
+      - {x: -57.269497, y: -2.2054014}
+      - {x: -57.524555, y: -2.2180376}
+      - {x: -59.48073, y: -2.2289011}
+      - {x: -59.500355, y: -5.37506}
       - {x: 19.199999, y: -5.4}
       - {x: 19.144993, y: -2.6026492}
       - {x: 20.932285, y: -2.5848246}
@@ -4405,16 +4405,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0.29911
-      objectReference: {fileID: 0}
-    - target: {fileID: 2849393132174132615, guid: dbf2383644e959d4c8c565673f985842,
-        type: 3}
-      propertyPath: m_Color.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2849393132174132615, guid: dbf2383644e959d4c8c565673f985842,
-        type: 3}
-      propertyPath: m_Color.b
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dbf2383644e959d4c8c565673f985842, type: 3}
