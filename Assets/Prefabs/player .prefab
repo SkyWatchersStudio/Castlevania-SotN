@@ -362,6 +362,7 @@ GameObject:
   - component: {fileID: 2341238539376258603}
   - component: {fileID: 5851666288230200121}
   - component: {fileID: 4838410754184782593}
+  - component: {fileID: 1863553199706875382}
   - component: {fileID: 5191960925485090435}
   m_Layer: 8
   m_Name: 'player '
@@ -426,6 +427,26 @@ Rigidbody2D:
   m_SleepingMode: 0
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &1863553199706875382
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2940581264361314439}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e726639b48ce61e4dbbc7bc231082cea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jumpForce: 0
+  attackForce: 0
+  timeBetweenAttack: 0
+  attackPosition: {fileID: 2034623080}
+  attackRange: 0
+  dashForce: 0
+  timeBetweenDash: 0
+  dodgeForce: 0
 --- !u!114 &5191960925485090435
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -444,13 +465,5 @@ MonoBehaviour:
   groundRadius: 0.15
   m_FacingRight: 1
   jumpSaveTime: 0.05
-  jumpForce: 90
-  attackForce: 25
-  timeBetweenAttack: 0.4
-  attackPosition: {fileID: 2034623080}
-  attackRange: 0.8
-  dashForce: 45
-  timeBetweenDash: 0.6
-  dodgeForce: 38
   mistForce: 25
   healthImage: {fileID: 0}
