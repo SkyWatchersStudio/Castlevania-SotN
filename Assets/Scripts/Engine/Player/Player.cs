@@ -32,6 +32,8 @@ public sealed class Player : Characters
     private void Update()
     {
         m_JumpSaveTime -= Time.deltaTime;
+        if (m_JumpSaveTime < 0)
+            m_Abilities.m_ShouldJump = false;
 
         //if (m_MistAbility)
         if (Input.GetButtonDown("Mist"))
@@ -67,9 +69,6 @@ public sealed class Player : Characters
             m_Abilities.m_Dodge = true;
         else if (Input.GetButtonDown("Dash"))
             m_Abilities.m_Dash = true;
-
-        if (m_JumpSaveTime < 0)
-            m_Abilities.m_ShouldJump = false;
     }
 
     private bool m_IsMist;
@@ -117,13 +116,14 @@ public sealed class Player : Characters
             return;
         }
 
-        if (!m_Abilities.IsLock)
-        {
-            if (m_MistTransform)
-                MistShifting(); // transform to mist
+        m_Abilities.PhysicUpdate();
+        if (m_Abilities.IsLock)
+            return;
 
-            base.FixedUpdate();
-        }
+        if (m_MistTransform)
+            MistShifting(); // transform to mist
+
+        base.FixedUpdate();
     }
     public override void Move() => m_Abilities.Move(m_HorizontalInput);
     public override void TakeDamage()
