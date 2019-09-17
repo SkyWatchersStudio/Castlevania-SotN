@@ -8,7 +8,7 @@ public class DashAbility : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            Player.m_DashAbility = true;
+            PlayerCommonAbilities.m_DashAbility = true;
             Destroy(gameObject);
         }
     }

@@ -16,8 +16,6 @@ public sealed class Player : Characters
     private float m_JumpSaveTime;
     private bool m_MistTransform;
 
-    private Collider2D[] m_GroundColliders;
-
     private PlayerCommonAbilities m_Abilities;
 
     private float m_Health;
@@ -48,7 +46,7 @@ public sealed class Player : Characters
         InputDetection();
     }
 
-    public static bool m_DashAbility, m_MistAbility;
+    public static bool m_MistAbility;
 
     private void InputDetection()
     {
@@ -56,29 +54,19 @@ public sealed class Player : Characters
         if (Input.GetButtonDown("Jump"))
             m_JumpSaveTime = jumpSaveTime;
         //we don't want to apply force when we are falling or we are not jumping ofcourse!
-        else if (Input.GetButtonUp("Jump") && m_Rigidbody.velocity.y > 0 && m_IsJumping)
-        {
-            Vector2 vel = m_Rigidbody.velocity;
-            vel.y = 0;
-            m_Rigidbody.velocity = vel;
-        }
+        else if (Input.GetButtonUp("Jump"))
+            m_Abilities.m_InterruptJump = true;
 
-        if (Input.GetButtonDown("Attack") && m_TimeBtwAttack < 0)
-        {
-            m_TimeBtwAttack = timeBetweenAttack;
-            m_Attack = true;
-        }
-        else if (Input.GetButtonDown("Dodge") && m_Grounded)
-            m_Dodge = true;
+        if (Input.GetButtonDown("Attack"))
+            m_Abilities.m_Attack = true;
 
-        if (m_DashAbility)
-        {
-            if (Input.GetButtonDown("Dash") && m_TimeBtwDash < 0)
-            {
-                m_Dash = true;
-                m_TimeBtwDash = timeBetweenDash;
-            }
-        }
+        if (Input.GetButtonDown("Dodge"))
+            m_Abilities.m_Dodge = true;
+        else if (Input.GetButtonDown("Dash"))
+            m_Abilities.m_Dash = true;
+
+        if (m_JumpSaveTime < 0)
+            m_Abilities.m_ShouldJump = false;
     }
 
     private bool m_IsMist;
@@ -116,7 +104,7 @@ public sealed class Player : Characters
     }
     public override void FixedUpdate()
     {
-        m_Abilities.m_Grounded = CheckGround(out m_GroundColliders);
+        m_Abilities.m_Grounded = CheckGround(out m_Abilities.m_GroundColliders);
 
         if (m_IsMist)
         {
@@ -126,37 +114,14 @@ public sealed class Player : Characters
             return;
         }
 
-        if (m_MistTransform && !m_Abilities.m_Lock)
+        if (m_MistTransform && !m_Abilities.IsLock)
             MistShifting(); // transform to mist
     }
-    public override void Move()
-    {
-        var direction = Vector2.right;
-        if (m_Abilities.m_Grounded)
-            foreach (var groundCollider in m_GroundColliders)
-            {
-                if (groundCollider == null)
-                    continue;
-
-                direction = groundCollider.transform.right;
-            }
-
-        Vector2 movement = direction * m_HorizontalInput * moveSpeed;
-        m_Rigidbody.AddForce(movement);
-    }
+    public override void Move() => m_Abilities.Move(m_HorizontalInput);
     public override void TakeDamage()
     {
         CurrentHealth -= 1;
         if (CurrentHealth <= 0)
             GameManager.Loading(this.transform);
     }
-
-#if UNITY_EDITOR
-    public override void OnDrawGizmos()
-    {
-        base.OnDrawGizmos();
-        Gizmos.color = Color.green;
-        Gizmos.DrawWireSphere(attackPosition.position, attackRange);
-    }
-#endif
 }

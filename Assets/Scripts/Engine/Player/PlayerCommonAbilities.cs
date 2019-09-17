@@ -16,16 +16,20 @@ public class PlayerCommonAbilities : MonoBehaviour
     [Space(10)]
     public float dodgeForce;
 
-    private Characters m_BaseScript;
+    private Characters m_Base;
 
-    private bool m_IsJumping;
+    private bool m_IsJumping, m_Lock;
     private float m_TimeBtwAttack, m_TimeBtwDash;
-    private bool m_Attack, m_Dash, m_Dodge, m_Lock;
     private Rigidbody2D m_Rigidbody;
     private Animator m_Animator;
 
     [System.NonSerialized]
-    public bool m_Grounded;
+    public bool m_Grounded, m_Attack, m_Dash,
+        m_Dodge, m_InterruptJump, m_ShouldJump;
+    [System.NonSerialized]
+    public Collider2D[] m_GroundColliders;
+
+    public bool IsLock { get => m_Lock; }
 
     enum WhichAnimation { dodge, dash}
     private WhichAnimation m_AnimDD;
@@ -34,7 +38,7 @@ public class PlayerCommonAbilities : MonoBehaviour
 
     private void Awake()
     {
-        m_BaseScript = GetComponent<Characters>();
+        m_Base = GetComponent<Characters>();
     }
     private void Start()
     {
@@ -52,18 +56,22 @@ public class PlayerCommonAbilities : MonoBehaviour
         m_TimeBtwAttack -= Time.deltaTime;
         m_TimeBtwDash -= Time.deltaTime;
     }
+
+    public static bool m_DashAbility;
+
     private void FixedUpdate()
     {
         Debug.DrawRay(transform.position, m_Rigidbody.velocity, Color.cyan);
 
-        m_Animator.SetBool(m_IsGroundID, m_BaseScript.);
+        m_Animator.SetBool(m_IsGroundID, m_Grounded);
         m_Animator.SetFloat("vSpeed", m_Rigidbody.velocity.y);
         m_Animator.SetFloat(m_SpeedID, Mathf.Abs(m_Rigidbody.velocity.x));
 
-        if (m_Attack)
+        if (m_Attack && m_TimeBtwAttack < 0)
         {
             m_Attack = false;
             m_Animator.SetTrigger(m_AttackID);
+            m_TimeBtwAttack = timeBetweenAttack;
         }
         if (!m_Lock)
         {
@@ -74,12 +82,17 @@ public class PlayerCommonAbilities : MonoBehaviour
 
             if (m_Dash)
             {
-                Dash(ref m_Dash, dashForce, true);
+                if (m_DashAbility && m_TimeBtwDash < 0)
+                {
+                    Dash(ref m_Dash, dashForce, true);
 
-                m_Animator.SetBool("Dash", true);
-                m_AnimDD = WhichAnimation.dash;
+                    m_Animator.SetBool("Dash", true);
+                    m_AnimDD = WhichAnimation.dash;
+
+                    m_TimeBtwDash = timeBetweenDash;
+                }
             }
-            else if (m_Dodge)
+            else if (m_Dodge && m_Grounded)
             {
                 Dash(ref m_Dodge, dodgeForce, false);
 
@@ -106,18 +119,43 @@ public class PlayerCommonAbilities : MonoBehaviour
         }
 
         JumpStatus();
-        base.FixedUpdate();
     }
+
+    public void Move(float direction)
+    {
+        var slope = Vector2.right;
+        if (m_Grounded)
+            foreach (var groundCollider in m_GroundColliders)
+            {
+                if (groundCollider == null)
+                    continue;
+
+                slope = groundCollider.transform.right;
+            }
+
+        Vector2 movement = slope * direction * m_Base.moveSpeed;
+        m_Rigidbody.AddForce(movement);
+    }
+
     private void JumpStatus()
     {
         if (m_IsJumping && m_Grounded)
             m_IsJumping = false;
 
-        if (m_JumpSaveTime > 0 && m_Grounded)
+        if (m_ShouldJump && m_Grounded)
         {
             m_Rigidbody.velocity = new Vector2(m_Rigidbody.velocity.x, 0);
             m_Rigidbody.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+
             m_IsJumping = true;
+            m_ShouldJump = false;
+        }
+        else if (m_InterruptJump && m_Rigidbody.velocity.y > 0 && m_IsJumping)
+        {
+            Vector2 vel = m_Rigidbody.velocity;
+            vel.y = 0;
+            m_Rigidbody.velocity = vel;
+            m_InterruptJump = false;
         }
     }
     private void Dash(ref bool job, float force, bool isForwardDir)
@@ -129,9 +167,17 @@ public class PlayerCommonAbilities : MonoBehaviour
         m_Lock = true;
 
         var forceDir = Vector2.right * force;
-        if ((isForwardDir && !m_FacingRight) || (!isForwardDir && m_FacingRight))
+        if ((isForwardDir && !m_Base.m_FacingRight) || (!isForwardDir && m_Base.m_FacingRight))
             forceDir = -forceDir; //whether we should be forced forward or not
 
         m_Rigidbody.AddForce(forceDir, ForceMode2D.Impulse);
     }
+
+#if UNITY_EDITOR
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireSphere(attackPosition.position, attackRange);
+    }
+#endif
 }

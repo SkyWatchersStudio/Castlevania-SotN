@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class Attack : MonoBehaviour
 {
-    private Player m_PlayerScript;
+    private PlayerCommonAbilities m_PlayerScript;
     private const int m_AttackLayer = 1 << 11 | 1 << 8;
 
-    private void Start() => m_PlayerScript = GetComponentInParent<Player>();
+    private void Start() => m_PlayerScript = GetComponentInParent<PlayerCommonAbilities>();
 
     public void Hit()
     {
