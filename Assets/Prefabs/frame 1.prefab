@@ -1230,6 +1230,7 @@ GameObject:
   - component: {fileID: 2416032199892736544}
   - component: {fileID: 2416032199892736547}
   - component: {fileID: 2416032199892736545}
+  - component: {fileID: 2915544177353086950}
   m_Layer: 0
   m_Name: CM vcam1
   m_TagString: Untagged
@@ -1306,6 +1307,21 @@ MonoBehaviour:
   m_BoundingShape2D: {fileID: 2416032199942425403}
   m_ConfineScreenEdges: 1
   m_Damping: 0
+--- !u!114 &2915544177353086950
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2416032199892736546}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00b2d199b96b516448144ab30fb26aed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ChannelMask: 1
+  m_Gain: 0.6
+  m_Use2DDistance: 1
 --- !u!1 &2416032199942425402
 GameObject:
   m_ObjectHideFlags: 0
@@ -4331,6 +4347,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3464869665916609609}
     m_Modifications:
+    - target: {fileID: 7767905689287978143, guid: dbf2383644e959d4c8c565673f985842,
+        type: 3}
+      propertyPath: m_ImpulseDefinition.m_AmplitudeGain
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7767905689287978143, guid: dbf2383644e959d4c8c565673f985842,
+        type: 3}
+      propertyPath: m_ImpulseDefinition.m_FrequencyGain
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7767905689287978143, guid: dbf2383644e959d4c8c565673f985842,
+        type: 3}
+      propertyPath: m_ImpulseDefinition.m_DissipationDistance
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7767905689287978143, guid: dbf2383644e959d4c8c565673f985842,
+        type: 3}
+      propertyPath: m_LayerMask.m_Bits
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7915721508040905469, guid: dbf2383644e959d4c8c565673f985842,
         type: 3}
       propertyPath: m_Name
@@ -4511,6 +4547,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3464869665916609609}
     m_Modifications:
+    - target: {fileID: 7767905689287978143, guid: dbf2383644e959d4c8c565673f985842,
+        type: 3}
+      propertyPath: m_ImpulseDefinition.m_AmplitudeGain
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7767905689287978143, guid: dbf2383644e959d4c8c565673f985842,
+        type: 3}
+      propertyPath: m_ImpulseDefinition.m_FrequencyGain
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7767905689287978143, guid: dbf2383644e959d4c8c565673f985842,
+        type: 3}
+      propertyPath: m_ImpulseDefinition.m_DissipationDistance
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7767905689287978143, guid: dbf2383644e959d4c8c565673f985842,
+        type: 3}
+      propertyPath: m_LayerMask.m_Bits
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7915721508040905469, guid: dbf2383644e959d4c8c565673f985842,
         type: 3}
       propertyPath: m_Name

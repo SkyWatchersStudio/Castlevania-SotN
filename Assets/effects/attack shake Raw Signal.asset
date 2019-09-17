@@ -1,0 +1,52 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7f59e54f2bfd184b9dd451a678d089b, type: 3}
+  m_Name: attack shake Raw Signal
+  m_EditorClassIdentifier: 
+  PositionNoise:
+  - X:
+      Frequency: 1
+      Amplitude: 0.5
+      Constant: 1
+    Y:
+      Frequency: 1
+      Amplitude: 0.5
+      Constant: 1
+    Z:
+      Frequency: 0
+      Amplitude: 0
+      Constant: 0
+  - X:
+      Frequency: 0.5
+      Amplitude: 0.2
+      Constant: 1
+    Y:
+      Frequency: 0.5
+      Amplitude: 0.2
+      Constant: 1
+    Z:
+      Frequency: 0
+      Amplitude: 0
+      Constant: 0
+  - X:
+      Frequency: 40
+      Amplitude: 0.3
+      Constant: 1
+    Y:
+      Frequency: 40
+      Amplitude: 0.3
+      Constant: 1
+    Z:
+      Frequency: 0
+      Amplitude: 0
+      Constant: 0
+  OrientationNoise: []
