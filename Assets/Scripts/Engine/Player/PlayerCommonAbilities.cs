@@ -10,6 +10,7 @@ public class PlayerCommonAbilities : MonoBehaviour
     public float timeBetweenAttack;
     public Transform attackPosition;
     public float attackRange;
+    public LayerMask m_AttackLayer = 1 << 11 | 1 << 8;
     [Space(10)]
     public float dashForce;
     public float timeBetweenDash;
@@ -25,11 +26,12 @@ public class PlayerCommonAbilities : MonoBehaviour
 
     [System.NonSerialized]
     public bool m_Grounded, m_Attack, m_Dash,
-        m_Dodge, m_InterruptJump, m_ShouldJump;
+        m_Dodge, m_InterruptJump, m_ShouldJump, m_PreviousDash;
     [System.NonSerialized]
     public Collider2D[] m_GroundColliders;
 
     public bool IsLock { get => m_Lock; }
+    public bool IsJumping { get => m_IsJumping; }
 
     enum WhichAnimation { dodge, dash}
     private WhichAnimation m_AnimDD;
@@ -59,7 +61,7 @@ public class PlayerCommonAbilities : MonoBehaviour
 
     public static bool m_DashAbility = true;
 
-    private void FixedUpdate()
+    public void PhysicUpdate()
     {
         Debug.DrawRay(transform.position, m_Rigidbody.velocity, Color.cyan);
 
@@ -69,38 +71,11 @@ public class PlayerCommonAbilities : MonoBehaviour
         if (m_Attack && m_TimeBtwAttack < 0)
         {
             m_Attack = false;
-            m_Animator.SetTrigger(m_AttackID);
             m_TimeBtwAttack = timeBetweenAttack;
+            m_Animator.SetTrigger(m_AttackID);
         }
 
-        if (!m_Lock)
-        {
-            if (m_Grounded)
-                m_Rigidbody.gravityScale = 0;
-            else
-                m_Rigidbody.gravityScale = 1;
-
-            if (m_Dash)
-            {
-                if (m_DashAbility && m_TimeBtwDash < 0)
-                {
-                    Dash(ref m_Dash, dashForce, true);
-
-                    m_Animator.SetBool("Dash", true);
-                    m_AnimDD = WhichAnimation.dash;
-
-                    m_TimeBtwDash = timeBetweenDash;
-                }
-            }
-            else if (m_Dodge && m_Grounded)
-            {
-                Dash(ref m_Dodge, dodgeForce, false);
-
-                m_Animator.SetBool("Doudge", true);
-                m_AnimDD = WhichAnimation.dodge;
-            }
-        }
-        else if (m_Lock)
+        if (m_Lock)
         {
             if (Mathf.Abs(m_Rigidbody.velocity.x) <= 6)
             {
@@ -118,7 +93,37 @@ public class PlayerCommonAbilities : MonoBehaviour
             return;
         }
 
+        if (m_Grounded)
+            m_Rigidbody.gravityScale = 0;
+        else
+            m_Rigidbody.gravityScale = 1;
+
         JumpStatus();
+
+        if (m_Dash)
+        {
+            if (m_DashAbility && m_TimeBtwDash < 0)
+            {
+                Dash(ref m_Dash, dashForce, true);
+
+                m_PreviousDash = true;
+
+                m_Animator.SetBool("Dash", true);
+                m_AnimDD = WhichAnimation.dash;
+
+                m_TimeBtwDash = timeBetweenDash;
+            }
+        }
+        else if (m_Dodge && m_Grounded)
+        {
+            Dash(ref m_Dodge, dodgeForce, false);
+
+            m_Animator.SetBool("Doudge", true);
+            m_AnimDD = WhichAnimation.dodge;
+        }
+
+        // if we didn't execute these we don't want to anymore
+        m_Dash = m_Dodge = m_Attack = false;
     }
 
     public void Move(float direction)
@@ -144,7 +149,6 @@ public class PlayerCommonAbilities : MonoBehaviour
         if (m_IsJumping && m_Grounded)
             m_IsJumping = false;
 
-        Debug.Log($"Interrupt: {m_InterruptJump}, isJumping: {m_IsJumping}");
         if (m_ShouldJump && m_Grounded)
         {
             m_Rigidbody.velocity = new Vector2(m_Rigidbody.velocity.x, 0);
@@ -152,18 +156,17 @@ public class PlayerCommonAbilities : MonoBehaviour
 
             m_IsJumping = true;
             m_ShouldJump = false;
-
-            Debug.Log("Jumping");
         }
         else if (m_InterruptJump && m_Rigidbody.velocity.y > 0 && m_IsJumping)
         {
+            m_InterruptJump = false;
+
             Vector2 vel = m_Rigidbody.velocity;
             vel.y = 0;
             m_Rigidbody.velocity = vel;
-            m_InterruptJump = false;
-
-            Debug.Log("Interrupting");
         }
+
+        m_InterruptJump = m_ShouldJump = false;
     }
     private void Dash(ref bool job, float force, bool isForwardDir)
     {

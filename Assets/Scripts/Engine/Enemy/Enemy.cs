@@ -6,7 +6,7 @@ public abstract class Enemy : Characters
 {
     public float collisionForce;
     [Space(10)]
-    public float distanceMagnitude; //delta distance require to disable enemy
+    public float maxDistance;
     [Space(10)]
     public int experiencePoint = 10;
 
@@ -17,25 +17,29 @@ public abstract class Enemy : Characters
     public virtual void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
-        {
-            var playerGameObject = collision.gameObject;
-            playerGameObject.GetComponentInChildren<Animator>().SetTrigger("Hit");
-            playerGameObject.GetComponent<Player>().TakeDamage();
+            AttackPlayer(collision.transform);
+    }
 
-            var attackDirection = m_TargetDirection.normalized;
-            attackDirection.y *= collisionForce * .75f;
-            attackDirection.x *= collisionForce *  .25f;
+    public void AttackPlayer(Transform PlTransform)
+    {
+        var playerGameObject = PlTransform.gameObject;
+        playerGameObject.GetComponentInChildren<Animator>().SetTrigger("Hit");
+        playerGameObject.GetComponent<Player>().TakeDamage();
 
-            collision.rigidbody.AddForce(
-                attackDirection, ForceMode2D.Impulse); //push player back
-        }
+        var attackDirection = m_TargetDirection.normalized;
+        attackDirection.y *= collisionForce * .75f;
+        attackDirection.x *= collisionForce * .25f;
+
+        var rigid = PlTransform.GetComponent<Rigidbody2D>();
+        rigid.AddForce(
+            attackDirection, ForceMode2D.Impulse); //push player back
     }
 
     public virtual Vector2 GetPlayerDirection()
     {
         var deltaPosition = m_PlayerTransform.position - transform.position;
 
-        if (deltaPosition.magnitude > distanceMagnitude)
+        if (deltaPosition.magnitude > maxDistance)
         {
             m_IsPlayerFound = false;
             m_PlayerTransform = null;
@@ -71,7 +75,7 @@ public abstract class Enemy : Characters
 
         if (!m_IsPlayerFound)
             return;
-        Gizmos.DrawRay(transform.position, m_TargetDirection * distanceMagnitude);
+        Gizmos.DrawRay(transform.position, m_TargetDirection * maxDistance);
     }
 #endif
 }
