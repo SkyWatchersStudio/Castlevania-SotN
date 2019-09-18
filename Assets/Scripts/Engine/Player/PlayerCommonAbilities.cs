@@ -93,7 +93,11 @@ public class PlayerCommonAbilities : MonoBehaviour
                     case WhichAnimation.dodge:
                         m_Animator.SetBool("Doudge", false);
                         break;
+
                 }
+
+                
+
             }
             return;
         }
@@ -117,6 +121,8 @@ public class PlayerCommonAbilities : MonoBehaviour
                 m_AnimDD = WhichAnimation.dash;
 
                 m_TimeBtwDash = timeBetweenDash;
+
+                FindObjectOfType<AudioManager>().Play("Dash");
             }
         }
         else if (m_Dodge && m_Grounded)
@@ -125,6 +131,8 @@ public class PlayerCommonAbilities : MonoBehaviour
 
             m_Animator.SetBool("Doudge", true);
             m_AnimDD = WhichAnimation.dodge;
+
+            FindObjectOfType<AudioManager>().Play("Dash");
         }
 
         // if we didn't execute these we don't want to anymore
@@ -152,7 +160,11 @@ public class PlayerCommonAbilities : MonoBehaviour
     private void JumpStatus()
     {
         if (m_IsJumping && m_Grounded)
+        {
             m_IsJumping = false;
+            FindObjectOfType<AudioManager>().Play("Jumplanding");
+        }
+           
 
         if (m_ShouldJump && m_Grounded)
         {

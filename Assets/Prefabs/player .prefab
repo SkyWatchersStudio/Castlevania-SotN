@@ -42,6 +42,7 @@ GameObject:
   - component: {fileID: 1349572232}
   - component: {fileID: 1349572231}
   - component: {fileID: 786860371}
+  - component: {fileID: 6578419398534180028}
   m_Layer: 0
   m_Name: Idle character spriteSheet_0 (1)
   m_TagString: Untagged
@@ -141,6 +142,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0697675c78a056a42886a99b83e33508, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &6578419398534180028
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1349572230}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0ecc123c2e871e4a90509e979f13060, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1487790009
@@ -472,6 +485,7 @@ MonoBehaviour:
   m_FacingRight: 1
   jumpSaveTime: 0.05
   mistForce: 25
+  healthImage: {fileID: 0}
 --- !u!198 &2105800004815868777
 ParticleSystem:
   m_ObjectHideFlags: 0
