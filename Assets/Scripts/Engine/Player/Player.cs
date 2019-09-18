@@ -142,7 +142,7 @@ public sealed class Player : Characters
         if (m_Abilities.IsLock)
             return;
 
-        if (m_MistTransform)
+        if (m_MistTransform && m_MistAbility)
             MistShifting(); // transform to mist
 
         base.FixedUpdate();

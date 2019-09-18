@@ -166,6 +166,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1487790010}
   - component: {fileID: 1487790011}
+  - component: {fileID: 478541226}
   m_Layer: 10
   m_Name: PlayerAnchor
   m_TagString: Untagged
@@ -181,8 +182,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1487790009}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.54, y: -0.42, z: -15.2}
-  m_LocalScale: {x: 2.9541044, y: 3.2909544, z: 0.21486612}
+  m_LocalPosition: {x: 0.54, y: -0.42, z: 0}
+  m_LocalScale: {x: 4.867386, y: 4.766947, z: 0.3112336}
   m_Children: []
   m_Father: {fileID: 2341238539376258603}
   m_RootOrder: 4
@@ -224,8 +225,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 4078adfd47ef76746a98396b75101725, type: 3}
-  m_Color: {r: 0.18503025, g: 0.32747972, b: 0.6226415, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 67c7045302c2da645be40e95f6cef773, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -235,6 +236,25 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &478541226
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1487790009}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3fa9675b39e79bb47b1bde20b30efede, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 2
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1910681469
 GameObject:
   m_ObjectHideFlags: 0
@@ -419,8 +439,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.11952692, y: -0.07473135}
-  m_Size: {x: 0.6841003, y: 2.055398}
+  m_Offset: {x: 0.11952692, y: -0.112725735}
+  m_Size: {x: 0.6841003, y: 1.9794092}
   m_Direction: 0
 --- !u!50 &4838410754184782593
 Rigidbody2D:
@@ -440,7 +460,7 @@ Rigidbody2D:
   m_GravityScale: 1
   m_Material: {fileID: 0}
   m_Interpolate: 2
-  m_SleepingMode: 0
+  m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
 --- !u!114 &1863553199706875382
@@ -486,6 +506,8 @@ MonoBehaviour:
   jumpSaveTime: 0.05
   mistForce: 25
   healthImage: {fileID: 0}
+  dagger: {fileID: 6468667975865377737, guid: 77ad19e1a9aa6404b8705aad69d07bd4, type: 3}
+  daggerSpeed: 30
 --- !u!198 &2105800004815868777
 ParticleSystem:
   m_ObjectHideFlags: 0

@@ -1,12 +1,17 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class AbilityUnlocker : MonoBehaviour
 {
     public AbilityTree abilityUnlock;
+    public GameObject abilityIntro;
 
     public enum AbilityTree { Dash, Mist, CubeOfZoe };
+
+    private bool m_Triggered;
+    private bool m_Job;
+    private float m_Timer;
+    private Animator m_PlayerAnimator;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -19,7 +24,33 @@ public class AbilityUnlocker : MonoBehaviour
             else if (abilityUnlock == AbilityTree.CubeOfZoe)
                 Player.m_CubeOfZoe = true;
 
-            Destroy(gameObject);
+            m_PlayerAnimator = collision.GetComponentInChildren<Animator>();
+            collision.attachedRigidbody.velocity = Vector2.zero;
+
+            m_Triggered = true;
+        }
+    }
+
+    private void Update()
+    {
+        if (m_Triggered)
+        {
+            if (!m_Job)
+            {
+                m_PlayerAnimator.SetTrigger("Abilities");
+                FindObjectOfType<AudioManager>().Play("AbilityGain");
+                m_Job = true;
+            }
+
+            m_Timer += Time.deltaTime;
+            if (m_Timer >= 1)
+                abilityIntro.SetActive(true);
+
+            if (Input.anyKeyDown)
+            {
+                Destroy(abilityIntro);
+                Destroy(gameObject);
+            }
         }
     }
 }
