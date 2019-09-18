@@ -21,6 +21,7 @@ public class Alucard : Enemy
         m_PlayerTransform = GameObject.FindGameObjectWithTag("Player").transform;
         m_IsPlayerFound = true;
         m_PlayerRigid = m_PlayerTransform.GetComponent<Rigidbody2D>();
+        m_Animator = GetComponentInChildren<Animator>();
 
         m_LastHP = health;
     }
@@ -40,19 +41,16 @@ public class Alucard : Enemy
         }
 
         ChooseAction();
-
         m_Abilities.PhysicUpdate();
 
-        if (m_Abilities.IsLock)
-            return;
-
-        if (m_MovePermission)
-        {
-            m_MovePermission = false;
-            base.FixedUpdate();
-        }
+        base.FixedUpdate();
     }
     public override void Move() => m_Abilities.Move(m_TargetDirection.x);
+    public override void TakeDamage()
+    {
+        m_Animator.SetTrigger("Hit");
+        base.TakeDamage();
+    }
     public override Vector2 GetPlayerDirection()
     {
         Vector2 deltaPosition = m_PlayerTransform.position - transform.position;
@@ -61,23 +59,39 @@ public class Alucard : Enemy
 
     private void ChooseAction()
     {
+        m_MovePermission = false;
+        // is player coming toward you?
+        bool isComing = m_PlayerRigid.velocity.x > .5f && !m_FacingRight ||
+            m_PlayerRigid.velocity.x < -.5f && m_FacingRight;
+        float playerSpeed = Mathf.Abs(m_PlayerRigid.velocity.x);
+
         Collider2D inRange = CheckRange();
         if (inRange)
         {
-            bool grounded = CheckGround(out _);
-            if (grounded)
+            if (isComing)
             {
-                bool isComing = (m_PlayerRigid.velocity.x > 0 && !m_FacingRight) || 
-                    (m_PlayerRigid.velocity.x < 0 && m_FacingRight);
-                if (isComing)
+                if (m_LastHP != health)
                 {
-                    if (m_LastHP != health)
+                    if (m_Abilities.m_DodgeCounts > 4)
                     {
-                        m_LastHP = health;
-                        m_Abilities.m_Dodge = true;
+                        m_ShouldJump = true;
+                        m_Abilities.m_Dash = true;
+
+                        m_Abilities.m_DodgeCounts = 0;
                     }
                     else
-                        m_Abilities.m_Attack = true;
+                    {
+                        if (m_Abilities.m_PreviousDodge)
+                        {
+                            m_Abilities.m_Attack = true;
+
+                            m_Abilities.m_PreviousDodge = false;
+                        }
+                        else
+                            m_Abilities.m_Dodge = true;
+                    }
+
+                    m_LastHP = health;
                 }
                 else
                     m_Abilities.m_Attack = true;
@@ -99,8 +113,9 @@ public class Alucard : Enemy
                 {
                     if (m_Abilities.m_PreviousDash)
                     {
-                        m_Abilities.m_PreviousDash = false;
                         m_MovePermission = true;
+
+                        m_Abilities.m_PreviousDash = false;
                     }
                     else
                         m_Abilities.m_Dash = true;
@@ -110,13 +125,27 @@ public class Alucard : Enemy
             {
                 if (Mathf.Abs(deltaPosition.x) > minDisatance && Mathf.Abs(deltaPosition.y) > jumpDistance)
                 {
-                    m_MovePermission = true;
-                    m_ShouldJump = true;
+                    if (isComing)
+                        m_ShouldJump = true;
+                    else
+                    {
+                        if (playerSpeed < .5f)
+                            m_MovePermission = true;
+                    }
                 }
                 else
                 {
                     if (Mathf.Abs(deltaPosition.x) > minDisatance)
-                        m_MovePermission = true;
+                    {
+                        if (m_LastHP == health)
+                        {
+                            if (!isComing)
+                            {
+                                m_ShouldJump = true;
+                                m_Abilities.m_Dash = true;
+                            }
+                        }
+                    }
                     else if (Mathf.Abs(deltaPosition.y) > jumpDistance)
                         m_ShouldJump = true;
                 }

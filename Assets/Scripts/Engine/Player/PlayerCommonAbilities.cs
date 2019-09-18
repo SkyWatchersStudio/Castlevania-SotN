@@ -25,8 +25,12 @@ public class PlayerCommonAbilities : MonoBehaviour
     private Animator m_Animator;
 
     [System.NonSerialized]
+    public int m_DodgeCounts, m_AttackCounts;
+
+    [System.NonSerialized]
     public bool m_Grounded, m_Attack, m_Dash,
-        m_Dodge, m_InterruptJump, m_ShouldJump, m_PreviousDash;
+        m_Dodge, m_InterruptJump, m_ShouldJump, m_PreviousDash,
+        m_PreviousDodge;
     [System.NonSerialized]
     public Collider2D[] m_GroundColliders;
 
@@ -73,6 +77,8 @@ public class PlayerCommonAbilities : MonoBehaviour
             m_Attack = false;
             m_TimeBtwAttack = timeBetweenAttack;
             m_Animator.SetTrigger(m_AttackID);
+
+            m_AttackCounts++;
         }
 
         if (m_Lock)
@@ -120,6 +126,9 @@ public class PlayerCommonAbilities : MonoBehaviour
 
             m_Animator.SetBool("Doudge", true);
             m_AnimDD = WhichAnimation.dodge;
+
+            m_DodgeCounts++;
+            m_PreviousDodge = true;
         }
 
         // if we didn't execute these we don't want to anymore
@@ -139,7 +148,7 @@ public class PlayerCommonAbilities : MonoBehaviour
             }
 
         Vector2 movement = slope * direction * m_Base.moveSpeed;
-        m_Animator.SetFloat(m_SpeedID, Mathf.Abs(movement.x));
+        m_Animator.SetFloat(m_SpeedID, Mathf.Abs(direction));
 
         m_Rigidbody.AddForce(movement);
     }
