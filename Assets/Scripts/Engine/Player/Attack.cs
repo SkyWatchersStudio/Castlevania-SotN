@@ -5,8 +5,13 @@ using UnityEngine;
 public class Attack : MonoBehaviour
 {
     private PlayerCommonAbilities m_Abilities;
+    private AudioManager m_AudioManager;
 
-    private void Start() => m_Abilities = GetComponentInParent<PlayerCommonAbilities>();
+    private void Start()
+    {
+        m_AudioManager = FindObjectOfType<AudioManager>();
+        m_Abilities = GetComponentInParent<PlayerCommonAbilities>();
+    }
 
     public void Hit()
     {
@@ -16,6 +21,7 @@ public class Attack : MonoBehaviour
             m_Abilities.attackRange,
             m_Abilities.m_AttackLayer);
 
+        bool enemyFound = false;
         foreach (Collider2D enemy in enemies)
         {
             if (enemy.CompareTag("Interact"))
@@ -30,7 +36,15 @@ public class Attack : MonoBehaviour
                 var enemyScript = enemy.GetComponent<Enemy>();
                 if (enemyScript != null)
                     enemyScript.TakeDamage();
+
+                enemyFound = true;
             }
         }
+        if (!enemyFound)
+        {
+            m_AudioManager.Play("attack");
+        }
+        else
+            m_AudioManager.Play("attack_p");
     }
 }
