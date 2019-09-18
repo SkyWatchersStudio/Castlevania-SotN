@@ -243,3 +243,4 @@ MonoBehaviour:
   dropItems:
   - {fileID: 3565092891919126322, guid: 07207657e9382a045a591092e5a9671a, type: 3}
   - {fileID: 0}
+  - {fileID: 3000675653566342256, guid: 5343b565eef834c4381b169a7c584f8f, type: 3}

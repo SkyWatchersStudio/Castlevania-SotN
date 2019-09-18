@@ -62,7 +62,7 @@ public class PlayerCommonAbilities : MonoBehaviour
         m_TimeBtwDash -= Time.deltaTime;
     }
 
-    public static bool m_DashAbility = true;
+    public static bool m_DashAbility;
 
     public void PhysicUpdate()
     {

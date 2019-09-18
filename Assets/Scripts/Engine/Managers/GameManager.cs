@@ -13,11 +13,13 @@ public class GameManager : MonoBehaviour
     public Image experienceImage;
     public TextMeshProUGUI currentLevel;
     public TextMeshProUGUI coins;
+    public TextMeshProUGUI hearts;
 
     private static int m_Experience;
     private static int m_PlayerCurrentLevel;
     private static int m_NextLevelPoint = 100;
     private static int m_Money;
+    private static int m_Hearts;
 
     public static GameManager m_Instance;
 
@@ -38,6 +40,15 @@ public class GameManager : MonoBehaviour
             m_Instance.experienceImage.fillAmount =
                 (float)m_Experience / (float)m_NextLevelPoint;
 
+        }
+    }
+    public static int Hearts
+    {
+        get => m_Hearts;
+        set
+        {
+            m_Hearts = value;
+            m_Instance.hearts.text = m_Hearts.ToString();
         }
     }
     public static int PlayerCurrentLevel
@@ -65,8 +76,10 @@ public class GameManager : MonoBehaviour
     {
         Cursor.visible = false;
         m_Instance = this;
+
         currentLevel.text = m_PlayerCurrentLevel.ToString();
         coins.text = m_Money.ToString();
+        hearts.text = m_Hearts.ToString();
     }
     void Update()
     {

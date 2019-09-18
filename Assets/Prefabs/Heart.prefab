@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8987183201507802687}
   - component: {fileID: 2067043365288510251}
   - component: {fileID: 592419461860810521}
+  - component: {fileID: 1712816161933405630}
   m_Layer: 0
   m_Name: Heart
   m_TagString: Untagged
@@ -27,7 +28,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3000675653566342256}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.26404, y: 0.26404, z: 0.26404}
   m_Children: []
@@ -97,7 +98,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.9201159
+  m_Radius: 1
 --- !u!114 &2067043365288510251
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -110,9 +111,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61dc15f232c00384da5e278e1a40282c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coin: 50
-  lifeTime: 3
-  distanceUnder: 0
+  worthiness: 1
+  lifeTime: 6
+  distanceUnder: 0.3
+  whatIsThisShit: 1
 --- !u!82 &592419461860810521
 AudioSource:
   m_ObjectHideFlags: 0
@@ -124,7 +126,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 9c692d7661e8936479c015242bcd088b, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -209,3 +211,24 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!50 &1712816161933405630
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3000675653566342256}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 1
+  m_AngularDrag: 0
+  m_GravityScale: 0.05
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 2
+  m_CollisionDetection: 0
+  m_Constraints: 5

@@ -4,10 +4,14 @@ using UnityEngine;
 
 public class Pickup : MonoBehaviour
 {
-    public int coin = 50;
+    public int worthiness = 50;
     public float lifeTime = 3;
     [Space(10)]
     public float distanceUnder;
+    [Space(10)]
+    public Identity whatIsThisShit;
+
+    public enum Identity { coin, heart };
 
     private float m_Timer;
     private Rigidbody2D m_Rigidbody;
@@ -18,7 +22,10 @@ public class Pickup : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             Destroy(gameObject);
-            GameManager.Coin += this.coin;
+            if (whatIsThisShit == Identity.coin)
+                GameManager.Coin += worthiness;
+            else if (whatIsThisShit == Identity.heart)
+                GameManager.Hearts += worthiness;
         }
     }
 

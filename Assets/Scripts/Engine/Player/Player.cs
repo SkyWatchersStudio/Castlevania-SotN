@@ -11,10 +11,14 @@ public sealed class Player : Characters
     public float mistForce;
     [Space(10)]
     public Image healthImage;
+    [Space(10)]
+    public Rigidbody2D dagger;
+    public float daggerSpeed;
 
     private float m_HorizontalInput;
     private float m_JumpSaveTime;
     private bool m_MistTransform;
+    private bool m_Dagger;
 
     private PlayerCommonAbilities m_Abilities;
 
@@ -48,7 +52,7 @@ public sealed class Player : Characters
         InputDetection();
     }
 
-    public static bool m_MistAbility;
+    public static bool m_MistAbility, m_CubeOfZoe;
 
     private void InputDetection()
     {
@@ -64,11 +68,12 @@ public sealed class Player : Characters
 
         if (Input.GetButtonDown("Attack"))
             m_Abilities.m_Attack = true;
-
-        if (Input.GetButtonDown("Dodge"))
+        else if (Input.GetButtonDown("Dodge"))
             m_Abilities.m_Dodge = true;
         else if (Input.GetButtonDown("Dash"))
             m_Abilities.m_Dash = true;
+        else if (Input.GetButtonDown("Throw"))
+            m_Dagger = true;
     }
 
     private bool m_IsMist;
@@ -116,6 +121,22 @@ public sealed class Player : Characters
             MistMove();
             return;
         }
+
+        if (m_Dagger && GameManager.Hearts > 0)
+        {
+            m_Dagger = false;
+
+            GameManager.Hearts -= 1;
+
+            Rigidbody2D d =
+                Instantiate(dagger, m_Abilities.attackPosition.position, Quaternion.identity);
+
+            Vector2 direction = Vector2.right;
+            if (!m_FacingRight)
+                direction = Vector2.left;
+            d.velocity = direction * daggerSpeed;
+        }
+        m_Dagger = false;
 
         m_Abilities.PhysicUpdate();
         if (m_Abilities.IsLock)
