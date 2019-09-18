@@ -168,12 +168,12 @@ TextureImporter:
       name: attack sprite sheet_3
       rect:
         serializedVersion: 2
-        x: 4212
+        x: 4259
         y: 0
         width: 1404
         height: 1404
       alignment: 9
-      pivot: {x: 0.415, y: 0.59}
+      pivot: {x: 0.37, y: 0.59}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -189,12 +189,12 @@ TextureImporter:
       name: attack sprite sheet_4
       rect:
         serializedVersion: 2
-        x: 5616
+        x: 5682
         y: 0
         width: 1404
         height: 1404
       alignment: 9
-      pivot: {x: 0.485, y: 0.59}
+      pivot: {x: 0.42, y: 0.59}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -215,7 +215,7 @@ TextureImporter:
         width: 1404
         height: 1404
       alignment: 9
-      pivot: {x: 0.5, y: 0.59}
+      pivot: {x: 0.48, y: 0.59}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
