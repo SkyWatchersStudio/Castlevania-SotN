@@ -272,7 +272,7 @@ MonoBehaviour:
   groundCheck: {fileID: 219788838224694455}
   groundRadius: 0.4
   m_FacingRight: 0
-  collisionForce: 40
+  collisionForce: 80
   distanceMagnitude: 12
   experiencePoint: 10
 --- !u!114 &7767905689287978143

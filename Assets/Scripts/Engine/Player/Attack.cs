@@ -4,18 +4,17 @@ using UnityEngine;
 
 public class Attack : MonoBehaviour
 {
-    private Player m_PlayerScript;
-    private const int m_AttackLayer = 1 << 11 | 1 << 8;
+    private PlayerCommonAbilities m_Abilities;
 
-    private void Start() => m_PlayerScript = GetComponentInParent<Player>();
+    private void Start() => m_Abilities = GetComponentInParent<PlayerCommonAbilities>();
 
     public void Hit()
     {
         //get everything in the attack radius and detect if it is enemy
         var enemies = Physics2D.OverlapCircleAll(
-            m_PlayerScript.attackPosition.position,
-            m_PlayerScript.attackRange,
-            m_AttackLayer);
+            m_Abilities.attackPosition.position,
+            m_Abilities.attackRange,
+            m_Abilities.m_AttackLayer);
 
         foreach (Collider2D enemy in enemies)
         {
@@ -26,9 +25,8 @@ public class Attack : MonoBehaviour
                 //add force to the opposite direction of enemy
                 var rigidbody = enemy.GetComponent<Rigidbody2D>();
                 Vector2 direction = (enemy.transform.position - transform.position).normalized;
-                rigidbody.AddForce(direction * m_PlayerScript.attackForce, ForceMode2D.Impulse);
+                rigidbody.AddForce(direction * m_Abilities.attackForce, ForceMode2D.Impulse);
 
-                //apply damage to enemy
                 var enemyScript = enemy.GetComponent<Enemy>();
                 if (enemyScript != null)
                     enemyScript.TakeDamage();

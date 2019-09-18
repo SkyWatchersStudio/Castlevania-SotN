@@ -6,71 +6,54 @@ public abstract class Enemy : Characters
 {
     public float collisionForce;
     [Space(10)]
-    public float distanceMagnitude; //delta distance require to disable enemy
+    public float maxDistance;
     [Space(10)]
     public int experiencePoint = 10;
 
     protected Vector2 m_TargetDirection;
-
-    private Transform m_PlayerTransform;
-    private bool m_IsPlayerFound;
-    private CapsuleCollider2D m_TriggerCollider;
+    protected Transform m_PlayerTransform;
+    protected bool m_IsPlayerFound;
 
     public virtual void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
-        {
-            m_Animator.SetTrigger("AttackEnemy");
-
-            var playerGameObject = collision.gameObject;
-            playerGameObject.GetComponentInChildren<Animator>().SetTrigger("Hit");
-            playerGameObject.GetComponent<Player>().TakeDamage();
-
-            collision.rigidbody.AddForce(
-                m_TargetDirection * collisionForce, ForceMode2D.Impulse); //push player back
-        }
+            AttackPlayer(collision.transform);
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    public void AttackPlayer(Transform PlTransform)
     {
-        if (collision.CompareTag("Player"))
-        {
-            m_IsPlayerFound = true;
-            m_TriggerCollider.enabled = false;
-            m_PlayerTransform = collision.transform;
-        }
+        var playerGameObject = PlTransform.gameObject;
+        playerGameObject.GetComponentInChildren<Animator>().SetTrigger("Hit");
+        playerGameObject.GetComponent<Player>().TakeDamage();
+
+        var attackDirection = m_TargetDirection.normalized;
+        attackDirection.y *= collisionForce * .75f;
+        attackDirection.x *= collisionForce * .25f;
+
+        var rigid = PlTransform.GetComponent<Rigidbody2D>();
+        rigid.AddForce(
+            attackDirection, ForceMode2D.Impulse); //push player back
     }
-    private Vector2 GetPlayerDirection()
+
+    public virtual Vector2 GetPlayerDirection()
     {
         var deltaPosition = m_PlayerTransform.position - transform.position;
 
-        if (deltaPosition.magnitude > distanceMagnitude)
+        if (deltaPosition.magnitude > maxDistance)
         {
             m_IsPlayerFound = false;
             m_PlayerTransform = null;
-            m_TriggerCollider.enabled = true;
         }
 
         return deltaPosition.normalized;
     }
 
-    public override void Start()
-    {
-        base.Start();
-
-        var colliders = GetComponents<CapsuleCollider2D>();
-        foreach (var collider in colliders)
-        {
-            if (collider.isTrigger)
-                m_TriggerCollider = collider;
-        }
-    }
     public override void FixedUpdate()
     {
         if (!m_IsPlayerFound)
             return;
 
-        m_TargetDirection = GetPlayerDirection(); //Get direction toward the player
+        m_TargetDirection = GetPlayerDirection();
         Flip(m_TargetDirection.x); //Flip Enemy if needed
 
         base.FixedUpdate();
@@ -92,7 +75,7 @@ public abstract class Enemy : Characters
 
         if (!m_IsPlayerFound)
             return;
-        Gizmos.DrawRay(transform.position, m_TargetDirection * distanceMagnitude);
+        Gizmos.DrawRay(transform.position, m_TargetDirection * maxDistance);
     }
 #endif
 }
