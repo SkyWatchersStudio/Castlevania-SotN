@@ -447,6 +447,9 @@ MonoBehaviour:
   timeBetweenAttack: 0.4
   attackPosition: {fileID: 2034623080}
   attackRange: 0.8
+  m_AttackLayer:
+    serializedVersion: 2
+    m_Bits: 2304
   dashForce: 45
   timeBetweenDash: 0.6
   dodgeForce: 38
@@ -462,14 +465,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c309a0eb9faee0d4fac3ba80c8f9a186, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 10
+  health: 100000
   moveSpeed: 80
   groundCheck: {fileID: 1088029816}
   groundRadius: 0.15
   m_FacingRight: 1
   jumpSaveTime: 0.05
   mistForce: 25
-  healthImage: {fileID: 0}
 --- !u!198 &2105800004815868777
 ParticleSystem:
   m_ObjectHideFlags: 0
@@ -5136,7 +5138,7 @@ ParticleSystemRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2940581264361314439}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
