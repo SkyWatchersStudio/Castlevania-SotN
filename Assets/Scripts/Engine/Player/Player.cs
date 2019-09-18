@@ -10,7 +10,7 @@ public sealed class Player : Characters
     public float jumpSaveTime;
     public float mistForce;
     [Space(10)]
-    public Image healthImage;
+    //public Image healthImage;
 
     private float m_HorizontalInput;
     private float m_JumpSaveTime;
@@ -25,7 +25,7 @@ public sealed class Player : Characters
         set
         {
             m_Health = value;
-            healthImage.fillAmount = m_Health / health;
+            //healthImage.fillAmount = m_Health / health;
         }
     }
 

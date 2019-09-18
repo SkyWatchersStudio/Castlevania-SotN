@@ -6,7 +6,7 @@ public abstract class Enemy : Characters
 {
     public float collisionForce;
     [Space(10)]
-    public float distanceMagnitude; //delta distance require to disable enemy
+    public float maxDistance;
     [Space(10)]
     public int experiencePoint = 10;
 
@@ -39,7 +39,7 @@ public abstract class Enemy : Characters
     {
         var deltaPosition = m_PlayerTransform.position - transform.position;
 
-        if (deltaPosition.magnitude > distanceMagnitude)
+        if (deltaPosition.magnitude > maxDistance)
         {
             m_IsPlayerFound = false;
             m_PlayerTransform = null;
@@ -75,7 +75,7 @@ public abstract class Enemy : Characters
 
         if (!m_IsPlayerFound)
             return;
-        Gizmos.DrawRay(transform.position, m_TargetDirection * distanceMagnitude);
+        Gizmos.DrawRay(transform.position, m_TargetDirection * maxDistance);
     }
 #endif
 }

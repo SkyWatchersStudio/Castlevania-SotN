@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3771604702595011607}
   - component: {fileID: 2758272188373369903}
   - component: {fileID: 8988778862332248792}
+  - component: {fileID: 427099425}
   m_Layer: 11
   m_Name: Alucard
   m_TagString: Enemy
@@ -97,6 +98,26 @@ MonoBehaviour:
   dashForce: 45
   timeBetweenDash: 0.6
   dodgeForce: 38
+--- !u!114 &427099425
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5597180586770071465}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45958ace04002b44b896d29e8cb51bd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 0
+  moveSpeed: 0
+  groundCheck: {fileID: 0}
+  groundRadius: 0
+  m_FacingRight: 0
+  collisionForce: 0
+  distanceMagnitude: 0
+  experiencePoint: 10
 --- !u!1 &7305442238303596968
 GameObject:
   m_ObjectHideFlags: 0

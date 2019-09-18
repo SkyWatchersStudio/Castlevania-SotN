@@ -26,11 +26,12 @@ public class PlayerCommonAbilities : MonoBehaviour
 
     [System.NonSerialized]
     public bool m_Grounded, m_Attack, m_Dash,
-        m_Dodge, m_InterruptJump, m_ShouldJump;
+        m_Dodge, m_InterruptJump, m_ShouldJump, m_PreviousDash;
     [System.NonSerialized]
     public Collider2D[] m_GroundColliders;
 
     public bool IsLock { get => m_Lock; }
+    public bool IsJumping { get => m_IsJumping; }
 
     enum WhichAnimation { dodge, dash}
     private WhichAnimation m_AnimDD;
@@ -74,34 +75,7 @@ public class PlayerCommonAbilities : MonoBehaviour
             m_Animator.SetTrigger(m_AttackID);
         }
 
-        if (!m_Lock)
-        {
-            if (m_Grounded)
-                m_Rigidbody.gravityScale = 0;
-            else
-                m_Rigidbody.gravityScale = 1;
-
-            if (m_Dash)
-            {
-                if (m_DashAbility && m_TimeBtwDash < 0)
-                {
-                    Dash(ref m_Dash, dashForce, true);
-
-                    m_Animator.SetBool("Dash", true);
-                    m_AnimDD = WhichAnimation.dash;
-
-                    m_TimeBtwDash = timeBetweenDash;
-                }
-            }
-            else if (m_Dodge && m_Grounded)
-            {
-                Dash(ref m_Dodge, dodgeForce, false);
-
-                m_Animator.SetBool("Doudge", true);
-                m_AnimDD = WhichAnimation.dodge;
-            }
-        }
-        else if (m_Lock)
+        if (m_Lock)
         {
             if (Mathf.Abs(m_Rigidbody.velocity.x) <= 6)
             {
@@ -119,7 +93,37 @@ public class PlayerCommonAbilities : MonoBehaviour
             return;
         }
 
+        if (m_Grounded)
+            m_Rigidbody.gravityScale = 0;
+        else
+            m_Rigidbody.gravityScale = 1;
+
         JumpStatus();
+
+        if (m_Dash)
+        {
+            if (m_DashAbility && m_TimeBtwDash < 0)
+            {
+                Dash(ref m_Dash, dashForce, true);
+
+                m_PreviousDash = true;
+
+                m_Animator.SetBool("Dash", true);
+                m_AnimDD = WhichAnimation.dash;
+
+                m_TimeBtwDash = timeBetweenDash;
+            }
+        }
+        else if (m_Dodge && m_Grounded)
+        {
+            Dash(ref m_Dodge, dodgeForce, false);
+
+            m_Animator.SetBool("Doudge", true);
+            m_AnimDD = WhichAnimation.dodge;
+        }
+
+        // if we didn't execute these we don't want to anymore
+        m_Dash = m_Dodge = m_Attack = false;
     }
 
     public void Move(float direction)
@@ -162,7 +166,7 @@ public class PlayerCommonAbilities : MonoBehaviour
             m_Rigidbody.velocity = vel;
         }
 
-        m_InterruptJump = false;
+        m_InterruptJump = m_ShouldJump = false;
     }
     private void Dash(ref bool job, float force, bool isForwardDir)
     {

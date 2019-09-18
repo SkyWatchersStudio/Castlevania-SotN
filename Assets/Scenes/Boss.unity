@@ -193,8 +193,19 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5191960925485090435, guid: 566019c9cd7fe99448037a396e657a67,
+        type: 3}
+      propertyPath: health
+      value: 100000
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 566019c9cd7fe99448037a396e657a67, type: 3}
+--- !u!4 &710299834 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7305442238577943382, guid: 1448b27834f26a44aad95f73bd91e55b,
+    type: 3}
+  m_PrefabInstance: {fileID: 854379829862833163}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1112067065
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -267,6 +278,11 @@ PrefabInstance:
       propertyPath: m_Follow
       value: 
       objectReference: {fileID: 150034292}
+    - target: {fileID: 8928110872854898895, guid: ab1493f8e98e0284a9245f4b702b4966,
+        type: 3}
+      propertyPath: m_Lens.OrthographicSize
+      value: 6.65
+      objectReference: {fileID: 0}
     - target: {fileID: 8928110872854898894, guid: ab1493f8e98e0284a9245f4b702b4966,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -343,7 +359,7 @@ Camera:
   far clip plane: 100
   field of view: 40
   orthographic: 1
-  orthographic size: 8
+  orthographic size: 6.65
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -367,7 +383,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1379321859}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.1595592, y: -0.49937963, z: -10}
+  m_LocalPosition: {x: -2.1596384, y: -1.8495212, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -477,5 +493,65 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8988778862332248792, guid: 1448b27834f26a44aad95f73bd91e55b,
+        type: 3}
+      propertyPath: timeBetweenAttack
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8988778862332248792, guid: 1448b27834f26a44aad95f73bd91e55b,
+        type: 3}
+      propertyPath: dashForce
+      value: 55
+      objectReference: {fileID: 0}
+    - target: {fileID: 8988778862332248792, guid: 1448b27834f26a44aad95f73bd91e55b,
+        type: 3}
+      propertyPath: timeBetweenDash
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 427099425, guid: 1448b27834f26a44aad95f73bd91e55b, type: 3}
+      propertyPath: health
+      value: 10000
+      objectReference: {fileID: 0}
+    - target: {fileID: 427099425, guid: 1448b27834f26a44aad95f73bd91e55b, type: 3}
+      propertyPath: moveSpeed
+      value: 75
+      objectReference: {fileID: 0}
+    - target: {fileID: 427099425, guid: 1448b27834f26a44aad95f73bd91e55b, type: 3}
+      propertyPath: groundCheck
+      value: 
+      objectReference: {fileID: 710299834}
+    - target: {fileID: 427099425, guid: 1448b27834f26a44aad95f73bd91e55b, type: 3}
+      propertyPath: groundRadius
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 427099425, guid: 1448b27834f26a44aad95f73bd91e55b, type: 3}
+      propertyPath: collisionForce
+      value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 427099425, guid: 1448b27834f26a44aad95f73bd91e55b, type: 3}
+      propertyPath: maxDistance
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 427099425, guid: 1448b27834f26a44aad95f73bd91e55b, type: 3}
+      propertyPath: experiencePoint
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 427099425, guid: 1448b27834f26a44aad95f73bd91e55b, type: 3}
+      propertyPath: minDisatance
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 427099425, guid: 1448b27834f26a44aad95f73bd91e55b, type: 3}
+      propertyPath: jumpDistance
+      value: 2.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 427099425, guid: 1448b27834f26a44aad95f73bd91e55b, type: 3}
+      propertyPath: jumpTimeDelay
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7305442238303596969, guid: 1448b27834f26a44aad95f73bd91e55b,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 4923a4f204a3b994198b9fbe43c935f2, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1448b27834f26a44aad95f73bd91e55b, type: 3}
