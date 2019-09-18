@@ -118,8 +118,9 @@ MonoBehaviour:
   maxDistance: 10
   experiencePoint: 50
   minDisatance: 2
-  jumpDistance: 2.7
+  jumpDistance: 3.25
   jumpTimeDelay: 0.4
+  timeBetweenJump: 0.8
 --- !u!1 &7305442238303596968
 GameObject:
   m_ObjectHideFlags: 0

@@ -25,12 +25,11 @@ public class PlayerCommonAbilities : MonoBehaviour
     private Animator m_Animator;
 
     [System.NonSerialized]
-    public int m_DodgeCounts, m_AttackCounts;
+    public int m_AttackCounts;
 
     [System.NonSerialized]
     public bool m_Grounded, m_Attack, m_Dash,
-        m_Dodge, m_InterruptJump, m_ShouldJump, m_PreviousDash,
-        m_PreviousDodge;
+        m_Dodge, m_InterruptJump, m_ShouldJump, m_PreviousDash;
     [System.NonSerialized]
     public Collider2D[] m_GroundColliders;
 
@@ -126,9 +125,6 @@ public class PlayerCommonAbilities : MonoBehaviour
 
             m_Animator.SetBool("Doudge", true);
             m_AnimDD = WhichAnimation.dodge;
-
-            m_DodgeCounts++;
-            m_PreviousDodge = true;
         }
 
         // if we didn't execute these we don't want to anymore
