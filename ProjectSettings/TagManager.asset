@@ -7,6 +7,7 @@ TagManager:
   - Enemy
   - Interact
   - mapElements
+  - Door
   layers:
   - Default
   - TransparentFX
