@@ -4347,26 +4347,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3464869665916609609}
     m_Modifications:
-    - target: {fileID: 7767905689287978143, guid: dbf2383644e959d4c8c565673f985842,
-        type: 3}
-      propertyPath: m_ImpulseDefinition.m_AmplitudeGain
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7767905689287978143, guid: dbf2383644e959d4c8c565673f985842,
-        type: 3}
-      propertyPath: m_ImpulseDefinition.m_FrequencyGain
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7767905689287978143, guid: dbf2383644e959d4c8c565673f985842,
-        type: 3}
-      propertyPath: m_ImpulseDefinition.m_DissipationDistance
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 7767905689287978143, guid: dbf2383644e959d4c8c565673f985842,
-        type: 3}
-      propertyPath: m_LayerMask.m_Bits
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7915721508040905469, guid: dbf2383644e959d4c8c565673f985842,
         type: 3}
       propertyPath: m_Name
@@ -4441,6 +4421,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0.29911
+      objectReference: {fileID: 0}
+    - target: {fileID: 7767905689287978143, guid: dbf2383644e959d4c8c565673f985842,
+        type: 3}
+      propertyPath: m_ImpulseDefinition.m_AmplitudeGain
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7767905689287978143, guid: dbf2383644e959d4c8c565673f985842,
+        type: 3}
+      propertyPath: m_ImpulseDefinition.m_FrequencyGain
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7767905689287978143, guid: dbf2383644e959d4c8c565673f985842,
+        type: 3}
+      propertyPath: m_ImpulseDefinition.m_DissipationDistance
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7767905689287978143, guid: dbf2383644e959d4c8c565673f985842,
+        type: 3}
+      propertyPath: m_LayerMask.m_Bits
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dbf2383644e959d4c8c565673f985842, type: 3}
@@ -4547,26 +4547,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3464869665916609609}
     m_Modifications:
-    - target: {fileID: 7767905689287978143, guid: dbf2383644e959d4c8c565673f985842,
-        type: 3}
-      propertyPath: m_ImpulseDefinition.m_AmplitudeGain
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7767905689287978143, guid: dbf2383644e959d4c8c565673f985842,
-        type: 3}
-      propertyPath: m_ImpulseDefinition.m_FrequencyGain
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7767905689287978143, guid: dbf2383644e959d4c8c565673f985842,
-        type: 3}
-      propertyPath: m_ImpulseDefinition.m_DissipationDistance
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 7767905689287978143, guid: dbf2383644e959d4c8c565673f985842,
-        type: 3}
-      propertyPath: m_LayerMask.m_Bits
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7915721508040905469, guid: dbf2383644e959d4c8c565673f985842,
         type: 3}
       propertyPath: m_Name
@@ -4641,6 +4621,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0.29911
+      objectReference: {fileID: 0}
+    - target: {fileID: 7767905689287978143, guid: dbf2383644e959d4c8c565673f985842,
+        type: 3}
+      propertyPath: m_ImpulseDefinition.m_AmplitudeGain
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7767905689287978143, guid: dbf2383644e959d4c8c565673f985842,
+        type: 3}
+      propertyPath: m_ImpulseDefinition.m_FrequencyGain
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7767905689287978143, guid: dbf2383644e959d4c8c565673f985842,
+        type: 3}
+      propertyPath: m_ImpulseDefinition.m_DissipationDistance
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7767905689287978143, guid: dbf2383644e959d4c8c565673f985842,
+        type: 3}
+      propertyPath: m_LayerMask.m_Bits
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1721413826, guid: dbf2383644e959d4c8c565673f985842, type: 3}
       propertyPath: m_FacingRight
