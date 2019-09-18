@@ -7,11 +7,12 @@ public class Alucard : Enemy
     public float minDisatance;
     public float jumpDistance;
     public float jumpTimeDelay = .4f;
+    public float timeBetweenJump = .8f;
 
     PlayerCommonAbilities m_Abilities;
     Rigidbody2D m_PlayerRigid;
-    bool m_MovePermission, m_ShouldJump;
-    float m_LastHP, m_JumpDelayTime;
+    bool m_ShouldJump;
+    float m_LastHP, m_JumpDelayTime, m_TimeBtwJump;
 
     public override void Start()
     {
@@ -21,12 +22,14 @@ public class Alucard : Enemy
         m_PlayerTransform = GameObject.FindGameObjectWithTag("Player").transform;
         m_IsPlayerFound = true;
         m_PlayerRigid = m_PlayerTransform.GetComponent<Rigidbody2D>();
+        m_Animator = GetComponentInChildren<Animator>();
 
         m_LastHP = health;
     }
     public override void FixedUpdate()
     {
         m_Abilities.m_Grounded = CheckGround(out m_Abilities.m_GroundColliders);
+        m_TimeBtwJump -= Time.deltaTime;
 
         if (m_ShouldJump)
         {
@@ -34,25 +37,27 @@ public class Alucard : Enemy
             if (m_JumpDelayTime >= jumpTimeDelay)
             {
                 m_JumpDelayTime = 0;
+                m_TimeBtwJump = timeBetweenJump;
+
                 m_Abilities.m_ShouldJump = true;
                 m_ShouldJump = false;
             }
         }
 
         ChooseAction();
-
         m_Abilities.PhysicUpdate();
 
         if (m_Abilities.IsLock)
             return;
 
-        if (m_MovePermission)
-        {
-            m_MovePermission = false;
-            base.FixedUpdate();
-        }
+        base.FixedUpdate();
     }
     public override void Move() => m_Abilities.Move(m_TargetDirection.x);
+    public override void TakeDamage()
+    {
+        m_Animator.SetTrigger("Hit");
+        base.TakeDamage();
+    }
     public override Vector2 GetPlayerDirection()
     {
         Vector2 deltaPosition = m_PlayerTransform.position - transform.position;
@@ -61,29 +66,37 @@ public class Alucard : Enemy
 
     private void ChooseAction()
     {
+        // is player coming toward you?
+        bool isComing = m_PlayerRigid.velocity.x > .5f && !m_FacingRight ||
+            m_PlayerRigid.velocity.x < -.5f && m_FacingRight;
+
         Collider2D inRange = CheckRange();
         if (inRange)
         {
-            bool grounded = CheckGround(out _);
-            if (grounded)
+            if (isComing)
             {
-                bool isComing = (m_PlayerRigid.velocity.x > 0 && !m_FacingRight) || 
-                    (m_PlayerRigid.velocity.x < 0 && m_FacingRight);
-                if (isComing)
+                if (m_LastHP != health)
                 {
-                    if (m_LastHP != health)
-                    {
-                        m_LastHP = health;
-                        m_Abilities.m_Dodge = true;
-                    }
-                    else
-                        m_Abilities.m_Attack = true;
+                    m_Abilities.m_Dodge = true;
+
+                    m_LastHP = health;
                 }
                 else
                     m_Abilities.m_Attack = true;
             }
             else
-                m_Abilities.m_Attack = true;
+            {
+                if (m_Abilities.m_AttackCounts > 6)
+                {
+                    if (m_TimeBtwJump <= 0)
+                        m_ShouldJump = true;
+                    m_Abilities.m_Dash = true;
+
+                    m_Abilities.m_AttackCounts = 0;
+                }
+                else
+                    m_Abilities.m_Attack = true;
+            }
         }
         else
         {
@@ -97,29 +110,20 @@ public class Alucard : Enemy
                 }
                 else
                 {
-                    if (m_Abilities.m_PreviousDash)
-                    {
-                        m_Abilities.m_PreviousDash = false;
-                        m_MovePermission = true;
-                    }
-                    else
+                    if (!m_Abilities.m_PreviousDash)
                         m_Abilities.m_Dash = true;
                 }
             }
             else
             {
-                if (Mathf.Abs(deltaPosition.x) > minDisatance && Mathf.Abs(deltaPosition.y) > jumpDistance)
-                {
-                    m_MovePermission = true;
-                    m_ShouldJump = true;
-                }
-                else
-                {
-                    if (Mathf.Abs(deltaPosition.x) > minDisatance)
-                        m_MovePermission = true;
-                    else if (Mathf.Abs(deltaPosition.y) > jumpDistance)
+                if (Mathf.Abs(deltaPosition.x) > minDisatance &&
+                    Mathf.Abs(deltaPosition.y) > jumpDistance)
+                    if (m_TimeBtwJump <= 0)
                         m_ShouldJump = true;
-                }
+                else
+                    if (Mathf.Abs(m_Rigidbody.velocity.y) > jumpDistance)
+                        if (m_TimeBtwJump <= 0)
+                            m_ShouldJump = true;
             }
         }
     }

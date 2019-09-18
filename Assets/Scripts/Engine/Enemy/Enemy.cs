@@ -23,7 +23,6 @@ public abstract class Enemy : Characters
     public void AttackPlayer(Transform PlTransform)
     {
         var playerGameObject = PlTransform.gameObject;
-        playerGameObject.GetComponentInChildren<Animator>().SetTrigger("Hit");
         playerGameObject.GetComponent<Player>().TakeDamage();
 
         var attackDirection = m_TargetDirection.normalized;

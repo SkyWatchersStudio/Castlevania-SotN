@@ -10,7 +10,7 @@ public sealed class Player : Characters
     public float jumpSaveTime;
     public float mistForce;
     [Space(10)]
-    //public Image healthImage;
+    public Image healthImage;
 
     private float m_HorizontalInput;
     private float m_JumpSaveTime;
@@ -25,7 +25,7 @@ public sealed class Player : Characters
         set
         {
             m_Health = value;
-            //healthImage.fillAmount = m_Health / health;
+            healthImage.fillAmount = m_Health / health;
         }
     }
 
@@ -101,6 +101,7 @@ public sealed class Player : Characters
         base.Start();
 
         m_Abilities = GetComponent<PlayerCommonAbilities>();
+        m_Animator = GetComponentInChildren<Animator>();
 
         CurrentHealth = health;
     }
@@ -128,6 +129,7 @@ public sealed class Player : Characters
     public override void Move() => m_Abilities.Move(m_HorizontalInput);
     public override void TakeDamage()
     {
+        m_Animator.SetTrigger("Hit");
         CurrentHealth -= 1;
         if (CurrentHealth <= 0)
             GameManager.Loading(this.transform);
