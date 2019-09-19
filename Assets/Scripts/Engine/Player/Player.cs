@@ -147,7 +147,10 @@ public sealed class Player : Characters
 
             Vector2 direction = Vector2.right;
             if (!m_FacingRight)
+            {
+                d.transform.rotation = Quaternion.Euler(0, 180, 0);
                 direction = Vector2.left;
+            }
             d.velocity = direction * daggerSpeed;
         }
         m_Dagger = false;
