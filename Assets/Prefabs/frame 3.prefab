@@ -2950,6 +2950,7 @@ GameObject:
   - component: {fileID: 4301594945577620675}
   - component: {fileID: 4301594945577620677}
   - component: {fileID: 4301594945577620674}
+  - component: {fileID: 9045950773613690113}
   m_Layer: 0
   m_Name: CM vcam4
   m_TagString: Untagged
@@ -3026,6 +3027,21 @@ MonoBehaviour:
   m_BoundingShape2D: {fileID: 4301594944178836167}
   m_ConfineScreenEdges: 1
   m_Damping: 0
+--- !u!114 &9045950773613690113
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4301594945577620672}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00b2d199b96b516448144ab30fb26aed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ChannelMask: 1
+  m_Gain: 0.6
+  m_Use2DDistance: 1
 --- !u!1 &4301594945619807064
 GameObject:
   m_ObjectHideFlags: 0
@@ -5092,12 +5108,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4055682706084460270, guid: 5426ca195aa7b6a49949ca49ccae728b,
-        type: 3}
-      propertyPath: dropItems.Array.data[0]
-      value: 
-      objectReference: {fileID: 3565092891919126322, guid: 07207657e9382a045a591092e5a9671a,
-        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5426ca195aa7b6a49949ca49ccae728b, type: 3}
 --- !u!4 &8823269795502258192 stripped
@@ -5173,12 +5183,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4055682706084460270, guid: 5426ca195aa7b6a49949ca49ccae728b,
-        type: 3}
-      propertyPath: dropItems.Array.data[0]
-      value: 
-      objectReference: {fileID: 3565092891919126322, guid: 07207657e9382a045a591092e5a9671a,
-        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5426ca195aa7b6a49949ca49ccae728b, type: 3}
 --- !u!4 &8823269795347062226 stripped
@@ -5554,12 +5558,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4055682706084460270, guid: 5426ca195aa7b6a49949ca49ccae728b,
-        type: 3}
-      propertyPath: dropItems.Array.data[0]
-      value: 
-      objectReference: {fileID: 3565092891919126322, guid: 07207657e9382a045a591092e5a9671a,
-        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5426ca195aa7b6a49949ca49ccae728b, type: 3}
 --- !u!4 &8823269796407934965 stripped
@@ -5575,6 +5573,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4301594943864118413}
     m_Modifications:
+    - target: {fileID: 3430585093422168870, guid: c9f28589206c0db428e31096354c1e0c,
+        type: 3}
+      propertyPath: m_Name
+      value: envo particle (1)
+      objectReference: {fileID: 0}
     - target: {fileID: 3430585093422168867, guid: c9f28589206c0db428e31096354c1e0c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5629,11 +5632,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3430585093422168870, guid: c9f28589206c0db428e31096354c1e0c,
-        type: 3}
-      propertyPath: m_Name
-      value: envo particle (1)
       objectReference: {fileID: 0}
     - target: {fileID: 3430585093422168868, guid: c9f28589206c0db428e31096354c1e0c,
         type: 3}
@@ -5735,12 +5733,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4055682706084460270, guid: 5426ca195aa7b6a49949ca49ccae728b,
-        type: 3}
-      propertyPath: dropItems.Array.data[0]
-      value: 
-      objectReference: {fileID: 3565092891919126322, guid: 07207657e9382a045a591092e5a9671a,
-        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5426ca195aa7b6a49949ca49ccae728b, type: 3}
 --- !u!4 &8823269796744857952 stripped

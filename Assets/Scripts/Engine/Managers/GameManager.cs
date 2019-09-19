@@ -52,7 +52,6 @@ public class GameManager : MonoBehaviour
 
             m_Instance.experienceImage.fillAmount =
                 (float)m_Experience / (float)m_NextLevelPoint;
-
         }
     }
     public static int Potions

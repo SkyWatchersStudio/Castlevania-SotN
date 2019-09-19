@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Rendering.PostProcessing;
 
 [RequireComponent(typeof(PlayerCommonAbilities))]
 public sealed class Player : Characters
@@ -18,11 +19,19 @@ public sealed class Player : Characters
     public float mana;
     public float mistManaBurn;
     public float manaRegen;
+    [Space(10)]
+    public float sensitiveHealth;
+    public PostProcessProfile[] profiles;
+    public PostProcessVolume volume;
+
+    private bool m_IsSensitive;
+    private Animator m_PostProcessAnim;
 
     private float m_HorizontalInput;
     private float m_JumpSaveTime;
     private bool m_MistTransform;
     private bool m_Dagger;
+    private AudioManager m_AudioManager;
 
     private PlayerCommonAbilities m_Abilities;
 
@@ -34,6 +43,21 @@ public sealed class Player : Characters
         {
             m_Health = value;
             healthImage.fillAmount = m_Health / health;
+
+            if (m_Health <= sensitiveHealth && !m_IsSensitive)
+            {
+                m_IsSensitive = true;
+                volume.profile = profiles[1];
+                m_AudioManager.Play("HeartBeating");
+                m_PostProcessAnim.enabled = true;
+            }
+            else if (m_Health > sensitiveHealth && m_IsSensitive)
+            {
+                volume.profile = profiles[0];
+                m_IsSensitive = false;
+                m_AudioManager.Stop("HeartBeating");
+                m_PostProcessAnim.enabled = false;
+            }
         }
     }
     private float m_Mana;
@@ -92,7 +116,6 @@ public sealed class Player : Characters
 
     private ParticleSystem m_MistForm;
     private SpriteRenderer m_Sprite;
-    private AudioManager m_Audio;
     private bool m_IsMist;
     private void MistShifting()
     {
@@ -112,7 +135,7 @@ public sealed class Player : Characters
 
         m_Sprite.enabled = !m_Sprite.enabled;
 
-        m_Audio.Play("MistSwap");
+        m_AudioManager.Play("MistSwap");
 
         m_IsMist = !m_IsMist;
     }
@@ -139,7 +162,8 @@ public sealed class Player : Characters
         m_Animator = GetComponentInChildren<Animator>();
         m_MistForm = GetComponentInChildren<ParticleSystem>();
         m_Sprite = GetComponentInChildren<SpriteRenderer>();
-        m_Audio = FindObjectOfType<AudioManager>();
+        m_AudioManager = FindObjectOfType<AudioManager>();
+        m_PostProcessAnim = volume.GetComponent<Animator>();
 
         CurrentHealth = health;
         CurrentMana = mana;
@@ -195,6 +219,8 @@ public sealed class Player : Characters
     public override void Move() => m_Abilities.Move(m_HorizontalInput);
     public override void TakeDamage(float damage)
     {
+        m_AudioManager.Play("PlayerHit");
+
         m_Animator.SetTrigger("Hit");
         CurrentHealth -= damage;
         if (CurrentHealth <= 0)
