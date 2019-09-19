@@ -10,16 +10,25 @@ public class GameManager : MonoBehaviour
     public GameObject pause;
     public GameObject map;
     public GameObject inventory;
+    public GameObject abilityTree;
     [Space(10)]
     public EventSystem eventSystem;
     [Space(10)]
     public float potionHealthRestore;
     [Space(10)]
     public int heartMax = 10;
+    [Space(10)]
+    public TextMeshProUGUI manaStat;
+    public TextMeshProUGUI heartStat;
+    public TextMeshProUGUI attackSpeedStat;
 
     [Space(10)]
     public Image experienceImage;
+    public Image experienceStat;
+
     public TextMeshProUGUI currentLevel;
+    public TextMeshProUGUI currentLevelStat;
+
     public TextMeshProUGUI coins;
     public TextMeshProUGUI hearts;
     public TextMeshProUGUI m_PotionCount;
@@ -52,6 +61,8 @@ public class GameManager : MonoBehaviour
 
             m_Instance.experienceImage.fillAmount =
                 (float)m_Experience / (float)m_NextLevelPoint;
+            m_Instance.experienceStat.fillAmount =
+                m_Instance.experienceImage.fillAmount;
         }
     }
     public static int Potions
@@ -80,12 +91,19 @@ public class GameManager : MonoBehaviour
         set
         {
             m_PlayerCurrentLevel = value;
-            m_Instance.currentLevel.text = m_PlayerCurrentLevel.ToString();
+            string currentLevelText = m_PlayerCurrentLevel.ToString();
+            m_Instance.currentLevel.text = currentLevelText;
+            m_Instance.currentLevelStat.text = currentLevelText;
 
             m_Instance.heartMax += 6;
+            m_Instance.heartStat.text = m_Instance.heartMax.ToString();
+
             Player.m_Instance.mana += 10;
+            m_Instance.manaStat.text = Player.m_Instance.CurrentMana.ToString();
+
             Player.m_Abilities.timeBetweenAttack -= .02f;
-            Player.m_Instance.attackDamage += 2;
+            m_Instance.attackSpeedStat.text = Player.m_Abilities.timeBetweenAttack.ToString();
+            Player.m_Instance.CurrentDamage += 2;
         }
     }
     public static int Coin
@@ -119,6 +137,8 @@ public class GameManager : MonoBehaviour
             MenuActivator(map);
         else if (Input.GetButtonDown("Inventory"))
             MenuActivator(inventory, m_InventoryFirstButton);
+        else if (Input.GetButtonDown("AbilityTree"))
+            MenuActivator(abilityTree);
     }
     private void MenuActivator(GameObject obj)
     {

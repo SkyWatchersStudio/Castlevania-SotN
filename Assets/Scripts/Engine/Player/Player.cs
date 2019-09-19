@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Rendering.PostProcessing;
+using TMPro;
 
 [RequireComponent(typeof(PlayerCommonAbilities))]
 public sealed class Player : Characters
@@ -25,6 +26,15 @@ public sealed class Player : Characters
     public PostProcessVolume volume;
     [Space(10)]
     public AnimationClip[] swordAnimations;
+    [Space(10)]
+    public TextMeshProUGUI damageStat;
+
+    [Space(10)]
+    public Image[] cubeOfZoeStatImages;
+    public Image[] souldOfWindStatImages;
+    public Image[] mistFormStatImages;
+
+    private Color m_AbilityStatColor;
 
     [System.NonSerialized]
     public AnimatorOverrideController m_OverrideAnimator;
@@ -81,6 +91,49 @@ public sealed class Player : Characters
             manaImage.fillAmount = m_Mana / mana;
         }
     }
+    public float CurrentDamage
+    {
+        get => attackDamage;
+        set
+        {
+            attackDamage = value;
+            damageStat.text = attackDamage.ToString();
+        }
+    }
+
+    public static bool CubeOfZoe
+    {
+        get => m_CubeOfZoe;
+        set
+        {
+            m_CubeOfZoe = value;
+
+            foreach (var img in m_Instance.cubeOfZoeStatImages)
+                img.color = m_Instance.m_AbilityStatColor;
+        }
+    }
+    public static bool SoulOfWind
+    {
+        get => m_DashAbility;
+        set
+        {
+            m_DashAbility = value;
+
+            foreach (var img in m_Instance.souldOfWindStatImages)
+                img.color = m_Instance.m_AbilityStatColor;
+        }
+    }
+    public static bool MistForm
+    {
+        get => m_MistAbility;
+        set
+        {
+            m_MistAbility = value;
+
+            foreach (var img in m_Instance.mistFormStatImages)
+                img.color = m_Instance.m_AbilityStatColor;
+        }
+    }
 
     private void Update()
     {
@@ -101,7 +154,7 @@ public sealed class Player : Characters
         InputDetection();
     }
 
-    public static bool m_MistAbility, m_CubeOfZoe;
+    private static bool m_MistAbility, m_CubeOfZoe, m_DashAbility;
 
     private void InputDetection()
     {
@@ -170,6 +223,8 @@ public sealed class Player : Characters
         base.Start();
         m_Instance = this;
 
+        ColorUtility.TryParseHtmlString("#00C3FF", out m_AbilityStatColor);
+
         m_Abilities = GetComponent<PlayerCommonAbilities>();
         m_Animator = GetComponentInChildren<Animator>();
         m_MistForm = GetComponentInChildren<ParticleSystem>();
@@ -182,6 +237,9 @@ public sealed class Player : Characters
 
         CurrentHealth = health;
         CurrentMana = mana;
+        CurrentDamage = attackDamage;
+
+        GameManager.PlayerCurrentLevel = GameManager.PlayerCurrentLevel;
     }
     public override void FixedUpdate()
     {

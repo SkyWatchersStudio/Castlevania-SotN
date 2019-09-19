@@ -38,7 +38,7 @@ public class InventoryItem : MonoBehaviour
     }
     private void SwapSword(float damage, int index)
     {
-        Player.m_Instance.attackDamage = damage;
+        Player.m_Instance.CurrentDamage = damage;
         Player.m_Instance.m_OverrideAnimator["attack"] =
             Player.m_Instance.swordAnimations[index];
     }

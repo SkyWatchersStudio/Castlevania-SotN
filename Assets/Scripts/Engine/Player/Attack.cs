@@ -38,7 +38,7 @@ public class Attack : MonoBehaviour
 
                 var enemyScript = enemy.GetComponent<Enemy>();
                 if (enemyScript != null)
-                    enemyScript.TakeDamage(m_Abilities.Damage);
+                    enemyScript.TakeDamage(Player.m_Instance.CurrentDamage);
 
                 enemyFound = true;
             }
@@ -52,7 +52,5 @@ public class Attack : MonoBehaviour
             m_AudioManager.Play("attack_p");
             m_CameraShake.GenerateImpulse();
         }
-
-
     }
 }

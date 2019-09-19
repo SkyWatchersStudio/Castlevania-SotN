@@ -18,11 +18,11 @@ public class AbilityUnlocker : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             if (abilityUnlock == AbilityTree.Dash)
-                PlayerCommonAbilities.m_DashAbility = true;
+                Player.SoulOfWind = true;
             else if (abilityUnlock == AbilityTree.Mist)
-                Player.m_MistAbility = true;
+                Player.MistForm = true;
             else if (abilityUnlock == AbilityTree.CubeOfZoe)
-                Player.m_CubeOfZoe = true;
+                Player.CubeOfZoe = true;
 
             m_PlayerAnimator = collision.GetComponentInChildren<Animator>();
 

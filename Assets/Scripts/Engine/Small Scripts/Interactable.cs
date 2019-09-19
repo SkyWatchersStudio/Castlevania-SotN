@@ -16,7 +16,7 @@ public class Interactable : MonoBehaviour
         if (dropItems[item] == null)
             return;
 
-        if (dropItems[item].name.Equals("Heart") && !Player.m_CubeOfZoe)
+        if (dropItems[item].name.Equals("Heart") && !Player.CubeOfZoe)
             return;
 
         Instantiate(dropItems[item], transform.position, Quaternion.identity);

@@ -22,8 +22,7 @@ public abstract class Enemy : Characters
 
     public void AttackPlayer(Transform PlTransform)
     {
-        var playerGameObject = PlTransform.gameObject;
-        playerGameObject.GetComponent<Player>().TakeDamage(attackDamage);
+        Player.m_Instance.TakeDamage(attackDamage);
 
         var attackDirection = m_TargetDirection.normalized;
         attackDirection.y *= collisionForce * .75f;

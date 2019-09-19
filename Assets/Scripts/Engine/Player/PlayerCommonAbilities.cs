@@ -33,7 +33,6 @@ public class PlayerCommonAbilities : MonoBehaviour
 
     public bool IsLock { get; private set; }
     public bool IsJumping { get; private set; }
-    public float Damage { get; private set; }
 
     enum WhichAnimation { dodge, dash}
     private WhichAnimation m_AnimDD;
@@ -54,16 +53,12 @@ public class PlayerCommonAbilities : MonoBehaviour
         m_AttackID = Animator.StringToHash("Attack");
         m_SpeedID = Animator.StringToHash("Speed");
         m_IsGroundID = Animator.StringToHash("isGround");
-
-        Damage = m_Base.attackDamage;
     }
     private void Update()
     {
         m_TimeBtwAttack -= Time.deltaTime;
         m_TimeBtwDash -= Time.deltaTime;
     }
-
-    public static bool m_DashAbility;
 
     public void PhysicUpdate()
     {
@@ -108,7 +103,7 @@ public class PlayerCommonAbilities : MonoBehaviour
 
         if (m_Dash)
         {
-            if (m_DashAbility && m_TimeBtwDash < 0)
+            if (Player.SoulOfWind && m_TimeBtwDash < 0)
             {
                 Dash(ref m_Dash, dashForce, true);
 

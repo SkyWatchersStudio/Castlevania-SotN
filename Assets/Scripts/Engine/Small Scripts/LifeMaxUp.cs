@@ -10,6 +10,7 @@ public class LifeMaxUp : MonoBehaviour
         {
             Player.m_Instance.health += increaseAmount;
             Player.m_Instance.CurrentHealth = Player.m_Instance.health;
+            Destroy(gameObject);
         }
     }
 }
