@@ -114,6 +114,7 @@ MonoBehaviour:
   groundCheck: {fileID: 7305442238577943382}
   groundRadius: 0.15
   m_FacingRight: 0
+  attackDamage: 8
   collisionForce: 80
   maxDistance: 10
   experiencePoint: 50

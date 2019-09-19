@@ -35,7 +35,7 @@ public class Attack : MonoBehaviour
 
                 var enemyScript = enemy.GetComponent<Enemy>();
                 if (enemyScript != null)
-                    enemyScript.TakeDamage();
+                    enemyScript.TakeDamage(m_Abilities.Damage);
 
                 enemyFound = true;
             }

@@ -193,10 +193,10 @@ public sealed class Player : Characters
         m_MistTransform = false;
     }
     public override void Move() => m_Abilities.Move(m_HorizontalInput);
-    public override void TakeDamage()
+    public override void TakeDamage(float damage)
     {
         m_Animator.SetTrigger("Hit");
-        CurrentHealth -= 1;
+        CurrentHealth -= damage;
         if (CurrentHealth <= 0)
             GameManager.Loading(this.transform);
     }

@@ -23,7 +23,7 @@ public abstract class Enemy : Characters
     public void AttackPlayer(Transform PlTransform)
     {
         var playerGameObject = PlTransform.gameObject;
-        playerGameObject.GetComponent<Player>().TakeDamage();
+        playerGameObject.GetComponent<Player>().TakeDamage(attackDamage);
 
         var attackDirection = m_TargetDirection.normalized;
         attackDirection.y *= collisionForce * .75f;
@@ -57,9 +57,9 @@ public abstract class Enemy : Characters
 
         base.FixedUpdate();
     }
-    public override void TakeDamage()
+    public override void TakeDamage(float damage)
     {
-        health -= 1;
+        health -= damage;
         if (health <= 0)
         {
             Destroy(this.gameObject);

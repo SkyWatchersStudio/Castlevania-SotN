@@ -18,8 +18,6 @@ public class PlayerCommonAbilities : MonoBehaviour
     public float dodgeForce;
 
     private Characters m_Base;
-
-    private bool m_IsJumping, m_Lock;
     private float m_TimeBtwAttack, m_TimeBtwDash;
     private Rigidbody2D m_Rigidbody;
     private Animator m_Animator;
@@ -33,8 +31,9 @@ public class PlayerCommonAbilities : MonoBehaviour
     [System.NonSerialized]
     public Collider2D[] m_GroundColliders;
 
-    public bool IsLock { get => m_Lock; }
-    public bool IsJumping { get => m_IsJumping; }
+    public bool IsLock { get; private set; }
+    public bool IsJumping { get; private set; }
+    public float Damage { get; private set; }
 
     enum WhichAnimation { dodge, dash}
     private WhichAnimation m_AnimDD;
@@ -55,6 +54,8 @@ public class PlayerCommonAbilities : MonoBehaviour
         m_AttackID = Animator.StringToHash("Attack");
         m_SpeedID = Animator.StringToHash("Speed");
         m_IsGroundID = Animator.StringToHash("isGround");
+
+        Damage = m_Base.attackDamage;
     }
     private void Update()
     {
@@ -80,11 +81,11 @@ public class PlayerCommonAbilities : MonoBehaviour
             m_AttackCounts++;
         }
 
-        if (m_Lock)
+        if (IsLock)
         {
             if (Mathf.Abs(m_Rigidbody.velocity.x) <= 6)
             {
-                m_Lock = false;
+                IsLock = false;
                 switch (m_AnimDD)
                 {
                     case WhichAnimation.dash:
@@ -93,11 +94,7 @@ public class PlayerCommonAbilities : MonoBehaviour
                     case WhichAnimation.dodge:
                         m_Animator.SetBool("Doudge", false);
                         break;
-
                 }
-
-                
-
             }
             return;
         }
@@ -159,9 +156,9 @@ public class PlayerCommonAbilities : MonoBehaviour
 
     private void JumpStatus()
     {
-        if (m_IsJumping && m_Grounded)
+        if (IsJumping && m_Grounded)
         {
-            m_IsJumping = false;
+            IsJumping = false;
             FindObjectOfType<AudioManager>().Play("Jumplanding");
         }
            
@@ -171,10 +168,10 @@ public class PlayerCommonAbilities : MonoBehaviour
             m_Rigidbody.velocity = new Vector2(m_Rigidbody.velocity.x, 0);
             m_Rigidbody.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
 
-            m_IsJumping = true;
+            IsJumping = true;
             m_ShouldJump = false;
         }
-        else if (m_InterruptJump && m_Rigidbody.velocity.y > 0 && m_IsJumping)
+        else if (m_InterruptJump && m_Rigidbody.velocity.y > 0 && IsJumping)
         {
             m_InterruptJump = false;
 
@@ -191,7 +188,7 @@ public class PlayerCommonAbilities : MonoBehaviour
 
         m_Rigidbody.velocity = Vector2.zero;
         m_Rigidbody.gravityScale = 0;
-        m_Lock = true;
+        IsLock = true;
 
         var forceDir = Vector2.right * force;
         if ((isForwardDir && !m_Base.m_FacingRight) || (!isForwardDir && m_Base.m_FacingRight))

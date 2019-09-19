@@ -5223,11 +5223,16 @@ MonoBehaviour:
   groundCheck: {fileID: 1088029816}
   groundRadius: 0.15
   m_FacingRight: 1
+  attackDamage: 10
   jumpSaveTime: 0.05
   mistForce: 25
   healthImage: {fileID: 0}
+  manaImage: {fileID: 0}
   dagger: {fileID: 6468667975865377737, guid: 77ad19e1a9aa6404b8705aad69d07bd4, type: 3}
   daggerSpeed: 30
+  mana: 20
+  mistManaBurn: 10
+  manaRegen: 5
 --- !u!1 &6123565678501555671
 GameObject:
   m_ObjectHideFlags: 0

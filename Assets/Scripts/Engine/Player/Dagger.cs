@@ -5,6 +5,7 @@ using UnityEngine;
 public class Dagger : MonoBehaviour
 {
     public float lifeTime = 2;
+    public float damage;
 
     private float m_Timer;
 
@@ -19,7 +20,7 @@ public class Dagger : MonoBehaviour
     {
         if (collision.CompareTag("Enemy"))
         {
-            collision.GetComponent<Enemy>().TakeDamage();
+            collision.GetComponent<Enemy>().TakeDamage(damage);
             Destroy(gameObject);
         }
     }

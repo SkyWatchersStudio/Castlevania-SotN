@@ -53,10 +53,10 @@ public class Alucard : Enemy
         base.FixedUpdate();
     }
     public override void Move() => m_Abilities.Move(m_TargetDirection.x);
-    public override void TakeDamage()
+    public override void TakeDamage(float damage)
     {
         m_Animator.SetTrigger("Hit");
-        base.TakeDamage();
+        base.TakeDamage(damage);
     }
     public override Vector2 GetPlayerDirection()
     {

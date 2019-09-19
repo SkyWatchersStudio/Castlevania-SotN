@@ -31,10 +31,10 @@ public sealed class Tomato : Enemy
             m_PlayerTransform = collision.transform;
         }
     }
-    public override void TakeDamage()
+    public override void TakeDamage(float damage)
     {
         m_Animator.SetTrigger("HitEnemy");
-        base.TakeDamage();
+        base.TakeDamage(damage);
     }
     public override void Start()
     {

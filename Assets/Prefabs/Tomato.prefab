@@ -267,13 +267,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34054d577c11a6c4e8bef5a1b3ec6910, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 3
+  health: 30
   moveSpeed: 15
   groundCheck: {fileID: 219788838224694455}
   groundRadius: 0.4
   m_FacingRight: 0
+  attackDamage: 5
   collisionForce: 80
-  distanceMagnitude: 12
+  maxDistance: 0
   experiencePoint: 10
 --- !u!114 &7767905689287978143
 MonoBehaviour:
