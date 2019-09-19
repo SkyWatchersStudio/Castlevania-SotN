@@ -1919,7 +1919,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 393916710}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.48, y: 16.01, z: 0}
+  m_LocalPosition: {x: -5.44, y: 0.5, z: 0}
   m_LocalScale: {x: 0.7273533, y: 0.7273533, z: 0.7273533}
   m_Children:
   - {fileID: 1618579628}
@@ -13974,6 +13974,26 @@ PrefabInstance:
       propertyPath: healthImage
       value: 
       objectReference: {fileID: 1112440446}
+    - target: {fileID: 5191960925485090435, guid: 566019c9cd7fe99448037a396e657a67,
+        type: 3}
+      propertyPath: manaImage
+      value: 
+      objectReference: {fileID: 1410000955}
+    - target: {fileID: 5191960925485090435, guid: 566019c9cd7fe99448037a396e657a67,
+        type: 3}
+      propertyPath: mana
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 5191960925485090435, guid: 566019c9cd7fe99448037a396e657a67,
+        type: 3}
+      propertyPath: mistManaBurn
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5191960925485090435, guid: 566019c9cd7fe99448037a396e657a67,
+        type: 3}
+      propertyPath: manaRegen
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 566019c9cd7fe99448037a396e657a67, type: 3}
 --- !u!1001 &7971231918828819196

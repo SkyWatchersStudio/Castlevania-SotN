@@ -10,9 +10,14 @@ public sealed class Player : Characters
     public float mistForce;
     [Space(10)]
     public Image healthImage;
+    public Image manaImage;
     [Space(10)]
     public Rigidbody2D dagger;
     public float daggerSpeed;
+    [Space(10)]
+    public float mana;
+    public float mistManaBurn;
+    public float manaRegen;
 
     private float m_HorizontalInput;
     private float m_JumpSaveTime;
@@ -29,6 +34,16 @@ public sealed class Player : Characters
         {
             m_Health = value;
             healthImage.fillAmount = m_Health / health;
+        }
+    }
+    private float m_Mana;
+    public float CurrentMana
+    {
+        get => m_Mana;
+        set
+        {
+            m_Mana = value;
+            manaImage.fillAmount = m_Mana / mana;
         }
     }
 
@@ -110,6 +125,10 @@ public sealed class Player : Characters
         vector.Normalize();
 
         m_Rigidbody.AddForce(vector * mistForce);
+
+        CurrentMana -= mistManaBurn * Time.fixedDeltaTime;
+        if (CurrentMana <= 0)
+            MistShifting();
     }
 
     public override void Start()
@@ -123,6 +142,7 @@ public sealed class Player : Characters
         m_Audio = FindObjectOfType<AudioManager>();
 
         CurrentHealth = health;
+        CurrentMana = mana;
     }
     public override void FixedUpdate()
     {
@@ -134,6 +154,12 @@ public sealed class Player : Characters
                 MistShifting();
             MistMove();
             return;
+        }
+        else
+        {
+            CurrentMana += manaRegen * Time.fixedDeltaTime;
+            if (CurrentMana > mana)
+                CurrentMana = mana;
         }
 
         if (m_Dagger && GameManager.Hearts > 0)
@@ -147,7 +173,10 @@ public sealed class Player : Characters
 
             Vector2 direction = Vector2.right;
             if (!m_FacingRight)
+            {
+                d.transform.rotation = Quaternion.Euler(0, 180, 0);
                 direction = Vector2.left;
+            }
             d.velocity = direction * daggerSpeed;
         }
         m_Dagger = false;
@@ -156,7 +185,7 @@ public sealed class Player : Characters
         if (m_Abilities.IsLock)
             return;
 
-        if (m_MistTransform && m_MistAbility)
+        if (m_MistTransform && CurrentMana >= mistManaBurn && m_MistAbility)
             MistShifting(); // transform to mist
 
         base.FixedUpdate();
