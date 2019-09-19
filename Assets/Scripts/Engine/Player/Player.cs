@@ -202,6 +202,8 @@ public sealed class Player : Characters
                 direction = Vector2.left;
             }
             d.velocity = direction * daggerSpeed;
+
+            m_AudioManager.Play("DaggerThrow");
         }
         m_Dagger = false;
 
