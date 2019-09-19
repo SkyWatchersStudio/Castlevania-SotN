@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(PlayerCommonAbilities))]
@@ -76,6 +75,9 @@ public sealed class Player : Characters
             m_Dagger = true;
     }
 
+    private ParticleSystem m_MistForm;
+    private SpriteRenderer m_Sprite;
+    private AudioManager m_Audio;
     private bool m_IsMist;
     private void MistShifting()
     {
@@ -87,6 +89,15 @@ public sealed class Player : Characters
         
         if (m_IsMist || !m_Abilities.m_Grounded)
             m_Rigidbody.gravityScale = (m_Rigidbody.gravityScale + 1) % 2;
+
+        if (m_IsMist)
+            m_MistForm.Stop();
+        else
+            m_MistForm.Play();
+
+        m_Sprite.enabled = !m_Sprite.enabled;
+
+        m_Audio.Play("MistSwap");
 
         m_IsMist = !m_IsMist;
     }
@@ -107,6 +118,9 @@ public sealed class Player : Characters
 
         m_Abilities = GetComponent<PlayerCommonAbilities>();
         m_Animator = GetComponentInChildren<Animator>();
+        m_MistForm = GetComponentInChildren<ParticleSystem>();
+        m_Sprite = GetComponentInChildren<SpriteRenderer>();
+        m_Audio = FindObjectOfType<AudioManager>();
 
         CurrentHealth = health;
     }
