@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Rendering.PostProcessing;
 
 [RequireComponent(typeof(PlayerCommonAbilities))]
 public sealed class Player : Characters
@@ -20,6 +21,11 @@ public sealed class Player : Characters
     public float manaRegen;
     [Space(10)]
     public float sensitiveHealth;
+    public PostProcessProfile[] profiles;
+    public PostProcessVolume volume;
+
+    private bool m_IsSensitive;
+    private Animator m_PostProcessAnim;
 
     private float m_HorizontalInput;
     private float m_JumpSaveTime;
@@ -38,9 +44,19 @@ public sealed class Player : Characters
             m_Health = value;
             healthImage.fillAmount = m_Health / health;
 
-            if (m_Health <= sensitiveHealth)
+            if (m_Health <= sensitiveHealth && !m_IsSensitive)
             {
+                m_IsSensitive = true;
+                volume.profile = profiles[1];
                 m_AudioManager.Play("HeartBeating");
+                m_PostProcessAnim.enabled = true;
+            }
+            else if (m_Health > sensitiveHealth && m_IsSensitive)
+            {
+                volume.profile = profiles[0];
+                m_IsSensitive = false;
+                m_AudioManager.Stop("HeartBeating");
+                m_PostProcessAnim.enabled = false;
             }
         }
     }
@@ -100,7 +116,6 @@ public sealed class Player : Characters
 
     private ParticleSystem m_MistForm;
     private SpriteRenderer m_Sprite;
-    private AudioManager m_Audio;
     private bool m_IsMist;
     private void MistShifting()
     {
@@ -120,7 +135,7 @@ public sealed class Player : Characters
 
         m_Sprite.enabled = !m_Sprite.enabled;
 
-        m_Audio.Play("MistSwap");
+        m_AudioManager.Play("MistSwap");
 
         m_IsMist = !m_IsMist;
     }
@@ -147,8 +162,8 @@ public sealed class Player : Characters
         m_Animator = GetComponentInChildren<Animator>();
         m_MistForm = GetComponentInChildren<ParticleSystem>();
         m_Sprite = GetComponentInChildren<SpriteRenderer>();
-        m_Audio = FindObjectOfType<AudioManager>();
         m_AudioManager = FindObjectOfType<AudioManager>();
+        m_PostProcessAnim = volume.GetComponent<Animator>();
 
         CurrentHealth = health;
         CurrentMana = mana;

@@ -5234,7 +5234,7 @@ MonoBehaviour:
   mana: 20
   mistManaBurn: 10
   manaRegen: 5
-  sensitiveHealth: 0
+  sensitiveHealth: 20
 --- !u!114 &5795057369406548626
 MonoBehaviour:
   m_ObjectHideFlags: 0

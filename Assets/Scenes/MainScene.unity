@@ -10419,6 +10419,18 @@ Transform:
   m_Father: {fileID: 692920785}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1816830318 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3527419727122614697, guid: 780d096782f59c8469731a6d04fd4195,
+    type: 3}
+  m_PrefabInstance: {fileID: 3527419727122614695}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b9a305e18de0c04dbd257a21cd47087, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1830550375
 GameObject:
   m_ObjectHideFlags: 0
@@ -12931,21 +12943,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5958130416463816794, guid: 780d096782f59c8469731a6d04fd4195,
         type: 3}
-      propertyPath: m_RootOrder
-      value: 21
-      objectReference: {fileID: 0}
-    - target: {fileID: 5958130416463816794, guid: 780d096782f59c8469731a6d04fd4195,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 21
-      objectReference: {fileID: 0}
-    - target: {fileID: 5958130416463816794, guid: 780d096782f59c8469731a6d04fd4195,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 21
-      objectReference: {fileID: 0}
-    - target: {fileID: 5958130416463816794, guid: 780d096782f59c8469731a6d04fd4195,
-        type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
@@ -12961,9 +12958,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3527419727122614697, guid: 780d096782f59c8469731a6d04fd4195,
         type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
+      propertyPath: sharedProfile
+      value: 
+      objectReference: {fileID: 11400000, guid: e08675197d081984ca4d259f37a62b95,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 780d096782f59c8469731a6d04fd4195, type: 3}
 --- !u!1001 &3738971885578891178
@@ -13338,6 +13336,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5191960925485090435, guid: 566019c9cd7fe99448037a396e657a67,
         type: 3}
+      propertyPath: profiles.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5191960925485090435, guid: 566019c9cd7fe99448037a396e657a67,
+        type: 3}
       propertyPath: healthImage
       value: 
       objectReference: {fileID: 1112440446}
@@ -13346,6 +13349,51 @@ PrefabInstance:
       propertyPath: manaImage
       value: 
       objectReference: {fileID: 1410000955}
+    - target: {fileID: 5191960925485090435, guid: 566019c9cd7fe99448037a396e657a67,
+        type: 3}
+      propertyPath: boolean.overrideState
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5191960925485090435, guid: 566019c9cd7fe99448037a396e657a67,
+        type: 3}
+      propertyPath: boolean.value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5191960925485090435, guid: 566019c9cd7fe99448037a396e657a67,
+        type: 3}
+      propertyPath: profile
+      value: 
+      objectReference: {fileID: 11400000, guid: e08675197d081984ca4d259f37a62b95,
+        type: 2}
+    - target: {fileID: 5191960925485090435, guid: 566019c9cd7fe99448037a396e657a67,
+        type: 3}
+      propertyPath: LowHp
+      value: 
+      objectReference: {fileID: 11400000, guid: ab3b6d82d7ba37843ab41b7bb7902e61,
+        type: 2}
+    - target: {fileID: 5191960925485090435, guid: 566019c9cd7fe99448037a396e657a67,
+        type: 3}
+      propertyPath: normal
+      value: 
+      objectReference: {fileID: 11400000, guid: e08675197d081984ca4d259f37a62b95,
+        type: 2}
+    - target: {fileID: 5191960925485090435, guid: 566019c9cd7fe99448037a396e657a67,
+        type: 3}
+      propertyPath: volume
+      value: 
+      objectReference: {fileID: 1816830318}
+    - target: {fileID: 5191960925485090435, guid: 566019c9cd7fe99448037a396e657a67,
+        type: 3}
+      propertyPath: profiles.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: e08675197d081984ca4d259f37a62b95,
+        type: 2}
+    - target: {fileID: 5191960925485090435, guid: 566019c9cd7fe99448037a396e657a67,
+        type: 3}
+      propertyPath: profiles.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: ab3b6d82d7ba37843ab41b7bb7902e61,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 566019c9cd7fe99448037a396e657a67, type: 3}
 --- !u!1001 &7971231918828819196
