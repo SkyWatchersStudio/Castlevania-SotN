@@ -289,7 +289,6 @@ Transform:
   - {fileID: 658193067312141180}
   - {fileID: 960185654453172580}
   - {fileID: 1876451570463224010}
-  - {fileID: 3627264167043483071}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1030,81 +1029,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1001 &10520134474690596
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 1356092070267907633}
-    m_Modifications:
-    - target: {fileID: 3635462127390242202, guid: 26758d3138a488e4281f5cff6a6e1235,
-        type: 3}
-      propertyPath: m_Name
-      value: sword of ice
-      objectReference: {fileID: 0}
-    - target: {fileID: 3635462127390242203, guid: 26758d3138a488e4281f5cff6a6e1235,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 2.45
-      objectReference: {fileID: 0}
-    - target: {fileID: 3635462127390242203, guid: 26758d3138a488e4281f5cff6a6e1235,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 2.33
-      objectReference: {fileID: 0}
-    - target: {fileID: 3635462127390242203, guid: 26758d3138a488e4281f5cff6a6e1235,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3635462127390242203, guid: 26758d3138a488e4281f5cff6a6e1235,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3635462127390242203, guid: 26758d3138a488e4281f5cff6a6e1235,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3635462127390242203, guid: 26758d3138a488e4281f5cff6a6e1235,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3635462127390242203, guid: 26758d3138a488e4281f5cff6a6e1235,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3635462127390242203, guid: 26758d3138a488e4281f5cff6a6e1235,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 3635462127390242203, guid: 26758d3138a488e4281f5cff6a6e1235,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3635462127390242203, guid: 26758d3138a488e4281f5cff6a6e1235,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3635462127390242203, guid: 26758d3138a488e4281f5cff6a6e1235,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 26758d3138a488e4281f5cff6a6e1235, type: 3}
---- !u!4 &3627264167043483071 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 3635462127390242203, guid: 26758d3138a488e4281f5cff6a6e1235,
-    type: 3}
-  m_PrefabInstance: {fileID: 10520134474690596}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1638339594107855661
 PrefabInstance:
   m_ObjectHideFlags: 0

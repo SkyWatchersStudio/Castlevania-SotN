@@ -2854,7 +2854,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 9.213787, y: 29.672985, z: -10}
+  m_LocalPosition: {x: 9.214871, y: 29.672985, z: -10}
   m_LocalScale: {x: 0.61784476, y: 1.073258, z: 0.61784476}
   m_Children: []
   m_Father: {fileID: 0}
@@ -14117,6 +14117,12 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5795057369406548626, guid: 566019c9cd7fe99448037a396e657a67,
+        type: 3}
+      propertyPath: m_ImpulseDefinition.m_RawSignal
+      value: 
+      objectReference: {fileID: 11400000, guid: cf991675ace2f5b43a8fc39893371919,
+        type: 2}
     - target: {fileID: 2940581264361314439, guid: 566019c9cd7fe99448037a396e657a67,
         type: 3}
       propertyPath: m_Name
@@ -14187,12 +14193,6 @@ PrefabInstance:
       propertyPath: manaImage
       value: 
       objectReference: {fileID: 1410000955}
-    - target: {fileID: 5795057369406548626, guid: 566019c9cd7fe99448037a396e657a67,
-        type: 3}
-      propertyPath: m_ImpulseDefinition.m_RawSignal
-      value: 
-      objectReference: {fileID: 11400000, guid: cf991675ace2f5b43a8fc39893371919,
-        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 566019c9cd7fe99448037a396e657a67, type: 3}
 --- !u!1001 &7971231918828819196
