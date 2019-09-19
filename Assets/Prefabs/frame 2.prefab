@@ -3636,6 +3636,7 @@ GameObject:
   - component: {fileID: 5416995447415576157}
   - component: {fileID: 4533724015646722123}
   - component: {fileID: 6853224325119988262}
+  - component: {fileID: 3303597243661918244}
   m_Layer: 0
   m_Name: CM vcam2
   m_TagString: Untagged
@@ -3712,6 +3713,21 @@ MonoBehaviour:
   m_BoundingShape2D: {fileID: 2514113110670587055}
   m_ConfineScreenEdges: 1
   m_Damping: 0
+--- !u!114 &3303597243661918244
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6816809891417882128}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00b2d199b96b516448144ab30fb26aed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ChannelMask: 1
+  m_Gain: 0.6
+  m_Use2DDistance: 1
 --- !u!1 &6962345335415590191
 GameObject:
   m_ObjectHideFlags: 0
@@ -4649,6 +4665,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1254276362486562373}
     m_Modifications:
+    - target: {fileID: 3430585093422168870, guid: c9f28589206c0db428e31096354c1e0c,
+        type: 3}
+      propertyPath: m_Name
+      value: envo particle
+      objectReference: {fileID: 0}
     - target: {fileID: 3430585093422168867, guid: c9f28589206c0db428e31096354c1e0c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4703,11 +4724,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3430585093422168870, guid: c9f28589206c0db428e31096354c1e0c,
-        type: 3}
-      propertyPath: m_Name
-      value: envo particle
       objectReference: {fileID: 0}
     - target: {fileID: 3430585093422168868, guid: c9f28589206c0db428e31096354c1e0c,
         type: 3}
