@@ -5231,10 +5231,13 @@ MonoBehaviour:
   manaImage: {fileID: 0}
   dagger: {fileID: 6468667975865377737, guid: 77ad19e1a9aa6404b8705aad69d07bd4, type: 3}
   daggerSpeed: 30
-  mana: 20
+  mana: 40
   mistManaBurn: 10
   manaRegen: 5
   sensitiveHealth: 20
+  profiles: []
+  volume: {fileID: 0}
+  swordAnimations: []
 --- !u!114 &5795057369406548626
 MonoBehaviour:
   m_ObjectHideFlags: 0
