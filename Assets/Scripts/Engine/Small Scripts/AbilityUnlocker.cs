@@ -43,12 +43,14 @@ public class AbilityUnlocker : MonoBehaviour
 
             m_Timer += Time.deltaTime;
             if (m_Timer >= 1f)
+            {
                 abilityIntro.SetActive(true);
 
-            if (Input.anyKeyDown)
-            {
-                Destroy(abilityIntro);
-                Destroy(gameObject);
+                if (Input.anyKeyDown)
+                {
+                    Destroy(abilityIntro);
+                    Destroy(gameObject);
+                }
             }
         }
     }

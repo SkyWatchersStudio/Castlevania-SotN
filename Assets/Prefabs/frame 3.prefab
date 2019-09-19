@@ -5096,7 +5096,8 @@ PrefabInstance:
         type: 3}
       propertyPath: dropItems.Array.data[0]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 3565092891919126322, guid: 07207657e9382a045a591092e5a9671a,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5426ca195aa7b6a49949ca49ccae728b, type: 3}
 --- !u!4 &8823269795502258192 stripped
@@ -5176,7 +5177,8 @@ PrefabInstance:
         type: 3}
       propertyPath: dropItems.Array.data[0]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 3565092891919126322, guid: 07207657e9382a045a591092e5a9671a,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5426ca195aa7b6a49949ca49ccae728b, type: 3}
 --- !u!4 &8823269795347062226 stripped
@@ -5556,7 +5558,8 @@ PrefabInstance:
         type: 3}
       propertyPath: dropItems.Array.data[0]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 3565092891919126322, guid: 07207657e9382a045a591092e5a9671a,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5426ca195aa7b6a49949ca49ccae728b, type: 3}
 --- !u!4 &8823269796407934965 stripped
@@ -5572,11 +5575,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4301594943864118413}
     m_Modifications:
-    - target: {fileID: 3430585093422168870, guid: c9f28589206c0db428e31096354c1e0c,
-        type: 3}
-      propertyPath: m_Name
-      value: envo particle (1)
-      objectReference: {fileID: 0}
     - target: {fileID: 3430585093422168867, guid: c9f28589206c0db428e31096354c1e0c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5631,6 +5629,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3430585093422168870, guid: c9f28589206c0db428e31096354c1e0c,
+        type: 3}
+      propertyPath: m_Name
+      value: envo particle (1)
       objectReference: {fileID: 0}
     - target: {fileID: 3430585093422168868, guid: c9f28589206c0db428e31096354c1e0c,
         type: 3}
@@ -5736,7 +5739,8 @@ PrefabInstance:
         type: 3}
       propertyPath: dropItems.Array.data[0]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 3565092891919126322, guid: 07207657e9382a045a591092e5a9671a,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5426ca195aa7b6a49949ca49ccae728b, type: 3}
 --- !u!4 &8823269796744857952 stripped

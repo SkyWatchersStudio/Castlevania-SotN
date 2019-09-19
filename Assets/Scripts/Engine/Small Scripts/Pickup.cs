@@ -15,18 +15,13 @@ public class Pickup : MonoBehaviour
 
     private float m_Timer;
     private Rigidbody2D m_Rigidbody;
+    private bool m_Get;
     private const int m_GroundLayer = ~(1 << 8);
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
-        {
-            Destroy(gameObject);
-            if (whatIsThisShit == Identity.coin)
-                GameManager.Coin += worthiness;
-            else if (whatIsThisShit == Identity.heart)
-                GameManager.Hearts += worthiness;
-        }
+            m_Get = true;
     }
 
     private void Start()
@@ -38,6 +33,14 @@ public class Pickup : MonoBehaviour
         m_Timer += Time.deltaTime;
         if (m_Timer >= lifeTime)
             Destroy(gameObject);
+        else if (m_Timer > .2f && m_Get)
+        {
+            Destroy(gameObject);
+            if (whatIsThisShit == Identity.coin)
+                GameManager.Coin += worthiness;
+            else if (whatIsThisShit == Identity.heart)
+                GameManager.Hearts += worthiness;
+        }
     }
     private void FixedUpdate()
     {

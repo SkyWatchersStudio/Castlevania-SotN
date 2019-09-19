@@ -3139,7 +3139,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1254276363229845287}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 43.61, y: 1.6, z: 0}
+  m_LocalPosition: {x: 43.61, y: 1.52, z: 0}
   m_LocalScale: {x: 2.0785065, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1254276362824211228}
@@ -3181,7 +3181,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 8128238f6f47b8c44946495111c6d83b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -4649,11 +4649,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1254276362486562373}
     m_Modifications:
-    - target: {fileID: 3430585093422168870, guid: c9f28589206c0db428e31096354c1e0c,
-        type: 3}
-      propertyPath: m_Name
-      value: envo particle
-      objectReference: {fileID: 0}
     - target: {fileID: 3430585093422168867, guid: c9f28589206c0db428e31096354c1e0c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4708,6 +4703,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3430585093422168870, guid: c9f28589206c0db428e31096354c1e0c,
+        type: 3}
+      propertyPath: m_Name
+      value: envo particle
       objectReference: {fileID: 0}
     - target: {fileID: 3430585093422168868, guid: c9f28589206c0db428e31096354c1e0c,
         type: 3}

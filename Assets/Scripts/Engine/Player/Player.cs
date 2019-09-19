@@ -146,6 +146,8 @@ public sealed class Player : Characters
             MistShifting(); // transform to mist
 
         base.FixedUpdate();
+
+        m_MistTransform = false;
     }
     public override void Move() => m_Abilities.Move(m_HorizontalInput);
     public override void TakeDamage()

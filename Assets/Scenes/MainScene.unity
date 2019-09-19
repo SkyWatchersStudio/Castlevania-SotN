@@ -2547,10 +2547,10 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.1
-  far clip plane: 5000
+  far clip plane: 100
   field of view: 40
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 6
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -2574,7 +2574,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 9.214871, y: 29.672985, z: -10}
+  m_LocalPosition: {x: 77.00397, y: 2.1739717, z: -10}
   m_LocalScale: {x: 0.61784476, y: 1.073258, z: 0.61784476}
   m_Children: []
   m_Father: {fileID: 0}
@@ -8727,6 +8727,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3751875948809503775, guid: 2ffa57db449325343a45f6c3f9f50ca3,
+        type: 3}
+      propertyPath: m_Name
+      value: SoundManager
+      objectReference: {fileID: 0}
     - target: {fileID: 784265627668312043, guid: 2ffa57db449325343a45f6c3f9f50ca3,
         type: 3}
       propertyPath: sounds.Array.size
@@ -8826,11 +8831,6 @@ PrefabInstance:
         type: 3}
       propertyPath: sounds.Array.data[6].pitch
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3751875948809503775, guid: 2ffa57db449325343a45f6c3f9f50ca3,
-        type: 3}
-      propertyPath: m_Name
-      value: SoundManager
       objectReference: {fileID: 0}
     - target: {fileID: 3751875948809503768, guid: 2ffa57db449325343a45f6c3f9f50ca3,
         type: 3}
@@ -13156,6 +13156,35 @@ PrefabInstance:
       propertyPath: m_Follow
       value: 
       objectReference: {fileID: 575811154}
+    - target: {fileID: 3749210981747742824, guid: c969662b05132ae4eac0917e0da358e0,
+        type: 3}
+      propertyPath: dropItems.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3749210981747742824, guid: c969662b05132ae4eac0917e0da358e0,
+        type: 3}
+      propertyPath: dropItems.Array.data[3]
+      value: 
+      objectReference: {fileID: 3000675653566342256, guid: 5343b565eef834c4381b169a7c584f8f,
+        type: 3}
+    - target: {fileID: 3749210981747742824, guid: c969662b05132ae4eac0917e0da358e0,
+        type: 3}
+      propertyPath: dropItems.Array.data[0]
+      value: 
+      objectReference: {fileID: 3565092891919126322, guid: 07207657e9382a045a591092e5a9671a,
+        type: 3}
+    - target: {fileID: 3749210981747742824, guid: c969662b05132ae4eac0917e0da358e0,
+        type: 3}
+      propertyPath: dropItems.Array.data[4]
+      value: 
+      objectReference: {fileID: 3565092891919126322, guid: 07207657e9382a045a591092e5a9671a,
+        type: 3}
+    - target: {fileID: 3749210981747742824, guid: c969662b05132ae4eac0917e0da358e0,
+        type: 3}
+      propertyPath: dropItems.Array.data[5]
+      value: 
+      objectReference: {fileID: 3000675653566342256, guid: 5343b565eef834c4381b169a7c584f8f,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c969662b05132ae4eac0917e0da358e0, type: 3}
 --- !u!1001 &4301594945786248945
