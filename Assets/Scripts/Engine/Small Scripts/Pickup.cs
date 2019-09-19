@@ -36,10 +36,15 @@ public class Pickup : MonoBehaviour
         else if (m_Timer > .2f && m_Get)
         {
             Destroy(gameObject);
-            if (whatIsThisShit == Identity.coin)
-                GameManager.Coin += worthiness;
-            else if (whatIsThisShit == Identity.heart)
-                GameManager.Hearts += worthiness;
+            switch (whatIsThisShit)
+            {
+                case Identity.coin:
+                    GameManager.Coin += worthiness;
+                    break;
+                case Identity.heart:
+                    GameManager.Hearts += worthiness;
+                    break;
+            }
         }
     }
     private void FixedUpdate()

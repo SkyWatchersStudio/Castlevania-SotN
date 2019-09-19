@@ -23,6 +23,11 @@ public sealed class Player : Characters
     public float sensitiveHealth;
     public PostProcessProfile[] profiles;
     public PostProcessVolume volume;
+    [Space(10)]
+    public AnimationClip[] swordAnimations;
+
+    [System.NonSerialized]
+    public AnimatorOverrideController m_OverrideAnimator;
 
     private bool m_IsSensitive;
     private Animator m_PostProcessAnim;
@@ -33,7 +38,9 @@ public sealed class Player : Characters
     private bool m_Dagger;
     private AudioManager m_AudioManager;
 
-    private PlayerCommonAbilities m_Abilities;
+    public static PlayerCommonAbilities m_Abilities;
+
+    public  static Player m_Instance;
 
     private float m_Health;
     public float CurrentHealth
@@ -42,6 +49,10 @@ public sealed class Player : Characters
         set
         {
             m_Health = value;
+
+            if (m_Health > health)
+                m_Health = health;
+
             healthImage.fillAmount = m_Health / health;
 
             if (m_Health <= sensitiveHealth && !m_IsSensitive)
@@ -157,6 +168,7 @@ public sealed class Player : Characters
     public override void Start()
     {
         base.Start();
+        m_Instance = this;
 
         m_Abilities = GetComponent<PlayerCommonAbilities>();
         m_Animator = GetComponentInChildren<Animator>();
@@ -164,6 +176,9 @@ public sealed class Player : Characters
         m_Sprite = GetComponentInChildren<SpriteRenderer>();
         m_AudioManager = FindObjectOfType<AudioManager>();
         m_PostProcessAnim = volume.GetComponent<Animator>();
+
+        m_OverrideAnimator = new AnimatorOverrideController(m_Animator.runtimeAnimatorController);
+        m_Animator.runtimeAnimatorController = m_OverrideAnimator;
 
         CurrentHealth = health;
         CurrentMana = mana;
