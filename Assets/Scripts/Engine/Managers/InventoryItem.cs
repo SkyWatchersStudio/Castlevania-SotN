@@ -9,34 +9,37 @@ public class InventoryItem : MonoBehaviour
 
     public enum Item { ShortSword, SwordOfIce, SwordOfFire, Potion };
 
-    private GameObject m_UseButton;
-
-    private void Start()
-    {
-        m_UseButton = GetComponentInChildren<Button>().gameObject;
-    }
+    public static bool IceSword, FireSword;
 
     public void UseItem()
     {
-        m_UseButton.SetActive(false);
-
         switch(item)
         {
             case Item.ShortSword:
-
+                SwapSword(10, 0);
                 break;
             case Item.SwordOfIce:
-
+                if (IceSword)
+                    SwapSword(20, 1);
                 break;
             case Item.SwordOfFire:
-
+                if (FireSword)
+                    SwapSword(30, 2);
                 break;
             case Item.Potion:
                 if (GameManager.Potions > 0)
                 {
-
+                    GameManager.Potions -= 1;
+                    Player.m_Instance.CurrentHealth += 
+                        GameManager.m_Instance.potionHealthRestore;
                 }
                 break;
         }
+    }
+    private void SwapSword(float damage, int index)
+    {
+        Player.m_Instance.attackDamage = damage;
+        Player.m_Instance.m_OverrideAnimator["attack"] =
+            Player.m_Instance.swordAnimations[index];
     }
 }

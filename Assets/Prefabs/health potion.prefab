@@ -89,7 +89,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1910782239759507296}
   - component: {fileID: 1910782239759507298}
-  - component: {fileID: 1910782239759507297}
   - component: {fileID: 1910782239759507299}
   m_Layer: 8
   m_Name: potion health
@@ -161,22 +160,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!58 &1910782239759507297
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1910782239759507303}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.8466097
 --- !u!95 &1910782239759507299
 Animator:
   serializedVersion: 3
@@ -206,6 +189,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1910782240308241106}
   - component: {fileID: 2020904181713817478}
+  - component: {fileID: 6908840995606019554}
+  - component: {fileID: 2069932015977944591}
   m_Layer: 0
   m_Name: health potion
   m_TagString: Untagged
@@ -324,3 +309,31 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!58 &6908840995606019554
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1910782240308241105}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.5
+--- !u!114 &2069932015977944591
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1910782240308241105}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 430fa9b05719822499a7a5aa4030c2c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

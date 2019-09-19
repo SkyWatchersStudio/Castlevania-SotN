@@ -13,19 +13,19 @@ public class GameManager : MonoBehaviour
     [Space(10)]
     public EventSystem eventSystem;
     [Space(10)]
-    public GameObject inventoryFirstSelected;
-    public GameObject potionInventory;
-    [Space(10)]
     public float potionHealthRestore;
+    [Space(10)]
+    public int heartMax = 10;
 
     [Space(10)]
     public Image experienceImage;
     public TextMeshProUGUI currentLevel;
     public TextMeshProUGUI coins;
     public TextMeshProUGUI hearts;
+    public TextMeshProUGUI m_PotionCount;
 
     private GameObject m_PauseFirstButton;
-    private TextMeshProUGUI m_PotionCount;
+    private GameObject m_InventoryFirstButton;
 
     private static int m_Experience;
     private static int m_PlayerCurrentLevel;
@@ -52,7 +52,6 @@ public class GameManager : MonoBehaviour
 
             m_Instance.experienceImage.fillAmount =
                 (float)m_Experience / (float)m_NextLevelPoint;
-
         }
     }
     public static int Potions
@@ -61,10 +60,6 @@ public class GameManager : MonoBehaviour
         set
         {
             m_Potions = value;
-
-            if (!m_Instance.potionInventory.activeSelf)
-                m_Instance.potionInventory.SetActive(true);
-
             m_Instance.m_PotionCount.text = m_Potions.ToString();
         }
     }
@@ -74,6 +69,8 @@ public class GameManager : MonoBehaviour
         set
         {
             m_Hearts = value;
+            if (m_Hearts > m_Instance.heartMax)
+                m_Hearts = m_Instance.heartMax;
             m_Instance.hearts.text = m_Hearts.ToString();
         }
     }
@@ -85,7 +82,10 @@ public class GameManager : MonoBehaviour
             m_PlayerCurrentLevel = value;
             m_Instance.currentLevel.text = m_PlayerCurrentLevel.ToString();
 
-            //upgrade player stats here.
+            m_Instance.heartMax += 6;
+            Player.m_Instance.mana += 10;
+            Player.m_Abilities.timeBetweenAttack -= .02f;
+            Player.m_Instance.attackDamage += 2;
         }
     }
     public static int Coin
@@ -104,14 +104,12 @@ public class GameManager : MonoBehaviour
         m_Instance = this;
 
         m_PauseFirstButton = pause.GetComponentInChildren<Button>().gameObject;
-        m_PotionCount = 
-            potionInventory.transform.GetChild(1).GetComponent<TextMeshProUGUI>();
+        m_InventoryFirstButton = inventory.GetComponentInChildren<Button>().gameObject;
 
         // give default values foreach
         currentLevel.text = m_PlayerCurrentLevel.ToString();
         coins.text = m_Money.ToString();
         hearts.text = m_Hearts.ToString();
-        m_PotionCount.text = m_Potions.ToString();
     }
     void Update()
     {
@@ -120,7 +118,7 @@ public class GameManager : MonoBehaviour
         else if (Input.GetButtonDown("Map"))
             MenuActivator(map);
         else if (Input.GetButtonDown("Inventory"))
-            MenuActivator(inventory, inventoryFirstSelected);
+            MenuActivator(inventory, m_InventoryFirstButton);
     }
     private void MenuActivator(GameObject obj)
     {

@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 9018851480356203963}
   - component: {fileID: 9018851480356203961}
-  - component: {fileID: 9018851480356203960}
   - component: {fileID: 9018851480356203966}
   m_Layer: 8
   m_Name: max hp up
@@ -82,22 +81,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!70 &9018851480356203960
-CapsuleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9018851480356203962}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 1.62, y: 0.0001}
-  m_Direction: 0
 --- !u!95 &9018851480356203966
 Animator:
   serializedVersion: 3
@@ -206,6 +189,8 @@ GameObject:
   m_Component:
   - component: {fileID: 9018851480810168940}
   - component: {fileID: -4277050869655044804}
+  - component: {fileID: 2437680214567891661}
+  - component: {fileID: 6531111173008785141}
   m_Layer: 0
   m_Name: MAX HP
   m_TagString: Untagged
@@ -324,3 +309,32 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!58 &2437680214567891661
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9018851480810168943}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.5
+--- !u!114 &6531111173008785141
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9018851480810168943}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0d1b034fb3d14345b844a2b10000e0f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  increaseAmount: 10
