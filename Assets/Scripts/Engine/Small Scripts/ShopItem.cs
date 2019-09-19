@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Item : MonoBehaviour
+public class ShopItem : MonoBehaviour
 {
     public void Buy(int price)
     {

@@ -12,6 +12,11 @@ public class GameManager : MonoBehaviour
     public GameObject inventory;
     [Space(10)]
     public EventSystem eventSystem;
+    [Space(10)]
+    public GameObject inventoryFirstSelected;
+    public GameObject potionInventory;
+    [Space(10)]
+    public float potionHealthRestore;
 
     [Space(10)]
     public Image experienceImage;
@@ -19,13 +24,15 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI coins;
     public TextMeshProUGUI hearts;
 
-    private GameObject m_PauseFirstButton, m_InventoryFirstButton;
+    private GameObject m_PauseFirstButton;
+    private TextMeshProUGUI m_PotionCount;
 
     private static int m_Experience;
     private static int m_PlayerCurrentLevel;
     private static int m_NextLevelPoint = 100;
     private static int m_Money;
     private static int m_Hearts;
+    private static int m_Potions;
 
     public static GameManager m_Instance;
 
@@ -46,6 +53,19 @@ public class GameManager : MonoBehaviour
             m_Instance.experienceImage.fillAmount =
                 (float)m_Experience / (float)m_NextLevelPoint;
 
+        }
+    }
+    public static int Potions
+    {
+        get => m_Potions;
+        set
+        {
+            m_Potions = value;
+
+            if (!m_Instance.potionInventory.activeSelf)
+                m_Instance.potionInventory.SetActive(true);
+
+            m_Instance.m_PotionCount.text = m_Potions.ToString();
         }
     }
     public static int Hearts
@@ -83,12 +103,15 @@ public class GameManager : MonoBehaviour
         Cursor.visible = false;
         m_Instance = this;
 
+        m_PauseFirstButton = pause.GetComponentInChildren<Button>().gameObject;
+        m_PotionCount = 
+            potionInventory.transform.GetChild(1).GetComponent<TextMeshProUGUI>();
+
+        // give default values foreach
         currentLevel.text = m_PlayerCurrentLevel.ToString();
         coins.text = m_Money.ToString();
         hearts.text = m_Hearts.ToString();
-
-        m_PauseFirstButton = pause.GetComponentInChildren<Button>().gameObject;
-        m_InventoryFirstButton = inventory.GetComponentInChildren<Button>().gameObject;
+        m_PotionCount.text = m_Potions.ToString();
     }
     void Update()
     {
@@ -97,7 +120,7 @@ public class GameManager : MonoBehaviour
         else if (Input.GetButtonDown("Map"))
             MenuActivator(map);
         else if (Input.GetButtonDown("Inventory"))
-            MenuActivator(inventory, m_InventoryFirstButton);
+            MenuActivator(inventory, inventoryFirstSelected);
     }
     private void MenuActivator(GameObject obj)
     {
