@@ -2547,10 +2547,10 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.1
-  far clip plane: 100
+  far clip plane: 5000
   field of view: 40
   orthographic: 1
-  orthographic size: 8
+  orthographic size: 5
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -2574,7 +2574,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 80.63417, y: -21.360132, z: -10}
+  m_LocalPosition: {x: 51.258568, y: 22.787504, z: -10}
   m_LocalScale: {x: 0.61784476, y: 1.073258, z: 0.61784476}
   m_Children: []
   m_Father: {fileID: 0}
@@ -4613,6 +4613,7 @@ MonoBehaviour:
   debug: 0
   pause: {fileID: 398560321}
   map: {fileID: 1574148815}
+  inventory: {fileID: 2020650568}
   experienceImage: {fileID: 706322325}
   currentLevel: {fileID: 789188333}
   coins: {fileID: 2002309612}
@@ -10081,7 +10082,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1760273211
 RectTransform:
   m_ObjectHideFlags: 0

@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
     [Space(10)]
     public GameObject pause;
     public GameObject map;
+    public GameObject inventory;
 
     [Space(10)]
     public Image experienceImage;
@@ -87,6 +88,8 @@ public class GameManager : MonoBehaviour
             MenuActivator(pause);
         else if (Input.GetButtonDown("Map"))
             MenuActivator(map);
+        else if (Input.GetButtonDown("Inventory"))
+            MenuActivator(inventory);
     }
     private void MenuActivator(GameObject obj)
     {
