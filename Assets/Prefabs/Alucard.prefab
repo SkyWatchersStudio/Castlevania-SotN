@@ -109,12 +109,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45958ace04002b44b896d29e8cb51bd5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 50
+  health: 100
   moveSpeed: 70
   groundCheck: {fileID: 7305442238577943382}
   groundRadius: 0.15
   m_FacingRight: 0
-  attackDamage: 8
+  attackDamage: 12
   collisionForce: 80
   maxDistance: 10
   experiencePoint: 50
