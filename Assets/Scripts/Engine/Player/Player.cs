@@ -204,6 +204,8 @@ public sealed class Player : Characters
     public override void Move() => m_Abilities.Move(m_HorizontalInput);
     public override void TakeDamage(float damage)
     {
+        m_AudioManager.Play("PlayerHit");
+
         m_Animator.SetTrigger("Hit");
         CurrentHealth -= damage;
         if (CurrentHealth <= 0)
