@@ -71,7 +71,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 35a48a8998e2d8345829ddd42ccb580d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -121,9 +121,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61dc15f232c00384da5e278e1a40282c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coin: 50
+  worthiness: 50
   lifeTime: 3
   distanceUnder: 0.7
+  whatIsThisShit: 0
 --- !u!50 &9057938771323017712
 Rigidbody2D:
   serializedVersion: 4

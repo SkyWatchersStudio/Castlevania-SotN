@@ -82,7 +82,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: AbilityGain
     clip: {fileID: 8300000, guid: 248adb8ae76d71f408d57335e1633aec, type: 3}
-    volume: 0.3
+    volume: 0.5
     pitch: 1
     Loop: 0
     source: {fileID: 0}
@@ -102,5 +102,17 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: a8c0d612ff4d81a44aa56c4dba567215, type: 3}
     volume: 0.3
     pitch: 1.1
+    Loop: 0
+    source: {fileID: 0}
+  - name: DaggerThrow
+    clip: {fileID: 8300000, guid: c7845c343b443d747998ae64fb7efb04, type: 3}
+    volume: 0.3
+    pitch: 1.1
+    Loop: 0
+    source: {fileID: 0}
+  - name: Savesound
+    clip: {fileID: 8300000, guid: 248adb8ae76d71f408d57335e1633aec, type: 3}
+    volume: 0.5
+    pitch: 1.5
     Loop: 0
     source: {fileID: 0}
