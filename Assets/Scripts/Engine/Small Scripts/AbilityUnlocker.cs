@@ -25,7 +25,6 @@ public class AbilityUnlocker : MonoBehaviour
                 Player.m_CubeOfZoe = true;
 
             m_PlayerAnimator = collision.GetComponentInChildren<Animator>();
-            collision.attachedRigidbody.velocity = Vector2.zero;
 
             m_Triggered = true;
         }
@@ -43,7 +42,7 @@ public class AbilityUnlocker : MonoBehaviour
             }
 
             m_Timer += Time.deltaTime;
-            if (m_Timer >= 1)
+            if (m_Timer >= 1f)
                 abilityIntro.SetActive(true);
 
             if (Input.anyKeyDown)
