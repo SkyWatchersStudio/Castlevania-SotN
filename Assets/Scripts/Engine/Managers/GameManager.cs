@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.EventSystems;
 
 public class GameManager : MonoBehaviour
 {
@@ -9,12 +10,16 @@ public class GameManager : MonoBehaviour
     public GameObject pause;
     public GameObject map;
     public GameObject inventory;
+    [Space(10)]
+    public EventSystem eventSystem;
 
     [Space(10)]
     public Image experienceImage;
     public TextMeshProUGUI currentLevel;
     public TextMeshProUGUI coins;
     public TextMeshProUGUI hearts;
+
+    private GameObject m_PauseFirstButton, m_InventoryFirstButton;
 
     private static int m_Experience;
     private static int m_PlayerCurrentLevel;
@@ -81,20 +86,29 @@ public class GameManager : MonoBehaviour
         currentLevel.text = m_PlayerCurrentLevel.ToString();
         coins.text = m_Money.ToString();
         hearts.text = m_Hearts.ToString();
+
+        m_PauseFirstButton = pause.GetComponentInChildren<Button>().gameObject;
+        m_InventoryFirstButton = inventory.GetComponentInChildren<Button>().gameObject;
     }
     void Update()
     {
         if (Input.GetButtonDown("Cancel"))
-            MenuActivator(pause);
+            MenuActivator(pause, m_PauseFirstButton);
         else if (Input.GetButtonDown("Map"))
             MenuActivator(map);
         else if (Input.GetButtonDown("Inventory"))
-            MenuActivator(inventory);
+            MenuActivator(inventory, m_InventoryFirstButton);
     }
     private void MenuActivator(GameObject obj)
     {
         obj.SetActive(!obj.activeSelf);
         Time.timeScale = (Time.timeScale + 1) % 2;
+    }
+    private void MenuActivator(GameObject obj, GameObject firstSelected)
+    {
+        MenuActivator(obj);
+        eventSystem.SetSelectedGameObject(null);
+        eventSystem.SetSelectedGameObject(firstSelected);
     }
 
     public static void SavingData(Transform playerTransform)
