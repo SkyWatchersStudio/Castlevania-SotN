@@ -97,17 +97,18 @@ public class GameManager : MonoBehaviour
     public static void SavingData(Transform playerTransform)
     {
         //assign player Hp to its maximum health
-        IncreasePlayerHP(playerTransform);
+        RestorePlayer(playerTransform);
         var frameIndex = CurrentFrame();
 
         SaveData data = new SaveData(m_Experience, m_PlayerCurrentLevel, m_NextLevelPoint,
                                      m_Money, playerTransform.position, frameIndex);
         SaveSystem.SaveState(data);
     }
-    private static void IncreasePlayerHP(Transform player)
+    private static void RestorePlayer(Transform player)
     {
         var playerScript = player.GetComponent<Player>();
         playerScript.CurrentHealth = playerScript.health;
+        playerScript.CurrentMana = playerScript.mana;
     }
     public static void Loading(Transform playerTransform)
     {
@@ -119,7 +120,7 @@ public class GameManager : MonoBehaviour
         }
 
         //assign player health to its maximum...
-        IncreasePlayerHP(playerTransform);
+        RestorePlayer(playerTransform);
 
         int[] frames = { CurrentFrame(), data.saveRoomIndex };
         //Destory the current frame and active the index given
