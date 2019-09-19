@@ -18,11 +18,14 @@ public sealed class Player : Characters
     public float mana;
     public float mistManaBurn;
     public float manaRegen;
+    [Space(10)]
+    public float sensitiveHealth;
 
     private float m_HorizontalInput;
     private float m_JumpSaveTime;
     private bool m_MistTransform;
     private bool m_Dagger;
+    private AudioManager m_AudioManager;
 
     private PlayerCommonAbilities m_Abilities;
 
@@ -34,6 +37,11 @@ public sealed class Player : Characters
         {
             m_Health = value;
             healthImage.fillAmount = m_Health / health;
+
+            if (m_Health <= sensitiveHealth)
+            {
+                m_AudioManager.Play("HeartBeating");
+            }
         }
     }
     private float m_Mana;
@@ -140,6 +148,7 @@ public sealed class Player : Characters
         m_MistForm = GetComponentInChildren<ParticleSystem>();
         m_Sprite = GetComponentInChildren<SpriteRenderer>();
         m_Audio = FindObjectOfType<AudioManager>();
+        m_AudioManager = FindObjectOfType<AudioManager>();
 
         CurrentHealth = health;
         CurrentMana = mana;

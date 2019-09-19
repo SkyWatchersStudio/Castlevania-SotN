@@ -48,14 +48,53 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 3d80b728ea33b3348ab58028ef7416e8, type: 3}
     volume: 0.5
     pitch: 2
+    Loop: 0
     source: {fileID: 0}
   - name: attack_p
     clip: {fileID: 8300000, guid: 5badfce25eb8d7d469a0138894868eb0, type: 3}
     volume: 0.5
     pitch: 1.2
+    Loop: 0
     source: {fileID: 0}
   - name: MainMusic
     clip: {fileID: 8300000, guid: 4453da7e9e38af247a1117270a068a39, type: 3}
-    volume: 0.4
+    volume: 0.2
     pitch: 1
+    Loop: 1
+    source: {fileID: 0}
+  - name: Dash
+    clip: {fileID: 8300000, guid: 73e8d5466e28163439a435d31dd82dc9, type: 3}
+    volume: 0.7
+    pitch: 1
+    Loop: 0
+    source: {fileID: 0}
+  - name: Jumplanding
+    clip: {fileID: 8300000, guid: edb2afc13035dfe47a58efc5f0411d97, type: 3}
+    volume: 0.1
+    pitch: 0.8
+    Loop: 0
+    source: {fileID: 0}
+  - name: running
+    clip: {fileID: 8300000, guid: e5a78adef346c5248927a96070b72046, type: 3}
+    volume: 0.3
+    pitch: 1
+    Loop: 0
+    source: {fileID: 0}
+  - name: AbilityGain
+    clip: {fileID: 8300000, guid: 248adb8ae76d71f408d57335e1633aec, type: 3}
+    volume: 0.3
+    pitch: 1
+    Loop: 0
+    source: {fileID: 0}
+  - name: MistSwap
+    clip: {fileID: 8300000, guid: 2f8ae0e1543361e4c8fbb4ff4f710739, type: 3}
+    volume: 0.3
+    pitch: 1
+    Loop: 0
+    source: {fileID: 0}
+  - name: HeartBeating
+    clip: {fileID: 8300000, guid: 8d93d76cad8512d449959d9f534694b0, type: 3}
+    volume: 0.5
+    pitch: 1
+    Loop: 1
     source: {fileID: 0}

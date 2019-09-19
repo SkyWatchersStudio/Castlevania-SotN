@@ -5219,7 +5219,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c309a0eb9faee0d4fac3ba80c8f9a186, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 40
+  health: 100
   moveSpeed: 80
   groundCheck: {fileID: 1088029816}
   groundRadius: 0.15
@@ -5234,6 +5234,7 @@ MonoBehaviour:
   mana: 20
   mistManaBurn: 10
   manaRegen: 5
+  sensitiveHealth: 0
 --- !u!114 &5795057369406548626
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5248,8 +5249,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ImpulseDefinition:
     m_ImpulseChannel: 1
-    m_RawSignal: {fileID: 0}
-    m_AmplitudeGain: 1
+    m_RawSignal: {fileID: 11400000, guid: cf991675ace2f5b43a8fc39893371919, type: 2}
+    m_AmplitudeGain: 0.3
     m_FrequencyGain: 1
     m_RepeatMode: 0
     m_Randomize: 1
