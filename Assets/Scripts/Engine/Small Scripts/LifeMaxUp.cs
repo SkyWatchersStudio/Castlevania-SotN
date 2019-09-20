@@ -24,8 +24,8 @@ public class LifeMaxUp : MonoBehaviour
             m_Timer += Time.deltaTime;
             if (m_Timer > 2)
             {
-                Destroy(gameObject);
                 GameManager.m_Instance.lifeMaxUI.SetActive(false);
+                Destroy(gameObject);
             }
         }
     }
