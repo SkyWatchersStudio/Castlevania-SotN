@@ -4,8 +4,6 @@ using UnityEngine;
 
 public sealed class Tomato : Enemy
 {
-    private CapsuleCollider2D m_TriggerCollider;
-
     public override void OnCollisionEnter2D(Collision2D collision)
     {
         base.OnCollisionEnter2D(collision);
@@ -19,7 +17,9 @@ public sealed class Tomato : Enemy
             m_Rigidbody.velocity = Vector2.zero;
             return;
         }
+
         Vector2 movement = Vector2.right * m_TargetDirection * moveSpeed;
+        Debug.DrawRay(transform.position, movement);
         m_Rigidbody.AddForce(movement);
     }
     private void OnTriggerEnter2D(Collider2D collision)
@@ -27,7 +27,6 @@ public sealed class Tomato : Enemy
         if (collision.CompareTag("Player"))
         {
             m_IsPlayerFound = true;
-            m_TriggerCollider.enabled = false;
             m_PlayerTransform = collision.transform;
         }
     }
@@ -35,16 +34,5 @@ public sealed class Tomato : Enemy
     {
         m_Animator.SetTrigger("HitEnemy");
         base.TakeDamage(damage);
-    }
-    public override void Start()
-    {
-        base.Start();
-
-        var colliders = GetComponents<CapsuleCollider2D>();
-        foreach (var collider in colliders)
-        {
-            if (collider.isTrigger)
-                m_TriggerCollider = collider;
-        }
     }
 }
