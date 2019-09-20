@@ -5719,10 +5719,6 @@ PrefabInstance:
       propertyPath: m_FacingRight
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 1721413826, guid: dbf2383644e959d4c8c565673f985842, type: 3}
-      propertyPath: patrolRange
-      value: 2
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dbf2383644e959d4c8c565673f985842, type: 3}
 --- !u!4 &2413413056772693730 stripped

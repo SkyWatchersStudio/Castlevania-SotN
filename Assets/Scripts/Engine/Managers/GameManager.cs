@@ -183,6 +183,7 @@ public class GameManager : MonoBehaviour
         data.cubeOfZoe = Player.CubeOfZoe;
         data.mist = Player.MistForm;
         data.dash = Player.SoulOfWind;
+        data.isAlucardDead = BossRoom.m_AlucardDead;
 
         SaveSystem.SaveState(data);
     }
@@ -235,6 +236,7 @@ public class GameManager : MonoBehaviour
         Player.CubeOfZoe = data.cubeOfZoe;
         Player.MistForm = data.mist;
         Player.SoulOfWind = data.dash;
+        BossRoom.m_AlucardDead = data.isAlucardDead;
     }
     private static int CurrentFrame()
     {

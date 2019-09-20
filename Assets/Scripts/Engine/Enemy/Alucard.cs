@@ -69,6 +69,7 @@ public class Alucard : Enemy
             doorsAnim.SetTrigger("openDoor");
             Instantiate(lifeMaxUp, transform.position, Quaternion.identity);
             m_AudioManager.Play("BossDead");
+            BossRoom.m_AlucardDead = true;
         }
     }
     public override Vector2 GetPlayerDirection()

@@ -1147,6 +1147,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8928110872578160888}
+  - component: {fileID: 242981780}
   m_Layer: 0
   m_Name: Boss room
   m_TagString: Untagged
@@ -1175,6 +1176,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &242981780
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8928110872578160895}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b58d9230b39e6fd47a8d1b9f0c8f1ef5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alucard: {fileID: 3911987190443645159}
+  door: {fileID: 686871001}
 --- !u!1 &8928110872747955678
 GameObject:
   m_ObjectHideFlags: 0
@@ -4009,6 +4024,12 @@ PrefabInstance:
         type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1448b27834f26a44aad95f73bd91e55b, type: 3}
+--- !u!1 &3911987190443645159 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5597180586770071465, guid: 1448b27834f26a44aad95f73bd91e55b,
+    type: 3}
+  m_PrefabInstance: {fileID: 8928110873032124238}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4537623498940526155 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4980951564487313669, guid: 1448b27834f26a44aad95f73bd91e55b,

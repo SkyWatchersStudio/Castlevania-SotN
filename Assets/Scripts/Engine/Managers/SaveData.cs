@@ -14,4 +14,6 @@ public struct SaveData
     public bool fireSword, iceSword;
 
     public bool cubeOfZoe, mist, dash;
+
+    public bool isAlucardDead;
 }
