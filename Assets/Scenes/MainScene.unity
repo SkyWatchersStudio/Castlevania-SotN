@@ -4123,7 +4123,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.1
-  far clip plane: 5000
+  far clip plane: 100
   field of view: 40
   orthographic: 1
   orthographic size: 5
@@ -4150,7 +4150,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 9.214871, y: 29.672985, z: -10}
+  m_LocalPosition: {x: -0.00007534027, y: 2.3702874, z: -10}
   m_LocalScale: {x: 0.61784476, y: 1.073258, z: 0.61784476}
   m_Children: []
   m_Father: {fileID: 0}
@@ -16789,6 +16789,11 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 1.8
       objectReference: {fileID: 0}
+    - target: {fileID: 6628557831724733937, guid: 179529e3796259144b051205946d541e,
+        type: 3}
+      propertyPath: m_Constraints
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 179529e3796259144b051205946d541e, type: 3}
 --- !u!1 &2416032200850081395 stripped
@@ -17614,6 +17619,11 @@ PrefabInstance:
       propertyPath: mistFormStatImages.Array.data[2]
       value: 
       objectReference: {fileID: 126024197}
+    - target: {fileID: 1863553199706875382, guid: 566019c9cd7fe99448037a396e657a67,
+        type: 3}
+      propertyPath: attackForce
+      value: 44.17
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 566019c9cd7fe99448037a396e657a67, type: 3}
 --- !u!1001 &7971231918828819196
