@@ -3,7 +3,6 @@
 public class LifeMaxUp : MonoBehaviour
 {
     public float increaseAmount = 10;
-    public GameObject healthUI;
 
     private bool m_IsTriggered;
     private float m_Timer;
@@ -14,7 +13,7 @@ public class LifeMaxUp : MonoBehaviour
         {
             Player.m_Instance.health += increaseAmount;
             Player.m_Instance.CurrentHealth = Player.m_Instance.health;
-            healthUI.SetActive(true);
+            GameManager.m_Instance.lifeMaxUI.SetActive(true);
             m_IsTriggered = true;
         }
     }
@@ -26,7 +25,7 @@ public class LifeMaxUp : MonoBehaviour
             if (m_Timer > 2)
             {
                 Destroy(gameObject);
-                healthUI.SetActive(false);
+                GameManager.m_Instance.lifeMaxUI.SetActive(false);
             }
         }
     }
