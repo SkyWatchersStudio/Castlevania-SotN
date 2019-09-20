@@ -31,6 +31,8 @@ public class Attack : MonoBehaviour
                 enemy.GetComponent<Interactable>().OnInteract();
             else if (enemy.CompareTag("Enemy"))
             {
+                if (enemy.isTrigger)
+                    continue;
                 //add force to the opposite direction of enemy
                 var rigidbody = enemy.GetComponent<Rigidbody2D>();
                 Vector2 direction = (enemy.transform.position - transform.position).normalized;
