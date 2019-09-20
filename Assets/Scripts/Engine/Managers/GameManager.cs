@@ -6,6 +6,7 @@ using UnityEngine.EventSystems;
 public class GameManager : MonoBehaviour
 {
     public bool debug;
+    public GameObject lifeMaxUI;
     [Space(10)]
     public GameObject pause;
     public GameObject map;
@@ -95,7 +96,7 @@ public class GameManager : MonoBehaviour
             m_Instance.currentLevel.text = currentLevelText;
             m_Instance.currentLevelStat.text = currentLevelText;
 
-            m_Instance.heartMax += 6;
+            m_Instance.heartMax += 10;
             m_Instance.heartStat.text = m_Instance.heartMax.ToString();
 
             Player.m_Instance.mana += 10;
