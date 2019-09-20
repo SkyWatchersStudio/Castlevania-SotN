@@ -5219,7 +5219,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c309a0eb9faee0d4fac3ba80c8f9a186, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 60
+  health: 70
   moveSpeed: 80
   groundCheck: {fileID: 1088029816}
   groundRadius: 0.15
@@ -5231,7 +5231,7 @@ MonoBehaviour:
   manaImage: {fileID: 0}
   dagger: {fileID: 6468667975865377737, guid: 77ad19e1a9aa6404b8705aad69d07bd4, type: 3}
   daggerSpeed: 30
-  mana: 40
+  mana: 30
   mistManaBurn: 10
   manaRegen: 5
   sensitiveHealth: 10

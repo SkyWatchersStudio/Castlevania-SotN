@@ -109,7 +109,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45958ace04002b44b896d29e8cb51bd5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
+  health: 200
   moveSpeed: 70
   groundCheck: {fileID: 7305442238577943382}
   groundRadius: 0.15
@@ -122,6 +122,8 @@ MonoBehaviour:
   jumpDistance: 3.25
   jumpTimeDelay: 0.4
   timeBetweenJump: 0.8
+  doorsAnim: {fileID: 0}
+  lifeMaxUp: {fileID: 0}
 --- !u!1 &7305442238303596968
 GameObject:
   m_ObjectHideFlags: 0
@@ -134,6 +136,7 @@ GameObject:
   - component: {fileID: 7305442238303596966}
   - component: {fileID: 7305442238303596969}
   - component: {fileID: 854379829862833165}
+  - component: {fileID: 8052918601257664029}
   m_Layer: 11
   m_Name: Idle character spriteSheet_0 (1)
   m_TagString: Untagged
@@ -233,6 +236,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 50708a68f755abc43a3a715cd1fd1bb4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8052918601257664029
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7305442238303596968}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0ecc123c2e871e4a90509e979f13060, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &7305442238577943385
