@@ -39,7 +39,7 @@ public class GameManager : MonoBehaviour
     private static int m_Experience;
     private static int m_PlayerCurrentLevel;
     private static int m_NextLevelPoint = 100;
-    private static int m_Money;
+    private static int m_Money = 5000;
     private static int m_Hearts;
     private static int m_Potions;
 
@@ -132,24 +132,26 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         if (Input.GetButtonDown("Cancel"))
-            MenuActivator(pause, m_PauseFirstButton);
+            MenuActivator(pause, m_PauseFirstButton, true);
         else if (Input.GetButtonDown("Map"))
-            MenuActivator(map);
+            MenuActivator(map, true);
         else if (Input.GetButtonDown("Inventory"))
-            MenuActivator(inventory, m_InventoryFirstButton);
+            MenuActivator(inventory, m_InventoryFirstButton, true);
         else if (Input.GetButtonDown("AbilityTree"))
-            MenuActivator(abilityTree);
+            MenuActivator(abilityTree, true);
     }
-    private void MenuActivator(GameObject obj)
+    private void MenuActivator(GameObject obj, bool time)
     {
         obj.SetActive(!obj.activeSelf);
+        if (!time)
+            return;
         Time.timeScale = (Time.timeScale + 1) % 2;
     }
-    private void MenuActivator(GameObject obj, GameObject firstSelected)
+    public static void MenuActivator(GameObject obj, GameObject firstSelected, bool time)
     {
-        MenuActivator(obj);
-        eventSystem.SetSelectedGameObject(null);
-        eventSystem.SetSelectedGameObject(firstSelected);
+        m_Instance.MenuActivator(obj, time);
+        m_Instance.eventSystem.SetSelectedGameObject(null);
+        m_Instance.eventSystem.SetSelectedGameObject(firstSelected);
     }
 
     public static void SavingData(Transform playerTransform)
