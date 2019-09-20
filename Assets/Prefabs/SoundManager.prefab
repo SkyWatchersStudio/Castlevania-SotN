@@ -58,7 +58,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: MainMusic
     clip: {fileID: 8300000, guid: 4453da7e9e38af247a1117270a068a39, type: 3}
-    volume: 0.2
+    volume: 0.18
     pitch: 1
     Loop: 1
     source: {fileID: 0}
@@ -71,7 +71,7 @@ MonoBehaviour:
   - name: Jumplanding
     clip: {fileID: 8300000, guid: edb2afc13035dfe47a58efc5f0411d97, type: 3}
     volume: 0.1
-    pitch: 0.8
+    pitch: 1.52
     Loop: 0
     source: {fileID: 0}
   - name: running
@@ -125,6 +125,12 @@ MonoBehaviour:
   - name: BossDead
     clip: {fileID: 8300000, guid: 973ac0b143387744982ad4b3f89ac388, type: 3}
     volume: 0.5
+    pitch: 1
+    Loop: 0
+    source: {fileID: 0}
+  - name: Potionpickup
+    clip: {fileID: 8300000, guid: 8182e1a4066339b4b9c2feafe835a99d, type: 3}
+    volume: 0.7
     pitch: 1
     Loop: 0
     source: {fileID: 0}
