@@ -4204,7 +4204,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.1
-  far clip plane: 100
+  far clip plane: 5000
   field of view: 40
   orthographic: 1
   orthographic size: 5
@@ -5809,7 +5809,7 @@ PrefabInstance:
     - target: {fileID: 1910782240308241106, guid: 3f54e176887f3f34999dc0cb45449382,
         type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 1910782240308241106, guid: 3f54e176887f3f34999dc0cb45449382,
         type: 3}
@@ -8583,12 +8583,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 708311208831262173}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &1087578514 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 708311209891576911, guid: d1fdab54f7902384baa882a080d60a51,
-    type: 3}
-  m_PrefabInstance: {fileID: 708311208831262173}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1088276785
 GameObject:
   m_ObjectHideFlags: 0
@@ -10529,90 +10523,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1001 &1368088846
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 1087578514}
-    m_Modifications:
-    - target: {fileID: 7915721508040905469, guid: dbf2383644e959d4c8c565673f985842,
-        type: 3}
-      propertyPath: m_Name
-      value: Tomato (3)
-      objectReference: {fileID: 0}
-    - target: {fileID: 6620791314287323791, guid: dbf2383644e959d4c8c565673f985842,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -19.08
-      objectReference: {fileID: 0}
-    - target: {fileID: 6620791314287323791, guid: dbf2383644e959d4c8c565673f985842,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -4.23
-      objectReference: {fileID: 0}
-    - target: {fileID: 6620791314287323791, guid: dbf2383644e959d4c8c565673f985842,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6620791314287323791, guid: dbf2383644e959d4c8c565673f985842,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6620791314287323791, guid: dbf2383644e959d4c8c565673f985842,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6620791314287323791, guid: dbf2383644e959d4c8c565673f985842,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6620791314287323791, guid: dbf2383644e959d4c8c565673f985842,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6620791314287323791, guid: dbf2383644e959d4c8c565673f985842,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 6620791314287323791, guid: dbf2383644e959d4c8c565673f985842,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6620791314287323791, guid: dbf2383644e959d4c8c565673f985842,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6620791314287323791, guid: dbf2383644e959d4c8c565673f985842,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6620791314287323791, guid: dbf2383644e959d4c8c565673f985842,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.29911
-      objectReference: {fileID: 0}
-    - target: {fileID: 6620791314287323791, guid: dbf2383644e959d4c8c565673f985842,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.29911
-      objectReference: {fileID: 0}
-    - target: {fileID: 6620791314287323791, guid: dbf2383644e959d4c8c565673f985842,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.29911
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: dbf2383644e959d4c8c565673f985842, type: 3}
 --- !u!1 &1376805718
 GameObject:
   m_ObjectHideFlags: 0
@@ -12224,31 +12134,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 784265627668312043, guid: 2ffa57db449325343a45f6c3f9f50ca3,
-        type: 3}
-      propertyPath: sounds.Array.size
-      value: 16
-      objectReference: {fileID: 0}
-    - target: {fileID: 784265627668312043, guid: 2ffa57db449325343a45f6c3f9f50ca3,
-        type: 3}
-      propertyPath: sounds.Array.data[15].name
-      value: shopSound
-      objectReference: {fileID: 0}
-    - target: {fileID: 784265627668312043, guid: 2ffa57db449325343a45f6c3f9f50ca3,
-        type: 3}
-      propertyPath: sounds.Array.data[15].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: 5a2352fb177f5f8499e1974b7018a8ac, type: 3}
-    - target: {fileID: 784265627668312043, guid: 2ffa57db449325343a45f6c3f9f50ca3,
-        type: 3}
-      propertyPath: sounds.Array.data[15].volume
-      value: 0.7
-      objectReference: {fileID: 0}
-    - target: {fileID: 784265627668312043, guid: 2ffa57db449325343a45f6c3f9f50ca3,
-        type: 3}
-      propertyPath: sounds.Array.data[15].pitch
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2ffa57db449325343a45f6c3f9f50ca3, type: 3}
@@ -17201,11 +17086,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.y
       value: -30.388046
-      objectReference: {fileID: 0}
-    - target: {fileID: 5923829819636553308, guid: d1fdab54f7902384baa882a080d60a51,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d1fdab54f7902384baa882a080d60a51, type: 3}

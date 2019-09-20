@@ -5576,6 +5576,10 @@ PrefabInstance:
       propertyPath: m_FacingRight
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1721413826, guid: dbf2383644e959d4c8c565673f985842, type: 3}
+      propertyPath: patrolRange
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dbf2383644e959d4c8c565673f985842, type: 3}
 --- !u!4 &6941053426329257739 stripped
@@ -5924,7 +5928,7 @@ PrefabInstance:
     - target: {fileID: 6620791314287323791, guid: dbf2383644e959d4c8c565673f985842,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -26.95
+      value: -26.16
       objectReference: {fileID: 0}
     - target: {fileID: 6620791314287323791, guid: dbf2383644e959d4c8c565673f985842,
         type: 3}
@@ -5983,6 +5987,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1721413826, guid: dbf2383644e959d4c8c565673f985842, type: 3}
       propertyPath: m_FacingRight
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1721413826, guid: dbf2383644e959d4c8c565673f985842, type: 3}
+      propertyPath: patrolRange
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
