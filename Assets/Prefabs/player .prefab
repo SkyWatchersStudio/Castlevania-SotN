@@ -5235,13 +5235,26 @@ MonoBehaviour:
   mistManaBurn: 10
   manaRegen: 5
   sensitiveHealth: 20
-  profiles: []
+  profiles:
+  - {fileID: 11400000, guid: e08675197d081984ca4d259f37a62b95, type: 2}
+  - {fileID: 11400000, guid: ab3b6d82d7ba37843ab41b7bb7902e61, type: 2}
   volume: {fileID: 0}
-  swordAnimations: []
+  swordAnimations:
+  - {fileID: 7400000, guid: f9e58a0bf9d123643afe334f1824e0da, type: 2}
+  - {fileID: 7400000, guid: 7c89def8cb5fe9e4d95fd57be56a33b0, type: 2}
+  - {fileID: 7400000, guid: bf3aa5c8731b6e24e88e22ba07d15c08, type: 2}
   damageStat: {fileID: 0}
-  cubeOfZoeStatImages: []
-  souldOfWindStatImages: []
-  mistFormStatImages: []
+  cubeOfZoeStatImages:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  souldOfWindStatImages:
+  - {fileID: 0}
+  - {fileID: 0}
+  mistFormStatImages:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!114 &5795057369406548626
 MonoBehaviour:
   m_ObjectHideFlags: 0
