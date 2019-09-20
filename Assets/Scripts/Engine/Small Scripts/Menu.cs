@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class Menu : MonoBehaviour
@@ -11,7 +12,20 @@ public class Menu : MonoBehaviour
 
     public void LoadGame()
     {
-        SceneManager.LoadScene(1);
+        StartCoroutine(LoadingAsync());
+    }
+    IEnumerator LoadingAsync()
+    {
+        AsyncOperation async = SceneManager.LoadSceneAsync(1, LoadSceneMode.Additive);
+
+        while (!async.isDone)
+            yield return null;
+
+        if (async.isDone)
+        {
+            GameManager.Loading();
+            SceneManager.UnloadSceneAsync(0);
+        }
     }
 
     public void Exit()

@@ -33,7 +33,7 @@ public class FramesList : MonoBehaviour
             if (isActive)
             {
                 var framePosition = currentFrame.transform.position;
-                Destroy(currentFrame);
+                Destroy(currentFrame.gameObject);
 
                 //assign reference to the new game object instance
                 m_Instance.frames[listIndex] = (GameObject)Instantiate(
