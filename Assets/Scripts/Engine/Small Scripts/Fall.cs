@@ -14,6 +14,7 @@ public class Fall : MonoBehaviour
         {
             collision.attachedRigidbody.position = m_Respawn.position;
             collision.attachedRigidbody.velocity = Vector2.zero;
+            Player.m_Instance.CurrentHealth -= 10;
         }
     }
 }
