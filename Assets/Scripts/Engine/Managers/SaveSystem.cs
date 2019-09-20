@@ -27,9 +27,4 @@ public static class SaveSystem
 
         return data;
     }
-    public static void DeleteSave()
-    {
-        if (File.Exists(m_Path))
-            File.Delete(m_Path);
-    }
 }
