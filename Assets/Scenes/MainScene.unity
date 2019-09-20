@@ -4548,7 +4548,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -7.7}
+  m_AnchoredPosition: {x: 0, y: -7.700012}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &532986226
@@ -6861,6 +6861,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debug: 0
+  lifeMaxUI: {fileID: 1220213502}
   pause: {fileID: 398560321}
   map: {fileID: 1574148815}
   inventory: {fileID: 2020650568}
@@ -8861,12 +8862,12 @@ GameObject:
   - component: {fileID: 1220213505}
   - component: {fileID: 1220213504}
   m_Layer: 5
-  m_Name: Cube of zoe (1)
+  m_Name: LifeMaxUP
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1220213503
 RectTransform:
   m_ObjectHideFlags: 0
