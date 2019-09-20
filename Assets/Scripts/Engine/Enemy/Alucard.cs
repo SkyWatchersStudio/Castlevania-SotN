@@ -9,6 +9,11 @@ public class Alucard : Enemy
     public float jumpTimeDelay = .4f;
     public float timeBetweenJump = .8f;
 
+    [Space(10)]
+    public Animator doorsAnim;
+    public GameObject lifeMaxUp;
+    private AudioManager m_AudioManager;
+
     PlayerCommonAbilities m_Abilities;
     Rigidbody2D m_PlayerRigid;
     bool m_ShouldJump;
@@ -23,6 +28,8 @@ public class Alucard : Enemy
         m_IsPlayerFound = true;
         m_PlayerRigid = m_PlayerTransform.GetComponent<Rigidbody2D>();
         m_Animator = GetComponentInChildren<Animator>();
+
+        m_AudioManager = FindObjectOfType<AudioManager>();
 
         m_LastHP = health;
     }
@@ -57,6 +64,12 @@ public class Alucard : Enemy
     {
         m_Animator.SetTrigger("Hit");
         base.TakeDamage(damage);
+        if (health <= 0)
+        {
+            doorsAnim.SetTrigger("openDoor");
+            Instantiate(lifeMaxUp, transform.position, Quaternion.identity);
+            m_AudioManager.Play("BossDead");
+        }
     }
     public override Vector2 GetPlayerDirection()
     {
