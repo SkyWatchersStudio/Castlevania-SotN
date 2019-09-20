@@ -338,3 +338,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   increaseAmount: 10
+  healthUI: {fileID: 3012115659897642021, guid: 39691ca97f958e44fa9c8a42f921f292,
+    type: 3}

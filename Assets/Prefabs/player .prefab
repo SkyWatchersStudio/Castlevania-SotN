@@ -5234,7 +5234,7 @@ MonoBehaviour:
   mana: 40
   mistManaBurn: 10
   manaRegen: 5
-  sensitiveHealth: 20
+  sensitiveHealth: 10
   profiles:
   - {fileID: 11400000, guid: e08675197d081984ca4d259f37a62b95, type: 2}
   - {fileID: 11400000, guid: ab3b6d82d7ba37843ab41b7bb7902e61, type: 2}
