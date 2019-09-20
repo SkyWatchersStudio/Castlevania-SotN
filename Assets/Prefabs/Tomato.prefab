@@ -251,8 +251,8 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 9}
-  m_Size: {x: 29, y: 14.5}
+  m_Offset: {x: 0, y: 8.5}
+  m_Size: {x: 29.000004, y: 13}
   m_Direction: 1
 --- !u!114 &1721413826
 MonoBehaviour:
@@ -273,7 +273,7 @@ MonoBehaviour:
   m_FacingRight: 0
   attackDamage: 5
   collisionForce: 80
-  maxDistance: 0
+  maxDistance: 12
   experiencePoint: 10
 --- !u!1 &7972507012746150652
 GameObject:
