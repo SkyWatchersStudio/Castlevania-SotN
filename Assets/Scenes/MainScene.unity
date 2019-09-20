@@ -7270,7 +7270,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2370a3dba3b0b62459f990a68de8c5b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  debug: 1
+  debug: 0
   lifeMaxUI: {fileID: 1220213502}
   pause: {fileID: 398560321}
   map: {fileID: 1574148815}
@@ -17728,12 +17728,12 @@ PrefabInstance:
     - target: {fileID: 4758570966935463732, guid: a6340693bb46a5f448355ebd9726a598,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 44.940002
+      value: 44.86
       objectReference: {fileID: 0}
     - target: {fileID: 4758570966935463732, guid: a6340693bb46a5f448355ebd9726a598,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -62.58
+      value: -62.660004
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a6340693bb46a5f448355ebd9726a598, type: 3}
