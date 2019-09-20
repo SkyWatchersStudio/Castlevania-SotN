@@ -223,7 +223,6 @@ public sealed class Player : Characters
 
     public override void Start()
     {
-        base.Start();
         m_Instance = this;
 
         ColorUtility.TryParseHtmlString("#00C3FF", out m_AbilityStatColor);
@@ -302,6 +301,6 @@ public sealed class Player : Characters
         m_Animator.SetTrigger("Hit");
         CurrentHealth -= damage;
         if (CurrentHealth <= 0)
-            GameManager.Loading(this.transform);
+            GameManager.Loading();
     }
 }

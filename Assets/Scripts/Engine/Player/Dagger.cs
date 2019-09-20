@@ -18,6 +18,8 @@ public class Dagger : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (collision.isTrigger)
+            return;
         if (collision.CompareTag("Enemy"))
         {
             collision.GetComponent<Enemy>().TakeDamage(damage);

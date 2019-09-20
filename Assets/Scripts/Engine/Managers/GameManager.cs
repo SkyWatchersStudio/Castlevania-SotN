@@ -192,21 +192,23 @@ public class GameManager : MonoBehaviour
         playerScript.CurrentHealth = playerScript.health;
         playerScript.CurrentMana = playerScript.mana;
     }
-    public static void Loading(Transform playerTransform)
+    public static void Loading()
     {
-        SaveData? _ = SaveSystem.LoadState();
-        if (!_.HasValue)
+        SaveData? save = SaveSystem.LoadState();
+        if (!save.HasValue)
         {
             UnityEngine.SceneManagement.SceneManager.LoadScene(1);
             return;
         }
 
-        SaveData data = _.Value;
+        SaveData data = save.Value;
 
         //assign player health to its maximum...
         RestorePlayer();
 
         int[] frames = { CurrentFrame(), data.saveRoomIndex };
+
+        var playerTransform = Player.m_Instance.transform;
         //Destory the current frame and active the index given
         FramesList.SwitchFrames(frames, playerTransform);
 
