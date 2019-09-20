@@ -13,7 +13,7 @@ public class ShopEvent : MonoBehaviour
     private void Start()
     {
         m_Instance = this;
-        FindObjectOfType<AudioManager>();
+        m_Audio = FindObjectOfType<AudioManager>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

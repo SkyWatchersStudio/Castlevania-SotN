@@ -134,3 +134,15 @@ MonoBehaviour:
     pitch: 1
     Loop: 0
     source: {fileID: 0}
+  - name: shopSound
+    clip: {fileID: 8300000, guid: 5a2352fb177f5f8499e1974b7018a8ac, type: 3}
+    volume: 0.7
+    pitch: 1
+    Loop: 0
+    source: {fileID: 0}
+  - name: Wallbreak
+    clip: {fileID: 8300000, guid: 5a2352fb177f5f8499e1974b7018a8ac, type: 3}
+    volume: 0.7
+    pitch: 1
+    Loop: 0
+    source: {fileID: 0}
