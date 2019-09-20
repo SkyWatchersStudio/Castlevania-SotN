@@ -1,22 +1,17 @@
 ﻿using UnityEngine;
 
 [System.Serializable]
-public class SaveData
+public struct SaveData
 {
     public int experience, playerLevel, nextLevelPoint, money;
-    public float[] position = new float[3];
+    public float[] position;
     public int saveRoomIndex;
 
-    public SaveData(int xp, int plLevel, int nextLevelPoint,
-                    int coins, Vector3 pos, int roomIndex)
-    {
-        this.experience = xp;
-        this.playerLevel = plLevel;
-        this.nextLevelPoint = nextLevelPoint;
-        this.money = coins;
-        this.saveRoomIndex = roomIndex;
+    public float damage, maxHealth, maxMana;
+    public int hearts, maxHearts;
 
-        for (int i = 0; i < 3; i++)
-            this.position[i] = pos[i];
-    }
+    public int potions;
+    public bool fireSword, iceSword;
+
+    public bool cubeOfZoe, mist, dash;
 }

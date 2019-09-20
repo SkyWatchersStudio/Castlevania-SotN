@@ -158,30 +158,53 @@ public class GameManager : MonoBehaviour
     public static void SavingData(Transform playerTransform)
     {
         //assign player Hp to its maximum health
-        RestorePlayer(playerTransform);
+        RestorePlayer();
         var frameIndex = CurrentFrame();
 
-        SaveData data = new SaveData(m_Experience, m_PlayerCurrentLevel, m_NextLevelPoint,
-                                     m_Money, playerTransform.position, frameIndex);
+        SaveData data;
+        data.position = new float[3];
+        for (int i = 0; i < data.position.Length; i++)
+            data.position[i] = playerTransform.position[i];
+
+        data.money = m_Money;
+        data.nextLevelPoint = m_NextLevelPoint;
+        data.experience = m_Experience;
+        data.playerLevel = m_PlayerCurrentLevel;
+        data.saveRoomIndex = frameIndex;
+
+        data.damage = Player.m_Instance.CurrentDamage;
+        data.maxHealth = Player.m_Instance.health;
+        data.maxMana = Player.m_Instance.mana;
+        data.hearts = Hearts;
+        data.maxHearts = m_Instance.heartMax;
+        data.potions = Potions;
+        data.iceSword = InventoryItem.IceSword;
+        data.fireSword = InventoryItem.FireSword;
+        data.cubeOfZoe = Player.CubeOfZoe;
+        data.mist = Player.MistForm;
+        data.dash = Player.SoulOfWind;
+
         SaveSystem.SaveState(data);
     }
-    private static void RestorePlayer(Transform player)
+    private static void RestorePlayer()
     {
-        var playerScript = player.GetComponent<Player>();
+        var playerScript = Player.m_Instance;
         playerScript.CurrentHealth = playerScript.health;
         playerScript.CurrentMana = playerScript.mana;
     }
     public static void Loading(Transform playerTransform)
     {
-        SaveData data = SaveSystem.LoadState();
-        if (data == null)
+        SaveData? _ = SaveSystem.LoadState();
+        if (!_.HasValue)
         {
-            UnityEngine.SceneManagement.SceneManager.LoadScene(0);
+            UnityEngine.SceneManagement.SceneManager.LoadScene(1);
             return;
         }
 
+        SaveData data = _.Value;
+
         //assign player health to its maximum...
-        RestorePlayer(playerTransform);
+        RestorePlayer();
 
         int[] frames = { CurrentFrame(), data.saveRoomIndex };
         //Destory the current frame and active the index given
@@ -190,9 +213,7 @@ public class GameManager : MonoBehaviour
         //Assign player position
         Vector3 newPos = new Vector3();
         for (int i = 0; i < 3; i++)
-        {
             newPos[i] = data.position[i];
-        }
         playerTransform.position = newPos;
 
         //reassigning player stats
@@ -200,6 +221,18 @@ public class GameManager : MonoBehaviour
         m_PlayerCurrentLevel = data.playerLevel;
         ExperiencePoint = data.experience;
         Coin = data.money;
+
+        Player.m_Instance.CurrentDamage = data.damage;
+        Player.m_Instance.health = data.maxHealth;
+        Player.m_Instance.mana = data.maxMana;
+        Hearts = data.hearts;
+        m_Instance.heartMax = data.maxHearts;
+        Potions = data.potions;
+        InventoryItem.IceSword = data.iceSword;
+        InventoryItem.FireSword = data.fireSword;
+        Player.CubeOfZoe = data.cubeOfZoe;
+        Player.MistForm = data.mist;
+        Player.SoulOfWind = data.dash;
     }
     private static int CurrentFrame()
     {
@@ -215,8 +248,5 @@ public class GameManager : MonoBehaviour
 
         return currentFrame; //frame switcher will reduce the number by 1
     }
-    public void OnExit()
-    {
-        Application.Quit();
-    }
+    public void OnExit() => Application.Quit();
 }

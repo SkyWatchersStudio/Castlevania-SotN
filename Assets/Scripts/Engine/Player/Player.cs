@@ -108,8 +108,9 @@ public sealed class Player : Characters
         {
             m_CubeOfZoe = value;
 
-            foreach (var img in m_Instance.cubeOfZoeStatImages)
-                img.color = m_Instance.m_AbilityStatColor;
+            if (m_CubeOfZoe)
+                foreach (var img in m_Instance.cubeOfZoeStatImages)
+                    img.color = m_Instance.m_AbilityStatColor;
         }
     }
     public static bool SoulOfWind
@@ -119,8 +120,9 @@ public sealed class Player : Characters
         {
             m_DashAbility = value;
 
-            foreach (var img in m_Instance.souldOfWindStatImages)
-                img.color = m_Instance.m_AbilityStatColor;
+            if (m_DashAbility)
+                foreach (var img in m_Instance.souldOfWindStatImages)
+                    img.color = m_Instance.m_AbilityStatColor;
         }
     }
     public static bool MistForm
@@ -130,8 +132,9 @@ public sealed class Player : Characters
         {
             m_MistAbility = value;
 
-            foreach (var img in m_Instance.mistFormStatImages)
-                img.color = m_Instance.m_AbilityStatColor;
+            if (m_MistAbility)
+                foreach (var img in m_Instance.mistFormStatImages)
+                    img.color = m_Instance.m_AbilityStatColor;
         }
     }
 

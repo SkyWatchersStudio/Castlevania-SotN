@@ -16,7 +16,7 @@ public class Pickup : MonoBehaviour
     private float m_Timer;
     private Rigidbody2D m_Rigidbody;
     private bool m_Get;
-    private const int m_GroundLayer = ~(1 << 8);
+    private const int m_GroundLayer = ~(1 << 8 | 1 << 10 | 1 << 11);
 
     private void OnTriggerEnter2D(Collider2D collision)
     {

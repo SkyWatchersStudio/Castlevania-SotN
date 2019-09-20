@@ -4,7 +4,8 @@ using System.Runtime.Serialization.Formatters.Binary;
 
 public static class SaveSystem
 {
-    private static readonly string m_Path = Application.persistentDataPath + "/save.bin";
+    private static readonly string m_Path = 
+        Application.persistentDataPath + "/save.bin";
 
     public static void SaveState(SaveData data)
     {
@@ -14,7 +15,7 @@ public static class SaveSystem
         formatter.Serialize(stream, data);
         stream.Close();
     }
-    public static SaveData LoadState()
+    public static SaveData? LoadState()
     {
         if (!File.Exists(m_Path))
             return null;
@@ -22,9 +23,14 @@ public static class SaveSystem
         BinaryFormatter formatter = new BinaryFormatter();
         FileStream stream = new FileStream(m_Path, FileMode.Open);
 
-        SaveData data = formatter.Deserialize(stream) as SaveData;
+        SaveData data = (SaveData)formatter.Deserialize(stream);
         stream.Close();
 
         return data;
+    }
+    public static void DeleteSave()
+    {
+        if (File.Exists(m_Path))
+            File.Delete(m_Path);
     }
 }
