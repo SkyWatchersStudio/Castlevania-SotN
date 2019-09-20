@@ -8,6 +8,7 @@ TagManager:
   - Interact
   - mapElements
   - Door
+  - Breakable
   layers:
   - Default
   - TransparentFX
