@@ -12,7 +12,7 @@ public class Menu : MonoBehaviour
 
     public void LoadGame()
     {
-        StartCoroutine(LoadingAsync());
+        //StartCoroutine(LoadingAsync());
     }
     IEnumerator LoadingAsync()
     {
