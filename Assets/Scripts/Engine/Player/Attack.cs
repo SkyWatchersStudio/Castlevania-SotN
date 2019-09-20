@@ -44,6 +44,8 @@ public class Attack : MonoBehaviour
 
                 enemyFound = true;
             }
+            else if (enemy.CompareTag("Breakable"))
+                enemy.GetComponentInParent<BreakableWall>().OnInteract();
         }
         if (!enemyFound)
         {
