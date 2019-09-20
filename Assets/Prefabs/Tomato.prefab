@@ -275,6 +275,7 @@ MonoBehaviour:
   collisionForce: 80
   maxDistance: 12
   experiencePoint: 10
+  patrolRange: 2
 --- !u!1 &7972507012746150652
 GameObject:
   m_ObjectHideFlags: 0
