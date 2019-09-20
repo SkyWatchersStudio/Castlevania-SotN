@@ -25,6 +25,11 @@ public class BreakableWall : MonoBehaviour
         }
 
         if (attackCount == 2)
+        {
             breakEffect.Play();
+
+            FindObjectOfType<AudioManager>().Play("Wallbreak");
+        }
+            
     }
 }
