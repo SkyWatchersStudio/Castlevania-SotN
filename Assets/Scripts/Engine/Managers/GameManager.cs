@@ -40,7 +40,7 @@ public class GameManager : MonoBehaviour
     private static int m_Experience;
     private static int m_PlayerCurrentLevel;
     private static int m_NextLevelPoint = 100;
-    private static int m_Money = 5000;
+    private static int m_Money;
     private static int m_Hearts;
     private static int m_Potions;
 
@@ -96,7 +96,7 @@ public class GameManager : MonoBehaviour
             m_Instance.currentLevel.text = currentLevelText;
             m_Instance.currentLevelStat.text = currentLevelText;
 
-            m_Instance.heartMax += 10;
+            m_Instance.heartMax += 6;
             m_Instance.heartStat.text = m_Instance.heartMax.ToString();
 
             Player.m_Instance.mana += 10;
