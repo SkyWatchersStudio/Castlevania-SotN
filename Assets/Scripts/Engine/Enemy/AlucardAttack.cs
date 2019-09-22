@@ -18,6 +18,6 @@ public class AlucardAttack : MonoBehaviour
         var opponent = m_Alucard.CheckRange();
         if (opponent)
             if (opponent.CompareTag("Player"))
-                m_Enemy.AttackPlayer(opponent.transform);
+                m_Enemy.AttackPlayer();
     }
 }

@@ -5220,7 +5220,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 70
-  moveSpeed: 80
+  moveSpeed: 90
   groundCheck: {fileID: 1088029816}
   groundRadius: 0.15
   m_FacingRight: 1

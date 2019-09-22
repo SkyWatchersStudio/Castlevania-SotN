@@ -17,18 +17,18 @@ public abstract class Enemy : Characters
     public virtual void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
-            AttackPlayer(collision.transform);
+            AttackPlayer();
     }
 
-    public void AttackPlayer(Transform PlTransform)
+    public void AttackPlayer()
     {
         Player.m_Instance.TakeDamage(attackDamage);
 
         var attackDirection = m_TargetDirection.normalized;
-        attackDirection.y *= collisionForce * .75f;
-        attackDirection.x *= collisionForce * .25f;
+        attackDirection.y *= collisionForce * .25f;
+        attackDirection.x *= collisionForce * .75f;
 
-        var rigid = PlTransform.GetComponent<Rigidbody2D>();
+        var rigid = Player.m_Instance.GetComponent<Rigidbody2D>();
         rigid.AddForce(
             attackDirection, ForceMode2D.Impulse); //push player back
     }

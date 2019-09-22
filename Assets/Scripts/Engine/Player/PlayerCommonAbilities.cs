@@ -131,8 +131,15 @@ public class PlayerCommonAbilities : MonoBehaviour
         m_Dash = m_Dodge = m_Attack = false;
     }
 
+    private float m_LastMoveDirection;
     public void Move(float direction)
     {
+        if (direction != m_LastMoveDirection && !IsJumping)
+        {
+            m_LastMoveDirection = direction;
+            m_Rigidbody.velocity = new Vector2(0, m_Rigidbody.velocity.y);
+        }
+
         var slope = Vector2.right;
         if (m_Grounded)
             foreach (var groundCollider in m_GroundColliders)
