@@ -223,6 +223,7 @@ public sealed class Player : Characters
 
     public override void Start()
     {
+        base.Start();
         m_Instance = this;
 
         ColorUtility.TryParseHtmlString("#00C3FF", out m_AbilityStatColor);
