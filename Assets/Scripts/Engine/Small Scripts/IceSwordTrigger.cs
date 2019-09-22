@@ -10,7 +10,7 @@ public class IceSwordTrigger : MonoBehaviour
         {
             InventoryItem.IceSword = true;
             Destroy(gameObject);
-            FindObjectOfType<AudioManager>().Play("IceSwordSound");
+            AudioManager.Play("IceSwordSound");
         }
     }
 }

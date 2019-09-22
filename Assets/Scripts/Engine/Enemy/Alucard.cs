@@ -12,7 +12,6 @@ public class Alucard : Enemy
     [Space(10)]
     public Animator doorsAnim;
     public GameObject lifeMaxUp;
-    private AudioManager m_AudioManager;
 
     PlayerCommonAbilities m_Abilities;
     Rigidbody2D m_PlayerRigid;
@@ -28,8 +27,6 @@ public class Alucard : Enemy
         m_IsPlayerFound = true;
         m_PlayerRigid = m_PlayerTransform.GetComponent<Rigidbody2D>();
         m_Animator = GetComponentInChildren<Animator>();
-
-        m_AudioManager = FindObjectOfType<AudioManager>();
 
         m_LastHP = health;
     }
@@ -68,7 +65,7 @@ public class Alucard : Enemy
         {
             doorsAnim.SetTrigger("openDoor");
             Instantiate(lifeMaxUp, transform.position, Quaternion.identity);
-            m_AudioManager.Play("BossDead");
+            AudioManager.Play("BossDead");
             BossRoom.m_AlucardDead = true;
         }
     }

@@ -46,7 +46,6 @@ public sealed class Player : Characters
     private float m_JumpSaveTime;
     private bool m_MistTransform;
     private bool m_Dagger;
-    private AudioManager m_AudioManager;
 
     public static PlayerCommonAbilities m_Abilities;
 
@@ -69,14 +68,14 @@ public sealed class Player : Characters
             {
                 m_IsSensitive = true;
                 volume.profile = profiles[1];
-                m_AudioManager.Play("HeartBeating");
+                AudioManager.Play("HeartBeating");
                 m_PostProcessAnim.enabled = true;
             }
             else if (m_Health > sensitiveHealth && m_IsSensitive)
             {
                 volume.profile = profiles[0];
                 m_IsSensitive = false;
-                m_AudioManager.Stop("HeartBeating");
+                AudioManager.Stop("HeartBeating");
                 m_PostProcessAnim.enabled = false;
             }
         }
@@ -202,7 +201,7 @@ public sealed class Player : Characters
 
         m_Sprite.enabled = !m_Sprite.enabled;
 
-        m_AudioManager.Play("MistSwap");
+        AudioManager.Play("MistSwap");
 
         m_IsMist = !m_IsMist;
     }
@@ -232,7 +231,6 @@ public sealed class Player : Characters
         m_Animator = GetComponentInChildren<Animator>();
         m_MistForm = GetComponentInChildren<ParticleSystem>();
         m_Sprite = GetComponentInChildren<SpriteRenderer>();
-        m_AudioManager = FindObjectOfType<AudioManager>();
         m_PostProcessAnim = volume.GetComponent<Animator>();
 
         m_OverrideAnimator = new AnimatorOverrideController(m_Animator.runtimeAnimatorController);
@@ -279,7 +277,7 @@ public sealed class Player : Characters
             }
             d.velocity = direction * daggerSpeed;
 
-            m_AudioManager.Play("DaggerThrow");
+            AudioManager.Play("DaggerThrow");
         }
         m_Dagger = false;
 
@@ -297,7 +295,7 @@ public sealed class Player : Characters
     public override void Move() => m_Abilities.Move(m_HorizontalInput);
     public override void TakeDamage(float damage)
     {
-        m_AudioManager.Play("PlayerHit");
+        AudioManager.Play("PlayerHit");
 
         m_Animator.SetTrigger("Hit");
         CurrentHealth -= damage;

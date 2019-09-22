@@ -6,12 +6,10 @@ using UnityEngine;
 public class Attack : MonoBehaviour
 {
     private PlayerCommonAbilities m_Abilities;
-    private AudioManager m_AudioManager;
     private CinemachineImpulseSource m_CameraShake;
 
     private void Start()
     {
-        m_AudioManager = FindObjectOfType<AudioManager>();
         m_Abilities = GetComponentInParent<PlayerCommonAbilities>();
         m_CameraShake = GetComponentInParent<CinemachineImpulseSource>();
     }
@@ -48,12 +46,10 @@ public class Attack : MonoBehaviour
                 enemy.GetComponentInParent<BreakableWall>().OnInteract();
         }
         if (!enemyFound)
-        {
-            m_AudioManager.Play("attack");
-        }
+            AudioManager.Play("attack");
         else
         {
-            m_AudioManager.Play("attack_p");
+            AudioManager.Play("attack_p");
             m_CameraShake.GenerateImpulse();
         }
     }

@@ -114,7 +114,7 @@ public class PlayerCommonAbilities : MonoBehaviour
 
                 m_TimeBtwDash = timeBetweenDash;
 
-                FindObjectOfType<AudioManager>().Play("Dash");
+                AudioManager.Play("Dash");
             }
         }
         else if (m_Dodge && m_Grounded)
@@ -124,7 +124,7 @@ public class PlayerCommonAbilities : MonoBehaviour
             m_Animator.SetBool("Doudge", true);
             m_AnimDD = WhichAnimation.dodge;
 
-            FindObjectOfType<AudioManager>().Play("Dash");
+            AudioManager.Play("Dash");
         }
 
         // if we didn't execute these we don't want to anymore
@@ -161,7 +161,7 @@ public class PlayerCommonAbilities : MonoBehaviour
         if (IsJumping && m_Grounded)
         {
             IsJumping = false;
-            FindObjectOfType<AudioManager>().Play("Jumplanding");
+            AudioManager.Play("Jumplanding");
         }
            
 

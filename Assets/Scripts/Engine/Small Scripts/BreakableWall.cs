@@ -28,7 +28,7 @@ public class BreakableWall : MonoBehaviour
         {
             breakEffect.Play();
 
-            FindObjectOfType<AudioManager>().Play("Wallbreak");
+            AudioManager.Play("Wallbreak");
         }
             
     }

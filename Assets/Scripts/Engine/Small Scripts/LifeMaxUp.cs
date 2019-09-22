@@ -7,14 +7,6 @@ public class LifeMaxUp : MonoBehaviour
     private bool m_IsTriggered;
     private float m_Timer;
 
-    private static AudioManager m_audio;
-
-    private void Start()
-    {
-        if(m_audio == null)
-           m_audio = FindObjectOfType<AudioManager>();
-    }
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
@@ -23,7 +15,7 @@ public class LifeMaxUp : MonoBehaviour
             Player.m_Instance.CurrentHealth = Player.m_Instance.health;
             GameManager.m_Instance.lifeMaxUI.SetActive(true);
             m_IsTriggered = true;
-            m_audio.Play("Potionpickup");
+            AudioManager.Play("Potionpickup");
         }
     }
     private void Update()

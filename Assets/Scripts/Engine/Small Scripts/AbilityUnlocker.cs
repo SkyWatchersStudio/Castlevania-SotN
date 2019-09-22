@@ -37,7 +37,7 @@ public class AbilityUnlocker : MonoBehaviour
             if (!m_Job)
             {
                 m_PlayerAnimator.SetTrigger("Abilities");
-                FindObjectOfType<AudioManager>().Play("AbilityGain");
+                AudioManager.Play("AbilityGain");
                 m_Job = true;
             }
 

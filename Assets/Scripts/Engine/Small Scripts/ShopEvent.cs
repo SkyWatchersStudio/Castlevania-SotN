@@ -8,12 +8,9 @@ public class ShopEvent : MonoBehaviour
 
     public static ShopEvent m_Instance;
 
-    private AudioManager m_Audio;
-
     private void Start()
     {
         m_Instance = this;
-        m_Audio = FindObjectOfType<AudioManager>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -22,7 +19,7 @@ public class ShopEvent : MonoBehaviour
         {
             var firstSelected = NextButton();
             GameManager.MenuActivator(shop, firstSelected, false);
-            m_Audio.Play("shopSound");
+            AudioManager.Play("shopSound");
         }
     }
     private void OnTriggerExit2D(Collider2D collision)
