@@ -12,7 +12,5 @@ public class Coffin : MonoBehaviour
                 GameManager.SavingData(collision.transform);
                 AudioManager.Play("Savesound");
             }
-                
-
     }
 }

@@ -1,12 +1,11 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public sealed class Tomato : Enemy
 {
     public float patrolRange = 4;
+    public ParticleSystem deathEffect;
 
-    private Vector3[] m_PatrolPositions = new Vector3[2];
+    private readonly Vector3[] m_PatrolPositions = new Vector3[2];
     private bool m_PatrolSet; //is patrol positions found?
     private int m_CurrentTarget;
 
@@ -85,7 +84,14 @@ public sealed class Tomato : Enemy
     }
     public override void TakeDamage(float damage)
     {
+        health -= damage;
         m_Animator.SetTrigger("HitEnemy");
-        base.TakeDamage(damage);
+        if (health <= 0)
+        {
+            var effect = Instantiate(deathEffect, transform.position, Quaternion.identity);
+            effect.Play();
+            Destroy(this.gameObject);
+            GameManager.ExperiencePoint += experiencePoint;
+        }
     }
 }
