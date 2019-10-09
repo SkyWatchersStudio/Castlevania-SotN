@@ -220,11 +220,13 @@ public sealed class Player : Characters
             MistShifting();
     }
 
+    private void Awake()
+    {
+        m_Instance = this;
+    }
     public override void Start()
     {
         base.Start();
-        m_Instance = this;
-
         ColorUtility.TryParseHtmlString("#00C3FF", out m_AbilityStatColor);
 
         m_Abilities = GetComponent<PlayerCommonAbilities>();

@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class AbilityUnlocker : MonoBehaviour
 {
@@ -10,9 +9,14 @@ public class AbilityUnlocker : MonoBehaviour
 
     private bool m_Triggered;
     private bool m_Job;
-    private float m_Timer;
     private Animator m_PlayerAnimator;
+    private PlayerAbility m_AbilityBehaviour;
 
+    private void Start()
+    {
+        m_PlayerAnimator = Player.m_Instance.GetComponentInChildren<Animator>();
+        m_AbilityBehaviour = m_PlayerAnimator.GetBehaviour<PlayerAbility>();
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
@@ -24,9 +28,9 @@ public class AbilityUnlocker : MonoBehaviour
             else if (abilityUnlock == AbilityTree.CubeOfZoe)
                 Player.CubeOfZoe = true;
 
-            m_PlayerAnimator = collision.GetComponentInChildren<Animator>();
-
             m_Triggered = true;
+
+            m_AbilityBehaviour.AbilityIntro = this.abilityIntro;
         }
     }
 
@@ -41,14 +45,12 @@ public class AbilityUnlocker : MonoBehaviour
                 m_Job = true;
             }
 
-            m_Timer += Time.deltaTime;
-            if (m_Timer >= 1f)
+            if (m_AbilityBehaviour.SkipAllowed)
             {
-                abilityIntro.SetActive(true);
-
                 if (Input.anyKeyDown)
                 {
                     Destroy(abilityIntro);
+                    m_AbilityBehaviour.Reset();
                     Destroy(gameObject);
                 }
             }
